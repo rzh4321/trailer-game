@@ -3,18 +3,17 @@ import type { movieWithVideoIdType } from "@/types";
 import getMovies from "@/actions/getMovies";
 
 export default function useMovies(count: number) {
-    const [movies, setMovies] = useState<movieWithVideoIdType[]>();
-    const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState<movieWithVideoIdType[]>();
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchMovies = async () => {
-            const res = await getMovies(count);
-            setMovies(res);
-            setLoading(false);
-        }
-        fetchMovies();
-    }, [count])
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const res = await getMovies(count);
+      setMovies(res);
+      setLoading(false);
+    };
+    fetchMovies();
+  }, [count]);
 
-    return {movies, loading};
-
+  return { movies, loading };
 }

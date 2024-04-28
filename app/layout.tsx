@@ -18,15 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <Provider> */}
-          <body className="dark font-primary flex flex-col h-screen justify-between items-center">
-            <div className="bg-inherit w-full">
-              <NavBar />
-              <div className="p-5">{children}</div>
-            </div>
-            {/* <Toaster /> */}
-            {/*
+      <body className="dark font-primary flex flex-col h-screen justify-between items-center">
+        <div className="bg-inherit w-full">
+          <NavBar />
+          <div className="p-5">{children}</div>
+        </div>
+        {/* <Toaster /> */}
+        {/*
               <Footer /> */}
-          </body>
+      </body>
       {/* </Provider> */}
     </html>
   );

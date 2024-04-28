@@ -22,15 +22,15 @@ export default function NavBar() {
       }`}
     >
       <Link
-        href="/home"
+        href="/"
         className="cursor-pointer flex items-end tracking-wider text-xl"
       >
-        <Image alt="logo" src={"/icon.ico"} width={30} height={0} />
-        <span className="hidden sm:block">uessify</span>
+        {/* <Image alt="logo" src={"/icon.ico"} width={30} height={0} /> */}
+        <span className="hidden sm:block">Guessify</span>
       </Link>
       <div className="flex gap-3">
         <Button variant={"blue"} asChild>
-          <Link href={"/categories"}>All Categories</Link>
+          <Link href={"/"}>All Categories</Link>
         </Button>
         {/* <ProfileDropdown /> */}
       </div>
