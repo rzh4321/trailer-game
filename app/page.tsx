@@ -6,17 +6,14 @@ import Video from '@/components/video';
 import { useEffect } from 'react';
 import useMovies from '@/hooks/useMovies';
 import getYouTubeUrl from '@/actions/getYouTubeUrl';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  const {movies, loading} = useMovies(5);
-  
-  const elems = movies?.map(movieObj => <Video key={movieObj.videoId} videoId={movieObj.videoId} movieName={movieObj.movieName} />)
-
-  
-
+  const router = useRouter();
   return (
     <>
-      {loading ? <div>loading...</div> : elems}
+      <Button onClick={() => router.push('/play/1')}>Quick Game</Button>
     </>
     )
 }

@@ -74,3 +74,23 @@
       @apply bg-background text-foreground;
     }
   }
+
+  @keyframes dots {
+      0%, 20% {
+          content: '.'; /* One dot */
+      }
+      25%, 45% {
+          content: '..'; /* Two dots */
+      }
+      50%, 70% {
+          content: '...'; /* Three dots */
+      }
+      75%, 100% {
+          content: ''; /* Reset to no dots */
+      }
+  }
+  
+  .dots::after {
+      content: ''; /* Start with no additional dots */
+      animation: dots 1.5s steps(1, end) infinite; /* Animate the dots */
+  }
