@@ -16,8 +16,6 @@ export default function Play({ params }: { params: { numMovies: string } }) {
     router.back();
   }
 
-  // const elems = movies?.map(movieObj => <Game key={movieObj.videoId} videoId={movieObj.videoId} movieName={movieObj.movieName} />)
-
   const onGuess = (guessesObj: guessType) => {
     const copy = [...guesses];
     copy.push(guessesObj);

@@ -12,7 +12,6 @@ type GameOverProps = {
 
 export default function GameOver({ guesses, movies }: GameOverProps) {
   const [movieInd, setMovieInd] = useState(0);
-  console.log(movies);
   return (
     <>
       <div className="flex flex-col items-center">

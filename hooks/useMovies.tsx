@@ -15,7 +15,7 @@ export default function useMovies(count: number) {
   }, [count]);
 
   useEffect(() => {
-    if (movies) {
+    if (movies.length > 0) {
       setLoading(false);
     }
   }, [movies]);

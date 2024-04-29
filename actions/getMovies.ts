@@ -79,8 +79,6 @@ export default async function getMovies(count: number) {
       );
       break;
     }
-
-
   }
   return moviesWithIds;
 }
