@@ -55,20 +55,32 @@ export default async function getMovies(count: number) {
     });
   }
   console.log("length of all movies is ", allMovies.length);
+  // remove any duplicate movies
   allMovies = Array.from(
     new Set(allMovies.map((obj) => JSON.stringify(obj))),
   ).map((str) => JSON.parse(str));
   console.log("length of movies after remove dups is ", allMovies.length);
+  // select random movies
+  let movies;
+  let moviesWithIds: movieWithVideoIdAndImageType[] = [];
+  while (true) {
+    movies = getRandomObjects(allMovies, count);
+    const videoIdsPromises = movies.map((movieObj: movieType) => 
+      getYouTubeUrl(movieObj.movieName),    
+    );
+    const videoIds = (await Promise.all(videoIdsPromises));
+    // make sure that each movie has their YouTube videoId
+    const retrievedAllVideoIds = videoIds.every(id => id !== null);
+    if (retrievedAllVideoIds) {
+      moviesWithIds = movies.map(
+        (obj: movieType, index: number) => {
+          return Object.assign({}, obj, { videoId: videoIds[index]! });
+        },
+      );
+      break;
+    }
 
-  const movies = getRandomObjects(allMovies, count);
-  const videoIdsPromises = movies.map((movieObj: movieType) =>
-    getYouTubeUrl(movieObj.movieName),
-  );
-  const videoIds = (await Promise.all(videoIdsPromises)) as string[];
-  const moviesWithIds: movieWithVideoIdAndImageType[] = movies.map(
-    (obj: movieType, index: number) => {
-      return Object.assign({}, obj, { videoId: videoIds[index] });
-    },
-  );
+
+  }
   return moviesWithIds;
 }

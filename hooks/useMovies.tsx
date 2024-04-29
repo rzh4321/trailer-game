@@ -10,10 +10,15 @@ export default function useMovies(count: number) {
     const fetchMovies = async () => {
       const res = await getMovies(count);
       setMovies(res);
-      setLoading(false);
     };
     fetchMovies();
   }, [count]);
+
+  useEffect(() => {
+    if (movies) {
+      setLoading(false);
+    }
+  }, [movies]);
 
   return { movies, loading };
 }

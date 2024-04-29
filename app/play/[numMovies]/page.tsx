@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { guessType } from "@/types";
 import { useRouter } from "next/navigation";
 import GameOver from "@/components/GameOver";
-
+ 
 export default function Play({ params }: { params: { numMovies: string } }) {
   const { movies, loading } = useMovies(+params.numMovies);
   const [guesses, setGuesses] = useState<guessType[]>([]);
@@ -34,7 +34,7 @@ export default function Play({ params }: { params: { numMovies: string } }) {
     );
   }
 
-  if (movieInd == movies?.length) {
+  if (movieInd == movies.length) {
     return <GameOver guesses={guesses} movies={movies} />;
   }
 
@@ -42,8 +42,8 @@ export default function Play({ params }: { params: { numMovies: string } }) {
     <>
       <Game
         onGuess={onGuess}
-        videoId={movies![movieInd].videoId}
-        movieName={movies![movieInd].movieName}
+        videoId={movies[movieInd].videoId}
+        movieName={movies[movieInd].movieName}
         movieNum={movieInd + 1}
         totalMovieNum={+params.numMovies}
       />
