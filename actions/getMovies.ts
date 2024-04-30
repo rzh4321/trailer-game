@@ -3,7 +3,6 @@ import * as cheerio from "cheerio";
 import getYouTubeUrl from "./getYouTubeUrl";
 import type { movieType, movieWithVideoIdAndImageType } from "../types";
 import links from "@/links";
-// import * as fs from 'fs';
 
 function getRandomObjects(array: movieType[], count: number) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -21,13 +20,6 @@ export default async function getMovies(count: number) {
     const text = await res.text();
     const $ = cheerio.load(text);
 
-    // fs.writeFile('output.html', $.html(), (err) => {
-    //   if (err) {
-    //     console.error('Error writing to file:', err);
-    //   } else {
-    //     console.log('Saved HTML to output.html');
-    //   }
-    // });
 
     $('a[data-qa="discovery-media-list-item-caption"]').each(function () {
       // Extract the movie name
