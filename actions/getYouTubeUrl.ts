@@ -18,6 +18,6 @@ export default async function getYouTubeUrl(title: string) {
   const regexPattern =
     /"WEB_PAGE_TYPE_WATCH","rootVe":3832}},"watchEndpoint":\{"videoId":"([^"]+)"/g;
   const match = regexPattern.exec($.html());
-  const videoId = match ? match[1] : null;
+  const videoId = match![1];
   return videoId;
 }

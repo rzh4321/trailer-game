@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { guessType } from "@/types";
 import { useRouter } from "next/navigation";
 import GameOver from "@/components/GameOver";
- 
+
 export default function Play({ params }: { params: { numMovies: string } }) {
   const { movies, loading } = useMovies(+params.numMovies);
   const [guesses, setGuesses] = useState<guessType[]>([]);
