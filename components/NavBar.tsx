@@ -30,7 +30,7 @@ export default function NavBar() {
       </Link>
       <div className="flex gap-3">
         <Button variant={"blue"} asChild>
-          <Link href={"/play/1"}>Quick Play</Link>
+          <Link href={"/play/all/1"}>Quick Play</Link>
         </Button>
 
         {/* <ProfileDropdown /> */}

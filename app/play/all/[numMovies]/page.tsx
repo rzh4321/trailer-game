@@ -10,6 +10,8 @@ export default function Play({ params }: { params: { numMovies: string } }) {
   const { movies, loading } = useMovies(+params.numMovies);
   const [guesses, setGuesses] = useState<guessType[]>([]);
   const [movieInd, setMovieInd] = useState(0);
+  const [username, setUsername] = useState("");
+
   const router = useRouter();
 
   if (+params.numMovies > 10) {
@@ -33,7 +35,7 @@ export default function Play({ params }: { params: { numMovies: string } }) {
   }
 
   if (movieInd == movies.length) {
-    return <GameOver guesses={guesses} movies={movies} />;
+    return <GameOver guesses={guesses} movies={movies} username={username} />;
   }
 
   return (
@@ -44,6 +46,8 @@ export default function Play({ params }: { params: { numMovies: string } }) {
         movieName={movies[movieInd].movieName}
         movieNum={movieInd + 1}
         totalMovieNum={+params.numMovies}
+        username={username}
+        setUsername={setUsername}
       />
     </>
   );

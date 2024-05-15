@@ -1,7 +1,7 @@
 import type { guessType, movieWithVideoIdAndImageType } from "@/types";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ArrowLeftSquare,
   ArrowRightSquare,
@@ -9,21 +9,22 @@ import {
   ThumbsUp,
 } from "lucide-react";
 import Image from "next/image";
+import { Loader } from "lucide-react";
+import { usePathname } from "next/navigation";
+import saveScore from "@/actions/saveScore";
 
 type GameOverProps = {
   guesses: guessType[];
   movies: movieWithVideoIdAndImageType[];
+  username: string;
 };
 
-function calculateScores(
+async function calculateScores(
   movies: movieWithVideoIdAndImageType[],
   guesses: guessType[],
-): {
-  criticScore: number;
-  audienceScore: number;
-  finalScore: number;
-  phrase: string;
-} {
+  username: string,
+  category: string,
+) {
   let totalCriticDifference = 0;
   let totalAudienceDifference = 0;
 
@@ -39,11 +40,24 @@ function calculateScores(
     );
   });
 
-  const criticScore = 100 - totalCriticDifference / movies.length;
-  const audienceScore = 100 - totalAudienceDifference / movies.length;
-  const finalScore = Math.ceil((criticScore + audienceScore) / 2);
+  const criticScore = Math.round(100 - totalCriticDifference / movies.length);
+  const audienceScore = Math.round(
+    100 - totalAudienceDifference / movies.length,
+  );
+  const finalScore = Math.round((criticScore + audienceScore) / 2);
 
   const phrase = generatePhrase(criticScore, audienceScore);
+  if (username !== "") {
+    const res = await saveScore(
+      audienceScore,
+      criticScore,
+      finalScore,
+      category,
+      movies.length,
+      username,
+    );
+    console.log(res);
+  }
 
   return {
     criticScore,
@@ -61,18 +75,43 @@ function generatePhrase(criticScore: number, audienceScore: number): string {
   } else if (audienceScore > 80) {
     return "Audiences love you, but critics... not so much.";
   } else if (criticScore < 50 && audienceScore < 50) {
-    return "You are a movie casual.";
+    return "You are movie illiterate.";
   } else {
-    return "You've got some grip on movies, keep trying!";
+    return "You are a movie casual.";
   }
 }
 
-export default function GameOver({ guesses, movies }: GameOverProps) {
+export default function GameOver({ guesses, movies, username }: GameOverProps) {
   const [movieInd, setMovieInd] = useState(0);
-  const { audienceScore, criticScore, finalScore, phrase } = calculateScores(
-    movies,
+  const [audienceScore, setAudienceScore] = useState<number | undefined>();
+  const [criticScore, setCriticScore] = useState<number | undefined>();
+  const [finalScore, setFinalScore] = useState<number | undefined>();
+  const [phrase, setPhrase] = useState<string | undefined>();
+  const path = usePathname();
+  const category = path.split("/")[2];
+
+  useEffect(() => {
+    const getScores = async () => {
+      const { audienceScore, criticScore, finalScore, phrase } =
+        await calculateScores(movies, guesses, username.trim(), category);
+      setAudienceScore(audienceScore);
+      setCriticScore(criticScore);
+      setFinalScore(finalScore);
+      setPhrase(phrase);
+    };
+    getScores();
+  }, [
+    audienceScore,
+    criticScore,
+    finalScore,
+    phrase,
     guesses,
-  );
+    movies,
+    username,
+    category,
+  ]);
+  if (!audienceScore || !criticScore || !finalScore)
+    return <Loader className="animate-spin" />;
   return (
     <>
       <div className="flex flex-col items-center gap-2">
@@ -99,9 +138,9 @@ export default function GameOver({ guesses, movies }: GameOverProps) {
               height={20}
               width={20}
               src={
-                +movies[movieInd].criticScore >= 90
+                criticScore >= 90
                   ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"
-                  : +movies[movieInd].criticScore >= 60
+                  : criticScore >= 60
                     ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-fresh.149b5e8adc3.svg"
                     : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-rotten.f1ef4f02ce3.svg"
               }
@@ -125,7 +164,7 @@ export default function GameOver({ guesses, movies }: GameOverProps) {
               height={20}
               width={20}
               src={
-                +movies[movieInd].audienceScore >= 60
+                audienceScore >= 60
                   ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-fresh.6c24d79faaf.svg"
                   : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-rotten.f419e4046b7.svg"
               }

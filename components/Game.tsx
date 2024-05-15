@@ -7,6 +7,8 @@ type GameProps = {
   movieName: string;
   movieNum: number;
   totalMovieNum: number;
+  username: string;
+  setUsername: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export default function Game({
@@ -15,6 +17,8 @@ export default function Game({
   movieName,
   movieNum,
   totalMovieNum,
+  username,
+  setUsername,
 }: GameProps) {
   return (
     <>
@@ -40,6 +44,8 @@ export default function Game({
         <UserInputs
           onGuess={onGuess}
           isLastTrailer={movieNum === totalMovieNum}
+          username={username}
+          setUsername={setUsername}
         />
       </div>
     </>

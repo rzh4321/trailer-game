@@ -15,10 +15,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import type { guessType } from "@/types";
+import UsernamePrompt from "./UsernamePrompt";
 
 type UserInputsProps = {
   onGuess: (guessesObj: guessType) => void;
   isLastTrailer: boolean;
+  username: string;
+  setUsername: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const formSchema = z.object({
@@ -49,6 +52,8 @@ const formSchema = z.object({
 export default function UserInputs({
   onGuess,
   isLastTrailer,
+  username,
+  setUsername,
 }: UserInputsProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -112,12 +117,23 @@ export default function UserInputs({
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          className="sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600"
-        >
-          {isLastTrailer ? "Get Score" : <LucideArrowRight />}
-        </Button>
+        {isLastTrailer &&
+        form.getValues("criticGuess") !== undefined &&
+        form.getValues("audienceGuess") !== undefined ? (
+          <UsernamePrompt
+            onGuess={onGuess}
+            values={form.getValues()}
+            username={username}
+            setUsername={setUsername}
+          />
+        ) : (
+          <Button
+            type="submit"
+            className="sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600"
+          >
+            {isLastTrailer ? "Get Scores" : <LucideArrowRight />}
+          </Button>
+        )}
       </form>
     </Form>
   );

@@ -24,6 +24,7 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "navbar-bg": "hsl(222.2, 84%, 4.9%)",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -67,10 +68,15 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        slideToLeft: {
+          from: { transform: "translateX(0)" },
+          to: { transform: `translateX(-${15 * 524}px)` },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        slideToLeft: "slideToLeft 100s linear infinite",
       },
       fontFamily: {
         poppins: ["Poppins"],

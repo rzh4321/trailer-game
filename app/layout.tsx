@@ -4,17 +4,22 @@ import "@/app/globals.css";
 import NavBar from "@/components/NavBar";
 // import QueryProvider from "@/components/QueryProvider";
 // import { Toaster } from "@/components/ui/toaster";
+import { db } from "@/db";
+import { categories, movieCategory, movies } from "@/schema";
+import { eq } from "drizzle-orm";
 
 export const metadata: Metadata = {
   title: "Guessify",
   description: "The Spotify Guessing Game",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const users = await db.select().from(movies).innerJoin(movieCategory, eq(movies.id, movieCategory.movieId)).innerJoin(categories, eq(movieCategory.categoryId, categories.id)).where(eq(movies.movieName, 'Mad Max: Fury Road'));
+  // console.log(users);
   return (
     <html lang="en">
       {/* <Provider> */}
