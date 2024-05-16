@@ -1,5 +1,11 @@
 "use client";
 import Image from "next/image";
+import TopScoresTable from "@/components/TopScoresTable";
+import { usePathname } from "next/navigation";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import {
   Select,
   SelectContent,
@@ -18,8 +24,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { useRouter } from "next/navigation";
-
 import {
   Form,
   FormControl,
@@ -30,8 +34,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 import { z } from "zod";
 
@@ -41,6 +44,7 @@ const formSchema = z.object({
 
 export default function Page() {
   const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,6 +56,8 @@ export default function Page() {
     const numTrailers = values.numTrailers;
     router.push(`/play/all/${numTrailers}`);
   }
+  const path = usePathname();
+  const category = path.split("/")[2];
 
   const posters = [
     "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/apocalypse-now-1979-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
@@ -87,7 +93,11 @@ export default function Page() {
           />
         ))}
       </div>
-      <div className="relative z-10 flex flex-col items-center justify-center">
+      <div className="relative z-10 flex flex-col items-center justify-center gap-10">
+        <TopScoresTable
+          category={category}
+          numTrailers={+form.getValues("numTrailers")}
+        />
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <Card className="w-[350px]">
@@ -118,7 +128,7 @@ export default function Page() {
                               </SelectGroup>
                             </SelectContent>
                           </Select>
-                          <Button type="submit" variant={"blue"}>
+                          <Button type="submit" variant={"spotify"}>
                             Start
                           </Button>
                         </div>
@@ -128,9 +138,6 @@ export default function Page() {
                   )}
                 />
               </CardContent>
-              {/* <CardFooter className="flex justify-between">
-                <Button type='submit' variant={'blue'}>Start</Button>
-            </CardFooter> */}
             </Card>
           </form>
         </Form>

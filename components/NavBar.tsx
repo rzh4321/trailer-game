@@ -29,7 +29,7 @@ export default function NavBar() {
         <span className="hidden sm:block">Guessify</span>
       </Link>
       <div className="flex gap-3">
-        <Button variant={"blue"} asChild>
+        <Button variant={"spotify"} asChild>
           <Link href={"/play/all/1"}>Quick Play</Link>
         </Button>
 

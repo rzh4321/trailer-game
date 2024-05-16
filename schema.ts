@@ -4,6 +4,7 @@ import {
   serial,
   integer,
   varchar,
+  timestamp,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
@@ -66,6 +67,7 @@ export const users = pgTable("users", {
   audienceScore: integer("audience_score"),
   finalScore: integer("final_score"),
   numTrailers: integer("num_trailers"),
+  time: timestamp("time").defaultNow(),
 });
 
 export const usersRelations = relations(users, ({ one }) => ({

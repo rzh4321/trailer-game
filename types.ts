@@ -20,3 +20,11 @@ export type guessType = {
   criticGuess: string;
   audienceGuess: string;
 };
+
+export type userPlayType = {
+  username: string;
+  criticScore: number;
+  audienceScore: number;
+  finalScore: number;
+  time: Date;
+};

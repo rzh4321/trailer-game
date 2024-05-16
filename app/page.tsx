@@ -10,7 +10,6 @@ import { StepForward, StepBack } from "lucide-react";
 export default function Home() {
   const [pageNumber, setPageNumber] = useState(1);
 
-  const router = useRouter();
   const startIndex = (pageNumber - 1) * 9;
   const endIndex = startIndex + 9;
   const categoriesToDisplay = categories.slice(startIndex, endIndex);

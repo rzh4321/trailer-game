@@ -28,14 +28,12 @@ export default async function saveScore(
     categoryId = id;
   }
   console.log("category id is ", categoryId);
-  return await db
-    .insert(users)
-    .values({
-      audienceScore: audienceScore,
-      criticScore: criticScore,
-      finalScore: finalScore,
-      categoryId: categoryId,
-      numTrailers: numTrailers,
-      username: username,
-    });
+  return await db.insert(users).values({
+    audienceScore: audienceScore,
+    criticScore: criticScore,
+    finalScore: finalScore,
+    categoryId: categoryId,
+    numTrailers: numTrailers,
+    username: username,
+  });
 }
