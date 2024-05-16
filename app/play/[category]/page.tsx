@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import type { linkCategoryType } from "@/types";
 
 import {
   Select,
@@ -42,7 +43,11 @@ const formSchema = z.object({
   numTrailers: z.string(),
 });
 
-export default function Page() {
+export default function Page({
+  params,
+}: {
+  params: { category: linkCategoryType };
+}) {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -54,10 +59,9 @@ export default function Page() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const numTrailers = values.numTrailers;
-    router.push(`/play/all/${numTrailers}`);
+    router.push(`/play/${params.category}/${numTrailers}`);
   }
   const path = usePathname();
-  const category = path.split("/")[2];
 
   const posters = [
     "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/apocalypse-now-1979-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
@@ -95,7 +99,7 @@ export default function Page() {
       </div>
       <div className="relative z-10 flex flex-col items-center justify-center gap-10">
         <TopScoresTable
-          category={category}
+          category={params.category}
           numTrailers={+form.getValues("numTrailers")}
         />
         <Form {...form}>

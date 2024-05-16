@@ -4,6 +4,7 @@ import { BarChart, Loader } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { userPlayType } from "@/types";
 import Image from "next/image";
+import type { linkCategoryType } from "@/types";
 
 import {
   Table,
@@ -17,7 +18,7 @@ import {
 } from "@/components/ui/table";
 
 type TopScoresTableProps = {
-  category: string;
+  category: linkCategoryType;
   numTrailers: number;
 };
 

@@ -1,36 +1,35 @@
-import type { guessType, movieWithVideoIdAndImageType } from "@/types";
+import type {
+  guessType,
+  movieWithVideoIdAndImageType,
+  linkCategoryType,
+} from "@/types";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import {
-  ArrowLeftSquare,
-  ArrowRightSquare,
-  ThumbsDown,
-  ThumbsUp,
-} from "lucide-react";
+import { ArrowLeftSquare, ArrowRightSquare } from "lucide-react";
 import Image from "next/image";
 import { Loader } from "lucide-react";
-import { usePathname } from "next/navigation";
 import saveScore from "@/actions/saveScore";
 
 type GameOverProps = {
   guesses: guessType[];
   movies: movieWithVideoIdAndImageType[];
   username: string;
+  category: linkCategoryType;
 };
 
 async function calculateScores(
   movies: movieWithVideoIdAndImageType[],
   guesses: guessType[],
   username: string,
-  category: string,
+  category: linkCategoryType,
 ) {
   let totalCriticDifference = 0;
   let totalAudienceDifference = 0;
 
   movies.forEach((movie, index) => {
-    const movieCriticScore = parseInt(movie.criticScore, 10);
-    const movieAudienceScore = parseInt(movie.audienceScore, 10);
+    const movieCriticScore = parseInt(movie.critic_score, 10);
+    const movieAudienceScore = parseInt(movie.audience_score, 10);
     const guessCriticScore = parseInt(guesses[index].criticGuess, 10);
     const guessAudienceScore = parseInt(guesses[index].audienceGuess, 10);
 
@@ -81,14 +80,17 @@ function generatePhrase(criticScore: number, audienceScore: number): string {
   }
 }
 
-export default function GameOver({ guesses, movies, username }: GameOverProps) {
+export default function GameOver({
+  guesses,
+  movies,
+  username,
+  category,
+}: GameOverProps) {
   const [movieInd, setMovieInd] = useState(0);
   const [audienceScore, setAudienceScore] = useState<number | undefined>();
   const [criticScore, setCriticScore] = useState<number | undefined>();
   const [finalScore, setFinalScore] = useState<number | undefined>();
   const [phrase, setPhrase] = useState<string | undefined>();
-  const path = usePathname();
-  const category = path.split("/")[2];
 
   useEffect(() => {
     const getScores = async () => {
@@ -226,7 +228,7 @@ export default function GameOver({ guesses, movies, username }: GameOverProps) {
       </div>
       <div className="flex flex-col items-center gap-5 mt-3">
         <h1 className="font-bold tracking-wide text-2xl">
-          {movies[movieInd].movieName}
+          {movies[movieInd].movie_name}
         </h1>
         <div>
           <Image
@@ -244,23 +246,23 @@ export default function GameOver({ guesses, movies, username }: GameOverProps) {
               height={20}
               width={20}
               src={
-                +movies[movieInd].criticScore >= 90
+                +movies[movieInd].critic_score >= 90
                   ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"
-                  : +movies[movieInd].criticScore >= 60
+                  : +movies[movieInd].critic_score >= 60
                     ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-fresh.149b5e8adc3.svg"
                     : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-rotten.f1ef4f02ce3.svg"
               }
             />
             <span
               className={
-                +movies[movieInd].criticScore >= 90
+                +movies[movieInd].critic_score >= 90
                   ? "text-green-600"
-                  : +movies[movieInd].criticScore >= 60
+                  : +movies[movieInd].critic_score >= 60
                     ? "text-yellow-300"
                     : "text-red-600"
               }
             >
-              {movies[movieInd].criticScore}%.
+              {movies[movieInd].critic_score}%.
             </span>
           </span>
           {` `}
@@ -299,21 +301,21 @@ export default function GameOver({ guesses, movies, username }: GameOverProps) {
               height={20}
               width={20}
               src={
-                +movies[movieInd].audienceScore >= 60
+                +movies[movieInd].audience_score >= 60
                   ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-fresh.6c24d79faaf.svg"
                   : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-rotten.f419e4046b7.svg"
               }
             />
             <span
               className={
-                +movies[movieInd].audienceScore >= 90
+                +movies[movieInd].audience_score >= 90
                   ? "text-green-600"
-                  : +movies[movieInd].audienceScore >= 60
+                  : +movies[movieInd].audience_score >= 60
                     ? "text-yellow-300"
                     : "text-red-600"
               }
             >
-              {movies[movieInd].audienceScore}%.
+              {movies[movieInd].audience_score}%.
             </span>
           </span>
           {` `}

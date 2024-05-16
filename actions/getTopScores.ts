@@ -1,14 +1,14 @@
 "use server";
 import { db } from "@/db";
 import { categories, users } from "@/schema";
-import { ColumnBaseConfig, and, desc, eq, isNull } from "drizzle-orm";
-import { userPlayType } from "@/types";
+import { and, desc, eq, isNull } from "drizzle-orm";
+import type { userPlayType, linkCategoryType } from "@/types";
+import categoryToTableName from "@/categoryToTableName";
 
 export default async function getTopScores(
-  category: string,
+  category: linkCategoryType,
   numTrailers: number,
 ) {
-  console.log("numtrailers is ", numTrailers);
   let topScores;
   if (category === "all") {
     topScores = await db.query.users.findMany({
@@ -27,6 +27,30 @@ export default async function getTopScores(
       limit: 5,
     });
   } else {
+    // get the database category name and id
+    const dbCategory = categoryToTableName[category];
+    const { id: categoryId } = (await db.query.categories.findFirst({
+      columns: {
+        id: true,
+      },
+      where: eq(categories.name, dbCategory),
+    })) as { id: number };
+    // get top scores given categoryId and numTrailers
+    topScores = await db.query.users.findMany({
+      columns: {
+        username: true,
+        criticScore: true,
+        audienceScore: true,
+        finalScore: true,
+        time: true,
+      },
+      where: and(
+        eq(users.categoryId, categoryId),
+        eq(users.numTrailers, numTrailers),
+      ),
+      orderBy: [desc(users.finalScore)],
+      limit: 5,
+    });
   }
   return topScores as userPlayType[];
 }

@@ -10,10 +10,10 @@ import { relations } from "drizzle-orm";
 
 export const movies = pgTable("movies", {
   id: serial("id").primaryKey(),
-  movieName: varchar("movieName"),
-  criticScore: integer("criticScore"),
-  audienceScore: integer("audienceScore"),
-  videoId: varchar("videoId"),
+  movieName: varchar("movie_name"),
+  criticScore: integer("critic_score"),
+  audienceScore: integer("audience_score"),
+  videoId: varchar("video_id"),
   src: varchar("src"),
 });
 

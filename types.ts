@@ -1,18 +1,18 @@
 export type movieWithVideoIdAndImageType = {
   id: number;
-  movieName: string;
-  criticScore: string;
-  audienceScore: string;
-  videoId: string;
+  movie_name: string;
+  critic_score: string;
+  audience_score: string;
+  video_id: string;
   src: string | undefined;
 };
 
 export type dbResType = {
   id: number;
-  movieName: string;
-  criticScore: string;
-  audienceScore: string;
-  videoId: string | null;
+  movie_name: string;
+  critic_score: string;
+  audience_score: string;
+  video_id: string | null;
   src: string | undefined;
 };
 
@@ -28,3 +28,5 @@ export type userPlayType = {
   finalScore: number;
   time: Date;
 };
+
+export type linkCategoryType = "all" | "action" | "adventure";
