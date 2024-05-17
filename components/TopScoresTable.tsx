@@ -82,7 +82,7 @@ export default function TopScoresTable({
         <TableHeader>
           <TableRow>
             <TableHead>#</TableHead>
-            <TableHead className="w-[100px] text-xs">Username</TableHead>
+            <TableHead className="text-xs">Username</TableHead>
             <TableHead className="text-xs">Audience Score</TableHead>
             <TableHead className="text-xs">Critic Score</TableHead>
             <TableHead className="text-xs">Overall Score</TableHead>
@@ -104,7 +104,7 @@ export default function TopScoresTable({
                     alt="final"
                     height={20}
                     width={20}
-                    className="relative bottom-[2px] inline mr-1"
+                    className="relative bottom-[2px] mr-1 hidden sm:inline"
                     src={
                       entry.criticScore >= 90
                         ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"

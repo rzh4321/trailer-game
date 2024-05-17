@@ -100,3 +100,16 @@
   content: ""; /* Start with no additional dots */
   animation: dots 1.5s steps(1, end) infinite; /* Animate the dots */
 }
+
+@keyframes slideToLeftGif {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(var(--slide-to-left-distance));
+  }
+}
+
+.animate-slideToLeftGif {
+  animation: slideToLeftGif 100s linear infinite;
+}

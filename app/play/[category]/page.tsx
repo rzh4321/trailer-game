@@ -1,11 +1,13 @@
 "use client";
 import Image from "next/image";
 import TopScoresTable from "@/components/TopScoresTable";
-import { usePathname } from "next/navigation";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { linkCategoryType } from "@/types";
+import { useState } from "react";
+import * as background from "@/background";
+import { v4 as uuidv4 } from "uuid";
 
 import {
   Select,
@@ -36,8 +38,15 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import GifBackgroundDiv from "@/components/GifBackgroundDiv";
 
 import { z } from "zod";
+
+const categoryToBackgroundArr: { [key in linkCategoryType]: string[] } = {
+  all: background.allPosters,
+  action: background.actionPosters,
+  adventure: background.adventurePosters,
+};
 
 const formSchema = z.object({
   numTrailers: z.string(),
@@ -56,52 +65,53 @@ export default function Page({
       numTrailers: "3",
     },
   });
+  const [numTrailers, setNumTrailers] = useState(
+    +form.getValues("numTrailers"),
+  );
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const numTrailers = values.numTrailers;
     router.push(`/play/${params.category}/${numTrailers}`);
   }
-  const path = usePathname();
 
-  const posters = [
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/apocalypse-now-1979-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/the-silence-of-the-lambs-1991-poster.jpg",
-    "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/jaws-1975-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/badlands-1973-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/scarface-1983-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/king-kong-1933-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/la-dolce-vita-1960-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/pulp-fiction-1994-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/breakfast-at-tiffany-s-1961-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/2001_-a-space-odyssey-1968-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/rocky-1976-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/the-thing-1982-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/sullivan-s-travels-1941-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-    "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/halloween-1978-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
-  ];
+  const posters = categoryToBackgroundArr[params.category as linkCategoryType];
   // duplicate posters for seamless transition when animation ends
   const duplicatedPosters = [...posters, ...posters];
 
   return (
     <>
-      <div className="fixed inset-0 h-screen flex animate-slideToLeft z-0">
-        {duplicatedPosters.map((poster, index) => (
-          <Image
-            key={index}
-            className="relative w-[524px] z-0 h-screen min-w-[524px]"
-            src={poster}
-            alt="bg"
-            width={200}
-            height={200}
-          />
-        ))}
-      </div>
+      {params.category === "all" ? (
+        <div className="fixed inset-0 h-screen flex animate-slideToLeft">
+          {duplicatedPosters.map((poster, index) => (
+            <Image
+              key={uuidv4()}
+              priority={true}
+              className="w-auto h-auto"
+              src={poster}
+              alt="bg"
+              width={524}
+              height={524}
+            />
+          ))}
+        </div>
+      ) : (
+        <GifBackgroundDiv>
+          {duplicatedPosters.map((poster, index) => (
+            <Image
+              key={uuidv4()}
+              priority={true}
+              className="w-auto h-auto"
+              src={poster}
+              alt="bg"
+              width={524}
+              height={524}
+            />
+          ))}
+        </GifBackgroundDiv>
+      )}
+
       <div className="relative z-10 flex flex-col items-center justify-center gap-10">
-        <TopScoresTable
-          category={params.category}
-          numTrailers={+form.getValues("numTrailers")}
-        />
+        <TopScoresTable category={params.category} numTrailers={numTrailers} />
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <Card className="w-[350px]">
@@ -117,7 +127,10 @@ export default function Page({
                       <FormControl>
                         <div className="flex justify-between">
                           <Select
-                            onValueChange={field.onChange}
+                            onValueChange={(e) => {
+                              field.onChange();
+                              setNumTrailers(+e);
+                            }}
                             defaultValue={"3"}
                           >
                             <SelectTrigger className="w-[180px]">
