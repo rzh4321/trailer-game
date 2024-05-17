@@ -9,8 +9,8 @@ import { categories, movieCategory, movies } from "@/schema";
 import { eq } from "drizzle-orm";
 
 export const metadata: Metadata = {
-  title: "Guessify",
-  description: "The Spotify Guessing Game",
+  title: "Trailermeter",
+  description: "The Rotten Tomatoes Guessing Game",
 };
 
 export default async function RootLayout({

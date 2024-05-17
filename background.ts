@@ -17,20 +17,20 @@ export const allPosters = [
 ];
 
 export const actionPosters = [
-  "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2d5NnB0b3k2cWZrZm9iOGptZ2prOWdoNm85d2ZmMzRwNjMxOXhucSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wuRRBR4Q9hKtW/giphy.gif", // fury road
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHMxOG45NDBoNG5zbm5xMWgydG1jeWJ4OTRxd242bGswYnZydWxvbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZeRPs2bL5gUnoDdNEp/giphy.gif", // 1917
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWdubXl5ZjM2ajVpOWZpYWtxcmM1NHJncjZkeDhxc3hrdmtteDh4biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nLjgeYbEdGl2YTYos9/giphy.gif", //john wick
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnhkMWU3eHNkanp6aDJxOHFmdWZpcmtsNDB6MzB1bHNxYnZqNXgyaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bEIQpE3d1sENO/giphy.gif", // planet of apes
-  "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjRteDloaXZ6aTg5cG05bzRpYjN3N2lzN2E2aW0wamU0em9wMWxhNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HLIsuOVZewzoNQz0yB/giphy.gif", // the batman
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjZ1cG9uOWprdHFpanIybTRrMGd1dG96ZWdrdWVmNmF3Y2Q4djIwZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1yvoDVJQsTfHi/giphy.webp", // matrix
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWo1NHpkODJodXM5c21oZmkweTNoNndoMzlmbXBwazNzam14eWJlNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LqG7urVkWechpY0Z7b/giphy.gif", // beekeeper
-  "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2Fhd2VhZGRxM3YzOHhkZm55amtjMnJpaTNxM24yMHdrOHZxN2c5NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3og0INLOZWDR9IMTy8/giphy.gif", // dark knight
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWk2cG9qeHVyYXV6cDlhbWRpajBmcm53bGxieDQxejNtdG41cXAzMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ATGtSpJKlh6Sc/giphy.gif", //kill bill
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2p6dTNvZHN4Y29scG9vaHVkcnlia3Nxb2Z4OHZuNDA4b2t2OTN4NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/b9DzOe5w6c7UsDl5b1/giphy.gif", // casino royale
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDcwaTc1bXZmN2dyeTBuc2FhbHllNmVrdzFvbjFhdjBlYWI3Z2hvZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TwHb0h15HoZkA/giphy.gif", // misison impossible
-  "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDVwdW1qdWh1a3lkdXZkM3M3ajI4OTVsNHIybTFqcGVndzZsMjgxMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o6FWop1Gbuyly/giphy.gif", // black panther
-  "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDFpMjRsOW9vZXg3Nmlqd2JvOGZkMzl0MGdva2ZtOWw4MnllM2d6aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41YlaRerwUOcUOLm/giphy.gif", // terminator
-  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGdpbXg2b2hjNzJtc3U0N3J6bjA5a2NzbW9sMWlhMjVsa3lyYzN0eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4v9clNX40qdp5RaOQ/giphy.gif", // speed
+  "https://m.media-amazon.com/images/I/81MJv+WKb9L._AC_UF894,1000_QL80_.jpg", // fury road
+  "https://m.media-amazon.com/images/I/61yYNBjFRjL._AC_UF894,1000_QL80_.jpg", // 1917
+  "https://m.media-amazon.com/images/M/MV5BMDExZGMyOTMtMDgyYi00NGIwLWJhMTEtOTdkZGFjNmZiMTEwXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_.jpg", //john wick
+  "https://m.media-amazon.com/images/I/71oPJnWfzIL._AC_UF894,1000_QL80_.jpg", // planet of apes
+  "https://m.media-amazon.com/images/M/MV5BM2MyNTAwZGEtNTAxNC00ODVjLTgzZjUtYmU0YjAzNmQyZDEwXkEyXkFqcGdeQXVyNDc2NTg3NzA@._V1_.jpg", // the batman
+  "https://m.media-amazon.com/images/I/71PfZFFz9yL._AC_UF894,1000_QL80_.jpg", // matrix
+  "https://theposterdepot.com/cdn/shop/files/beekeeper0415202402rev_580x.jpg?v=1713926217", // beekeeper
+  "https://cdn.europosters.eu/image/1300/art-photo/the-dark-knight-trilogy-a-fire-will-rise-i184446.jpg", // dark knight
+  "https://m.media-amazon.com/images/I/81Az82YYZaS.jpg", //kill bill
+  "https://i.ebayimg.com/images/g/OUoAAOSwH3haDPtj/s-l1200.jpg", // casino royale
+  "https://m.media-amazon.com/images/I/A1M0qlxNo6L._AC_UF894,1000_QL80_.jpg", // misison impossible
+  "https://m.media-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_.jpg", // black panther
+  "https://m.media-amazon.com/images/I/61qCgQZyhOL.jpg", // terminator
+  "https://m.media-amazon.com/images/I/51+Eu24eFQL._AC_UF894,1000_QL80_.jpg", // die hard
 ];
 
 export const adventurePosters = [];

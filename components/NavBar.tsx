@@ -23,10 +23,16 @@ export default function NavBar() {
     >
       <Link
         href="/"
-        className="cursor-pointer flex items-end tracking-wider text-xl"
+        className="cursor-pointer flex gap-1 items-end tracking-wider text-xl"
       >
-        {/* <Image alt="logo" src={"/icon.ico"} width={30} height={0} /> */}
-        <span className="hidden sm:block">Guessify</span>
+        <Image
+          alt="logo"
+          src={"/icon.ico"}
+          className="h-auto w-auto"
+          width={30}
+          height={0}
+        />
+        <span className="hidden sm:block">Trailermeter</span>
       </Link>
       <div className="flex gap-3">
         <Button variant={"spotify"} asChild>

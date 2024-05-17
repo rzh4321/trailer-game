@@ -33,23 +33,35 @@ async function calculateScores(
     const guessCriticScore = parseInt(guesses[index].criticGuess, 10);
     const guessAudienceScore = parseInt(guesses[index].audienceGuess, 10);
 
-    totalCriticDifference += Math.abs(movieCriticScore - guessCriticScore);
-    totalAudienceDifference += Math.abs(
+    totalCriticDifference += Math.round(movieCriticScore - guessCriticScore);
+    totalAudienceDifference += Math.round(
       movieAudienceScore - guessAudienceScore,
     );
   });
 
-  const criticScore = Math.round(100 - totalCriticDifference / movies.length);
-  const audienceScore = Math.round(
-    100 - totalAudienceDifference / movies.length,
-  );
-  const finalScore = Math.round((criticScore + audienceScore) / 2);
+  const avgCriticDifference = totalCriticDifference / movies.length;
+  const avgAudienceDifference = totalAudienceDifference / movies.length;
 
-  const phrase = generatePhrase(criticScore, audienceScore);
+  const criticScore = Math.round(100 - avgCriticDifference * 1.5);
+  const audienceScore = Math.round(100 - avgAudienceDifference * 1.5);
+
+  // scores cant go below 0
+  const adjustedCriticScore = Math.max(criticScore, 0);
+  const adjustedAudienceScore = Math.max(audienceScore, 0);
+
+  // final score is average of the critic and audience scores
+  const finalScore = Math.round(
+    (adjustedCriticScore + adjustedAudienceScore) / 2,
+  );
+
+  // Generate a phrase based on the scores
+  const phrase = generatePhrase(adjustedCriticScore, adjustedAudienceScore);
+
+  // If a username is provided, save the score to the leaderboard
   if (username !== "") {
     const res = await saveScore(
-      audienceScore,
-      criticScore,
+      adjustedAudienceScore,
+      adjustedCriticScore,
       finalScore,
       category,
       movies.length,
@@ -58,9 +70,10 @@ async function calculateScores(
     console.log(res);
   }
 
+  // Return the calculated scores and generated phrase
   return {
-    criticScore,
-    audienceScore,
+    criticScore: adjustedCriticScore,
+    audienceScore: adjustedAudienceScore,
     finalScore,
     phrase,
   };
@@ -112,7 +125,12 @@ export default function GameOver({
     username,
     category,
   ]);
-  if (!audienceScore || !criticScore || !finalScore)
+  // console.log('audiencescore: ', audienceScore, ' critic score: ', criticScore, ' finalscore: ', finalScore)
+  if (
+    audienceScore === undefined ||
+    criticScore === undefined ||
+    finalScore === undefined
+  )
     return <Loader className="animate-spin" />;
   return (
     <>

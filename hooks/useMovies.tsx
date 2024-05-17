@@ -10,7 +10,6 @@ export default function useMovies(count: number, category: linkCategoryType) {
   useEffect(() => {
     const fetchMovies = async () => {
       const res = await getMovies(count, category);
-      console.log("RES IS ", res);
       setMovies(res);
     };
     fetchMovies();

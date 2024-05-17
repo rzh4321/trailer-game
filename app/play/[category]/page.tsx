@@ -38,7 +38,6 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import GifBackgroundDiv from "@/components/GifBackgroundDiv";
 
 import { z } from "zod";
 
@@ -80,35 +79,19 @@ export default function Page({
 
   return (
     <>
-      {params.category === "all" ? (
-        <div className="fixed inset-0 h-screen flex animate-slideToLeft">
-          {duplicatedPosters.map((poster, index) => (
-            <Image
-              key={uuidv4()}
-              priority={true}
-              className="w-auto h-auto"
-              src={poster}
-              alt="bg"
-              width={524}
-              height={524}
-            />
-          ))}
-        </div>
-      ) : (
-        <GifBackgroundDiv>
-          {duplicatedPosters.map((poster, index) => (
-            <Image
-              key={uuidv4()}
-              priority={true}
-              className="w-auto h-auto"
-              src={poster}
-              alt="bg"
-              width={524}
-              height={524}
-            />
-          ))}
-        </GifBackgroundDiv>
-      )}
+      <div className="fixed inset-0 h-screen flex animate-slideToLeft">
+        {duplicatedPosters.map((poster, index) => (
+          <Image
+            key={uuidv4()}
+            priority={true}
+            className="w-auto h-auto"
+            src={poster}
+            alt="bg"
+            width={524}
+            height={524}
+          />
+        ))}
+      </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center gap-10">
         <TopScoresTable category={params.category} numTrailers={numTrailers} />
@@ -128,7 +111,7 @@ export default function Page({
                         <div className="flex justify-between">
                           <Select
                             onValueChange={(e) => {
-                              field.onChange();
+                              field.onChange(e);
                               setNumTrailers(+e);
                             }}
                             defaultValue={"3"}
