@@ -79,7 +79,7 @@ export default function Page({
 
   return (
     <>
-      <div className="fixed inset-0 h-screen flex animate-slideToLeft">
+      <div className="absolute sm:fixed inset-0 h-screen flex animate-slideToLeft">
         {duplicatedPosters.map((poster, index) => (
           <Image
             key={uuidv4()}

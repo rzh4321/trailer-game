@@ -28,7 +28,6 @@ export default function NavBar() {
         <Image
           alt="logo"
           src={"/icon.ico"}
-          className="h-auto w-auto"
           width={30}
           height={0}
         />
