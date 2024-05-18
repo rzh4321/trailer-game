@@ -15,7 +15,7 @@ export default async function getMovies(
   let dbRes: any[] = [];
   const dbCategory = categoryToTableName[category];
   console.log("dbcategory is ", dbCategory);
-  if (dbCategory === "all") {
+  if (dbCategory === "All") {
     console.log("ur in /all");
     dbRes = await db.execute(
       sql`SELECT * FROM movies ORDER BY RANDOM() LIMIT ${count}`,

@@ -33,17 +33,22 @@ async function calculateScores(
     const guessCriticScore = parseInt(guesses[index].criticGuess, 10);
     const guessAudienceScore = parseInt(guesses[index].audienceGuess, 10);
 
-    totalCriticDifference += Math.round(movieCriticScore - guessCriticScore);
-    totalAudienceDifference += Math.round(
+    totalCriticDifference += Math.abs(movieCriticScore - guessCriticScore);
+    totalAudienceDifference += Math.abs(
       movieAudienceScore - guessAudienceScore,
     );
   });
+  console.log('totalcriticdifference is ', totalCriticDifference, ' totalaudiencedifference is ', totalAudienceDifference);
 
   const avgCriticDifference = totalCriticDifference / movies.length;
   const avgAudienceDifference = totalAudienceDifference / movies.length;
+  console.log('avfcriticdiff is ', avgCriticDifference, ' avfaudiencediff is ', avgAudienceDifference);
 
   const criticScore = Math.round(100 - avgCriticDifference * 1.5);
   const audienceScore = Math.round(100 - avgAudienceDifference * 1.5);
+  console.log('avgcriticdiff is *1.5 = ', avgCriticDifference*1.5);
+  console.log('avgaudiencediff is *1.5 = ', avgAudienceDifference*1.5);
+
 
   // scores cant go below 0
   const adjustedCriticScore = Math.max(criticScore, 0);
@@ -115,6 +120,12 @@ export default function GameOver({
       setPhrase(phrase);
     };
     getScores();
+    document.body.classList.remove('overflow-hidden');
+
+    return () => {
+      // Add the class back when the component unmounts
+      document.body.classList.add('overflow-hidden');
+    };
   }, [
     audienceScore,
     criticScore,
@@ -135,12 +146,13 @@ export default function GameOver({
   return (
     <>
       <div className="flex flex-col items-center gap-2">
-        <div className="flex gap-1">
-          <span className="tracking-widest font-poppins">{phrase}</span>
+        <div>
+          <span className="tracking-widest font-poppins text-center">{phrase}</span>
           <Image
             alt="reaction"
             height={20}
             width={20}
+            className="inline ml-1"
             src={
               finalScore >= 80
                 ? "https://www.svgrepo.com/show/271847/shocked-emoji.svg"
@@ -150,7 +162,7 @@ export default function GameOver({
             }
           />
         </div>
-        <div className="flex gap-1">
+        <div className="flex flex-col sm:flex-row items-center gap-1">
           <span className="flex tracking-wide gap-1">
             Your critic score:
             <Image

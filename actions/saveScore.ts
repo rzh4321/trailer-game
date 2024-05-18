@@ -22,15 +22,14 @@ export default async function saveScore(
   }
   // find categoryId if category is not 'All'
   else {
-    const { id } = (await db.query.categories.findFirst({
+    const {id} = await db.query.categories.findFirst({
       columns: {
         id: true,
       },
       where: eq(categories.name, tableCategory),
-    })) as { id: number };
+    }) as {id : number};
     categoryId = id;
   }
-  console.log("category id is ", categoryId);
   return await db.insert(users).values({
     audienceScore: audienceScore,
     criticScore: criticScore,

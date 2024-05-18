@@ -1,6 +1,6 @@
 // category was part of the link
 const categoryToTableName = {
-  all: "all",
+  all: "All",
   action: "Action",
   adventure: "Adventure",
 };

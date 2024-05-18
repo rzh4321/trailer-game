@@ -33,4 +33,23 @@ export const actionPosters = [
   "https://m.media-amazon.com/images/I/51+Eu24eFQL._AC_UF894,1000_QL80_.jpg", // die hard
 ];
 
-export const adventurePosters = [];
+export const adventurePosters = [
+    "https://m.media-amazon.com/images/I/71oPJnWfzIL._AC_UF894,1000_QL80_.jpg", // planet of apes
+    "https://i.ebayimg.com/images/g/JFcAAOSwsuVlvUQO/s-l1600.jpg",  // dune part 2
+    "https://m.media-amazon.com/images/M/MV5BMjYxYmRlZWYtMzAwNC00MDA1LWJjNTItOTBjMzlhNGMzYzk3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg", // king kong
+    "https://i.ebayimg.com/images/g/mgAAAOSw4JBjX69E/s-l1200.webp", // walle
+    "https://m.media-amazon.com/images/I/51hW76rNH6L._AC_.jpg",  // lotr
+    "https://m.media-amazon.com/images/I/41kTVLeW1CL._AC_UF894,1000_QL80_.jpg", // avatar
+    "https://m.media-amazon.com/images/I/81UOBSDQh0L._AC_UF894,1000_QL80_.jpg", // raiders of the lost ark
+    "https://m.media-amazon.com/images/I/61fExTEY7dL._AC_UF894,1000_QL80_.jpg", // jurassic park
+    "https://m.media-amazon.com/images/I/71bIPWfTGJL._AC_UF894,1000_QL80_.jpg", // ET
+    "https://i.ebayimg.com/images/g/7vUAAOSwtfNfZYJy/s-l1200.webp", // 2001
+    "https://m.media-amazon.com/images/M/MV5BZTk2ZmUwYmEtNTcwZS00YmMyLWFkYjMtNTRmZDA3YWExMjc2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",    // jumanji
+    "https://i.ebayimg.com/images/g/hMUAAOSw7EFfZYTu/s-l1200.jpg",  // harry potter
+    "https://m.media-amazon.com/images/I/71MEh-s3p7L.jpg",  // back to the future
+    "https://i.ebayimg.com/images/g/6FoAAOSwLEhiT4~O/s-l1600.jpg",  // willy wonka
+    "https://i.etsystatic.com/24044411/r/il/20bc33/2827055463/il_570xN.2827055463_js57.jpg",    // lion king
+
+
+
+];
