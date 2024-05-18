@@ -5,7 +5,7 @@ import TopScoresTable from "@/components/TopScoresTable";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { linkCategoryType } from "@/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as background from "@/background";
 import { v4 as uuidv4 } from "uuid";
 
@@ -57,6 +57,16 @@ export default function Page({
   params: { category: linkCategoryType };
 }) {
   const router = useRouter();
+
+  useEffect(() => {
+    // to prevent user from being able to scroll horizontally (due to background movie posters)
+    document.body.classList.add('overflow-hidden');
+
+    return () => {
+      // remove the class back when the component unmounts
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

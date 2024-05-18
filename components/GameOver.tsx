@@ -120,12 +120,12 @@ export default function GameOver({
       setPhrase(phrase);
     };
     getScores();
-    document.body.classList.remove('overflow-hidden');
+    // document.body.classList.remove('overflow-hidden');
 
-    return () => {
-      // Add the class back when the component unmounts
-      document.body.classList.add('overflow-hidden');
-    };
+    // return () => {
+    //   // Add the class back when the component unmounts
+    //   document.body.classList.add('overflow-hidden');
+    // };
   }, [
     audienceScore,
     criticScore,
@@ -257,7 +257,7 @@ export default function GameOver({
         </div>
       </div>
       <div className="flex flex-col items-center gap-5 mt-3">
-        <h1 className="font-bold tracking-wide text-2xl">
+        <h1 className="font-bold tracking-wide text-2xl text-center">
           {movies[movieInd].movie_name}
         </h1>
         <div>
