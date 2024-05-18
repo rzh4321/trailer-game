@@ -120,22 +120,9 @@ export default function GameOver({
       setPhrase(phrase);
     };
     getScores();
-    // document.body.classList.remove('overflow-hidden');
-
-    // return () => {
-    //   // Add the class back when the component unmounts
-    //   document.body.classList.add('overflow-hidden');
-    // };
-  }, [
-    audienceScore,
-    criticScore,
-    finalScore,
-    phrase,
-    guesses,
-    movies,
-    username,
-    category,
-  ]);
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   // console.log('audiencescore: ', audienceScore, ' critic score: ', criticScore, ' finalscore: ', finalScore)
   if (
     audienceScore === undefined ||
