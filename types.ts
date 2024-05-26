@@ -16,6 +16,22 @@ export type dbResType = {
   src: string | undefined;
 };
 
+export type categoryType = {
+  id: number;
+  name: string;
+  criticScore: number | null;
+  audienceScore: number | null;
+}
+
+export type categoryWithImageAndUrlType = {
+  id: number;
+  name: string;
+  criticScore: number | null;
+  audienceScore: number | null;
+  url: string;
+  image: string;
+}
+
 export type guessType = {
   criticGuess: string;
   audienceGuess: string;

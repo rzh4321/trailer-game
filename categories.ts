@@ -1,4 +1,4 @@
-const categories = [
+const categoryImagesAndUrls = [
   {
     name: "All",
     url: "/play/all",
@@ -6,12 +6,14 @@ const categories = [
       "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
+    id: 11,
     name: "Action",
     url: "/play/action",
     image:
       "https://s.studiobinder.com/wp-content/uploads/2020/05/Best-Action-Movies-of-All-Time-Featured-.jpg",
   },
   {
+    id: 12,
     name: "Adventure",
     url: "/play/adventure",
     image:
@@ -19,4 +21,4 @@ const categories = [
   },
 ];
 
-export default categories;
+export default categoryImagesAndUrls;

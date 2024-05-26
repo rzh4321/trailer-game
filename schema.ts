@@ -24,6 +24,8 @@ export const moviesRelations = relations(movies, ({ many }) => ({
 export const categories = pgTable("categories", {
   id: serial("id").primaryKey(),
   name: varchar("name"),
+  criticScore: integer("critic_score"),
+  audienceScore: integer("audience_score"),
 });
 
 export const categoriesRelations = relations(categories, ({ many, one }) => ({

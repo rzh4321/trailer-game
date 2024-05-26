@@ -25,6 +25,9 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         "navbar-bg": "hsl(222.2, 84%, 4.9%)",
+        "navbar-grey": "hsl(0, 0%, 44%)",
+        "tomatoes": "hsl(10, 96%, 51%)",
+        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -80,6 +83,7 @@ const config = {
       },
       fontFamily: {
         poppins: ["Poppins"],
+        gothic: ["Nanum Gothic"]
       },
     },
   },
