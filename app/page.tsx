@@ -1,16 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ContentCard from "@/components/ContentCard";
 import { StepForward, StepBack } from "lucide-react";
 import { useFilteredCategories } from "@/hooks/CategoryContext";
+import { useWindowSize } from "@uidotdev/usehooks";
+
 
 export default function Home() {
   const [pageNumber, setPageNumber] = useState(1);
+  const { width, height } = useWindowSize();
+  const [displayCount, setDisplayCount] = useState(9);
   const {filteredCategories : categories} = useFilteredCategories();
 
-  const startIndex = (pageNumber - 1) * 9;
-  const endIndex = startIndex + 9;
+  useEffect(() => {
+    if (!width) return
+    if (width > 1375) {
+      setDisplayCount(12);
+    }
+    else if (width >= 768 && width <= 1034) {
+      setDisplayCount(10);
+    }
+    else if (width >= 495 && width <= 734) {
+      setDisplayCount(10);
+    }
+  }, [width])
+
+
+  const startIndex = (pageNumber - 1) * displayCount;
+  const endIndex = startIndex + displayCount;
   const categoriesToDisplay = categories?.slice(startIndex, endIndex);
 
   return (
@@ -19,15 +37,14 @@ export default function Home() {
         <div className="flex justify-between">
           <h1 className="text-3xl font-semibold tracking-tight font-gothic">Choose Category</h1>
         </div>
-        <div className="flex flex-wrap lg:justify-between gap-10">
+        <div className="flex flex-wrap gap-10">
           {categoriesToDisplay === undefined ? 
           
-          Array.from({ length: 9 }).map((_, i) => 
+          Array.from({ length: displayCount }).map((_, i) => 
             <div
             key={i}
             className="bg-red-200 animate-pulse border rounded-lg shadow p-4
-              w-32 h-32 sm:w-48 sm:h-48 md:w-[300px] md:h-[200px]
-              lg:w-72 lg:h-72 xl:w-96 xl:h-96"
+            w-[200px] h-[110px] md:w-[300px] md:h-[160px]"
           >
 
             
@@ -50,7 +67,7 @@ export default function Home() {
           <StepForward
             className="cursor-pointer"
             onClick={() =>
-              categories && pageNumber + 1 <= Math.ceil(categories.length / 9) &&
+              categories && pageNumber + 1 <= Math.ceil(categories.length / displayCount) &&
               setPageNumber((prevPageNumber) => prevPageNumber + 1)
             }
           />

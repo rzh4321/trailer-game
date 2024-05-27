@@ -12,12 +12,12 @@ const ContentCard = ({ categoryObject }: ContentCardProps) => {
     <div className="flex flex-col gap-1">
       <Button
       className="relative border rounded-full hover:rounded-full border-gray-300
-        w-32 h-32 sm:w-48 sm:h-48 md:w-[300px] md:h-[200px] p-0
-        lg:w-72 lg:h-72 xl:w-96 xl:h-96 cursor-pointer transition-transform duration-300 ease-out transform hover:scale-110"
+        w-[200px] h-[110px] md:w-[300px] md:h-[160px] flex-1 p-0
+         cursor-pointer transition-transform duration-300 ease-out transform hover:scale-110"
     >
       <Link href={categoryObject.url ?? ''}>
         <Image
-        className="object-fit rounded-xl"
+        className="object-contain rounded-xl w-full h-full"
           alt={categoryObject.name}
           src={categoryObject.image === undefined ? "" : categoryObject.image}
           fill
