@@ -3,16 +3,15 @@
 import { useState } from "react";
 import ContentCard from "@/components/ContentCard";
 import { StepForward, StepBack } from "lucide-react";
-import useCategories from "@/hooks/useCategories";
+import { useFilteredCategories } from "@/hooks/CategoryContext";
 
 export default function Home() {
   const [pageNumber, setPageNumber] = useState(1);
-  const {categories, loading} = useCategories();
+  const {filteredCategories : categories} = useFilteredCategories();
 
   const startIndex = (pageNumber - 1) * 9;
   const endIndex = startIndex + 9;
   const categoriesToDisplay = categories?.slice(startIndex, endIndex);
-  console.log(categoriesToDisplay)
 
   return (
     <>
@@ -21,7 +20,7 @@ export default function Home() {
           <h1 className="text-3xl font-semibold tracking-tight font-gothic">Choose Category</h1>
         </div>
         <div className="flex flex-wrap lg:justify-between gap-10">
-          {loading ? 
+          {categoriesToDisplay === undefined ? 
           
           Array.from({ length: 9 }).map((_, i) => 
             <div
@@ -51,7 +50,7 @@ export default function Home() {
           <StepForward
             className="cursor-pointer"
             onClick={() =>
-              pageNumber + 1 <= Math.ceil(categories?.length / 9) &&
+              categories && pageNumber + 1 <= Math.ceil(categories.length / 9) &&
               setPageNumber((prevPageNumber) => prevPageNumber + 1)
             }
           />

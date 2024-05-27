@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 // import Provider from "@/components/Provider";
 import NavBar from "@/components/NavBar";
-// import QueryProvider from "@/components/QueryProvider";
-// import { Toaster } from "@/components/ui/toaster";
-import { db } from "@/db";
-import { categories, movieCategory, movies } from "@/schema";
-import { eq } from "drizzle-orm";
+import { CategoryProvider } from "@/hooks/CategoryContext";
 
 export const metadata: Metadata = {
   title: "Trailermeter",
@@ -25,8 +21,12 @@ export default async function RootLayout({
       {/* <Provider> */}
       <body className="font-primary flex flex-col h-screen justify-between items-center">
         <div className="bg-inherit w-full">
-          <NavBar />
-          <div className="p-5 relative">{children}</div>
+          <CategoryProvider>
+            <NavBar />
+            <div className="p-5 relative">
+              {children}
+            </div>
+          </CategoryProvider>
         </div>
         {/* <Toaster /> */}
         {/*

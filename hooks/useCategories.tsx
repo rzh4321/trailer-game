@@ -4,47 +4,51 @@ import getCategories from "@/actions/getCategories";
 import type { linkCategoryType, categoryType, categoryWithImageAndUrlType } from "@/types";
 import categoryImagesAndUrls from "@/categories";
 
+import { categories } from "@/schema";
+
 export default function useCategories() {
   const [dbCategories, setDbCategories] = useState<categoryType[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [categories, setCategories] = useState<categoryWithImageAndUrlType[]>()
+  const [averages, setAverages] = useState({});
+  const [finalCategories, setFinalCategories] = useState<categoryWithImageAndUrlType[]>()
+
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      const res = await getCategories();
-      setDbCategories(res);
+    const fetchCategoriesAndAverages = async () => {
+      const {dbCategories, avgAudience, avgCritic} = await getCategories();
+      setDbCategories(dbCategories);
+      setAverages({avgAudience, avgCritic});
     };
-    fetchCategories();
+    fetchCategoriesAndAverages();
   }, []);
 
   useEffect(() => {
-    if (dbCategories?.length === 19) {
-        let combinedArray = dbCategories.map(category => {
-            const matchedImageAndUrl = categoryImagesAndUrls.find(item => item.id === category.id);
-            return {
-              id: category.id,
-              name: category.name,
-              criticScore: category.criticScore,
-              audienceScore: category.audienceScore,
-              url: matchedImageAndUrl?.url!,
-              image: matchedImageAndUrl?.image!,
-            };
-          });
-          // include the All card
-        combinedArray = [{ 
-            id: 0,
-            name: "All",
-        url: "/play/all",
-        image:
-          "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
-        criticScore: 100,
-        audienceScore: 100,
-        }, ...combinedArray]
-        setCategories(combinedArray);
-          
-      setLoading(false);
+    if (dbCategories?.length === 19 && "avgCritic" in averages && "avgAudience" in averages) {
+            let combinedArray = dbCategories.map(category => {
+                const matchedImageAndUrl = categoryImagesAndUrls.find(item => item.id === category.id);
+                return {
+                  id: category.id,
+                  name: matchedImageAndUrl?.name as string,
+                  criticScore: category.criticScore,
+                  audienceScore: category.audienceScore,
+                  url: matchedImageAndUrl?.url!,
+                  image: matchedImageAndUrl?.image!,
+                };
+              });
+              // include the All card, get the average scores
+              combinedArray = [{ 
+                  id: 0,
+                  name: "All",
+              url: "/play/all",
+              image:
+                "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+              criticScore: averages.avgCritic as number,
+              audienceScore: averages.avgAudience as number,
+              }, ...combinedArray]
+              setFinalCategories(combinedArray);
+                
+            
     }
-  }, [dbCategories]);
+  }, [dbCategories, averages]);
 
-  return { categories, loading };
+  return finalCategories;
 }

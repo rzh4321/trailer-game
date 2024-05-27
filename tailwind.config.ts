@@ -27,6 +27,7 @@ const config = {
         "navbar-bg": "hsl(222.2, 84%, 4.9%)",
         "navbar-grey": "hsl(0, 0%, 44%)",
         "tomatoes": "hsl(10, 96%, 51%)",
+        "search": "hsl(10, 92%, 31%)",
         
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -83,7 +84,8 @@ const config = {
       },
       fontFamily: {
         poppins: ["Poppins"],
-        gothic: ["Nanum Gothic"]
+        gothic: ["Nanum Gothic"],
+        lato: ["Lato"],
       },
     },
   },
