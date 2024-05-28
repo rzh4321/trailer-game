@@ -12,8 +12,6 @@ import { usePathname } from "next/navigation";
 
 export default function NavBar() {
   const {filterCategories} = useFilteredCategories();
-  const { y: pageYOffset } = useWindowScroll(); // to determine if navbar is sticky
-  const [scrolled, setScrolled] = useState(false);
   const [search, setSearch] = useState("");
   const pathname = usePathname();
 
@@ -22,16 +20,10 @@ export default function NavBar() {
     filterCategories(e.target.value);
   };
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(pageYOffset > 0);
-    onScroll(); // Call on mount for initial check
-  }, [pageYOffset]); // Only re-run the effect if pageYOffset changes
 
   return (
     <div
-      className={`self-end flex justify-between w-full items-center px-5 py-8 h-3 sticky top-0 z-50 transition-all duration-300 bg-tomatoes ${
-        scrolled ? "shadow-md border-b border-gray-600" : null
-      }`}
+      className={`self-end flex justify-between w-full items-center px-5 py-8 h-3 sticky top-0 z-50 transition-all duration-300 bg-tomatoes`}
     >
       <Link
         href="/"
@@ -49,7 +41,7 @@ export default function NavBar() {
         <Label htmlFor="search">
           <Search stroke="white" width={20} className="absolute top-1/2 left-4 -translate-y-1/2" />
         </Label>
-        <Input id="search" className="md:w-[434px] w-full ring-inset ring-white border-[1px] focus-visible:border-transparent bg-search border-white pl-11 text-md rounded-3xl text-white" value={search} onChange={handleSearch} placeholder="Search categories..." />
+        <Input id="search" type="search" className="md:w-[434px] w-full ring-inset ring-white border-[1px] focus-visible:border-transparent bg-search border-white pl-11 text-md rounded-3xl text-white" value={search} onChange={handleSearch} placeholder="Search categories..." />
       </div>}
       <div className="gap-3 hidden md:flex">
         <Button className="bg-inherit text-white font-bold" asChild>

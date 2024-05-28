@@ -6,6 +6,8 @@ import type { categoryWithImageAndUrlType } from '@/types';
 type CategoryContextType = {
     filteredCategories: categoryWithImageAndUrlType[] | undefined;
     filterCategories : (searchTerm: string) => void;
+    sortCategories : (filter: string) => void;
+
 }
 
 // Create the context
@@ -15,6 +17,7 @@ const CategoryContext = createContext<CategoryContextType | undefined>(undefined
 export const CategoryProvider = ({ children } : {children: React.ReactNode}) => {
     const finalCategories  = useCategories();
   const [filteredCategories, setFilteredCategories] = useState(finalCategories);
+
   const filterCategories = (searchTerm : string) => {
     const term = searchTerm.toLowerCase();
     const newFilteredCategories = finalCategories?.filter(category =>
@@ -23,18 +26,34 @@ export const CategoryProvider = ({ children } : {children: React.ReactNode}) => 
     setFilteredCategories(newFilteredCategories);
   };
 
+  const sortCategories = (filter : string) => {
+    let newFilteredCategories;
+    if (filter === 'AToZ') {
+      newFilteredCategories = finalCategories?.slice().sort((a, b) => a.name.localeCompare(b.name));
+    }
+    else if (filter === 'highest') {
+      newFilteredCategories = finalCategories?.slice().sort((a, b) => b.criticScore ?? 0 - (a.criticScore ?? 0));
+
+    }
+    else if (filter === 'lowest') {
+      newFilteredCategories = finalCategories?.slice().sort((a, b) => a.criticScore ?? 0 - (b.criticScore ?? 0));
+
+    }
+    setFilteredCategories(newFilteredCategories);
+  }
+
   useEffect(() => {
     setFilteredCategories(finalCategories);
   }, [finalCategories]);
 
   return (
-    <CategoryContext.Provider value={{ filteredCategories, filterCategories }}>
+    <CategoryContext.Provider value={{ filteredCategories, filterCategories, sortCategories }}>
       {children}
     </CategoryContext.Provider>
   );
 };
 
-// Custom hook to use the MovieContext
+// Custom hook to use the categorycontext
 export const useFilteredCategories = ():CategoryContextType => {
   const context = useContext(CategoryContext);
   if (!context) {

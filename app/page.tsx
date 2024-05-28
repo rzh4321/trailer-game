@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ContentCard from "@/components/ContentCard";
 import { useFilteredCategories } from "@/hooks/CategoryContext";
 import { Button } from "@/components/ui/button";
 import useCellSize from "@/hooks/useCellSize";
 import { useWindowScroll } from "react-use";
 import { ChevronUp } from "lucide-react";
-import { useWindowSize } from "@uidotdev/usehooks";
-
+import Filters from "@/components/Filters";
+import Modals from "@/components/Modals";
+import type { ModalState } from "@/types";
 
 
 export default function Home() {
@@ -16,9 +17,33 @@ export default function Home() {
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const { y: pageYOffset } = useWindowScroll(); // to see when scroll button should appear
   const [isHalfwayScrolled, setIsHalfwayScrolled] = useState(false);
-
+  const [modals, setModals] = useState<{ [key: string]: ModalState }>({
+    sort: { isOpen: false, position: null },
+    filter: { isOpen: false, position: null },
+    // Add more modals as needed
+  });
+  const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const stickyContainerRef = useRef<HTMLDivElement>(null);
   const [pageNumber, setPageNumber] = useState(1);
   const {filteredCategories : categories} = useFilteredCategories();
+
+  const openModal = (buttonKey: string) => {
+    const button = buttonRefs.current[buttonKey];
+    if (button) {
+      const rect = button.getBoundingClientRect();
+      setModals((prevModals) => ({
+        ...prevModals,
+        [buttonKey]: { isOpen: true, position: { top: rect.bottom, left: rect.left } },
+      }));
+    }
+  };
+
+  const closeModal = (buttonKey: string) => {
+    setModals((prevModals) => ({
+      ...prevModals,
+      [buttonKey]: { isOpen: false, position: null },
+    }));
+  };
 
 
   const handleLoadMore = () => {
@@ -49,12 +74,29 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const halfwayPoint = document.documentElement.scrollHeight / 2;
-      setIsHalfwayScrolled(pageYOffset > halfwayPoint);
+      const threshold = document.documentElement.scrollHeight / 3;
+      setIsHalfwayScrolled(pageYOffset > threshold);
     };
 
     handleScroll(); // Initial check
   }, [pageYOffset]);
+
+  // close modal if filter div goes from sticky to relative or vice versa
+  useEffect(() => {
+    const handleScroll = () => {
+      if (stickyContainerRef.current) {
+        const rect = stickyContainerRef.current.getBoundingClientRect();
+        if (rect.top !== 64) { // Assuming 64px is the sticky top position
+          Object.keys(modals).forEach((key) => closeModal(key));
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [modals]);
 
   return (
     <>
@@ -66,11 +108,17 @@ export default function Home() {
           <ChevronUp width={35} height={55} strokeWidth={3} className='stroke-inherit' />
         </Button>
       )}
+      <Modals modals={modals} closeModal={closeModal} />
+
+
+
       <div className="flex flex-col w-full gap-8">
         <div className="flex justify-between">
           <h1 className="text-3xl font-semibold tracking-tight font-gothic">Choose Category</h1>
         </div>
-        <div className="grid gap-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <Filters openModal={openModal} buttonRefs={buttonRefs} stickyContainerRef={stickyContainerRef} />
+
+        <div className="grid gap-10  -mt-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {categoriesToDisplay === undefined ? 
           
           Array.from({ length: 10 }).map((_, i) => 

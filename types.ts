@@ -46,3 +46,8 @@ export type userPlayType = {
 };
 
 export type linkCategoryType = "all" | "action" | "adventure";
+
+export type ModalState = {
+  isOpen: boolean;
+  position: { top: number; left: number } | null;
+}
