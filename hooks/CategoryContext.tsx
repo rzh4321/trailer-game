@@ -15,7 +15,6 @@ const CategoryContext = createContext<CategoryContextType | undefined>(undefined
 export const CategoryProvider = ({ children } : {children: React.ReactNode}) => {
     const finalCategories  = useCategories();
   const [filteredCategories, setFilteredCategories] = useState(finalCategories);
-  console.log("IN CATEGORY COTNEXT. FILTED IS ", filteredCategories)
   const filterCategories = (searchTerm : string) => {
     const term = searchTerm.toLowerCase();
     const newFilteredCategories = finalCategories?.filter(category =>

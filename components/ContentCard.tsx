@@ -5,19 +5,20 @@ import { categoryWithImageAndUrlType } from "@/types";
 
 type ContentCardProps = {
   categoryObject: categoryWithImageAndUrlType;
+  cellRef: React.RefObject<HTMLDivElement>;
 };
 
-const ContentCard = ({ categoryObject }: ContentCardProps) => {
+const ContentCard = ({ categoryObject, cellRef }: ContentCardProps) => {
   return (
-    <div className="flex flex-col gap-1">
+    <div ref={cellRef} className="flex flex-col gap-1">
       <Button
       className="relative border rounded-full hover:rounded-full border-gray-300
-        w-[200px] h-[110px] md:w-[300px] md:h-[160px] flex-1 p-0
+        sm:min-h-[200px] min-h-[230px] p-0 aspect-w-1 aspect-h-1
          cursor-pointer transition-transform duration-300 ease-out transform hover:scale-110"
     >
       <Link href={categoryObject.url ?? ''}>
         <Image
-        className="object-contain rounded-xl w-full h-full"
+        className="object-cover rounded-xl w-full h-full"
           alt={categoryObject.name}
           src={categoryObject.image === undefined ? "" : categoryObject.image}
           fill
