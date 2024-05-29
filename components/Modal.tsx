@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
+import { X } from 'lucide-react';
 
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   position: { top: number; left: number } | null;
+  title: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, position }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, position, title }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -53,13 +55,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, position }) =>
       }}
     >
         <div className='flex w-full justify-center relative items-center'>
-            <span className='font-bold'>SORT</span>
-            <Button
-                className="bg-transparent hover:bg-transparent hover:text-gray-700 py-0 absolute right-0 text-gray-900 border-none"
+            <span className='font-bold text-gray-600'>{title}</span>
+            {/* <Button
+                className="bg-transparent px-2 hover:bg-transparent hover:text-gray-700 py-0 absolute right-0 text-gray-900 border-none"
                 onClick={onClose}
-            >
-                X
-            </Button>
+            > */}
+                <X className='hover:stroke-gray-700 cursor-pointer absolute right-1' />
+            {/* </Button> */}
         </div>
       {children}
     </div>

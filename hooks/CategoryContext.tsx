@@ -37,6 +37,13 @@ export const CategoryProvider = ({ children } : {children: React.ReactNode}) => 
     }
     else if (filter === 'lowest') {
       newFilteredCategories = finalCategories?.slice().sort((a, b) => a.criticScore ?? 0 - (b.criticScore ?? 0));
+    }
+    else if (filter === 'audHighest') {
+      newFilteredCategories = finalCategories?.slice().sort((a, b) => b.audienceScore ?? 0 - (a.audienceScore ?? 0));
+
+    }
+    else if (filter === 'audLowest') {
+      newFilteredCategories = finalCategories?.slice().sort((a, b) => a.audienceScore ?? 0 - (b.audienceScore ?? 0));
 
     }
     setFilteredCategories(newFilteredCategories);

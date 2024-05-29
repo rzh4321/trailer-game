@@ -31,11 +31,15 @@ export default function Home() {
     const button = buttonRefs.current[buttonKey];
     if (button) {
       const rect = button.getBoundingClientRect();
-      setModals((prevModals) => ({
-        ...prevModals,
-        [buttonKey]: { isOpen: true, position: { top: rect.bottom, left: rect.left } },
-      }));
-    }
+        const resetState = Object.keys(modals).reduce((acc, key) => {
+          acc[key] = { isOpen: false, position: null };
+          return acc;
+        }, {} as { [key: string]: ModalState });
+    
+        resetState[buttonKey] = { isOpen: true, position: { top: rect.bottom, left: rect.left } };
+    
+        setModals(resetState);
+      }
   };
 
   const closeModal = (buttonKey: string) => {

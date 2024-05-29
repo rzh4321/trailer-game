@@ -19,6 +19,11 @@ export default function Filters({openModal, buttonRefs, stickyContainerRef} : Fi
  variant={'outline'} className=" border-gray-400 rounded-full font-bold text-gray-600">
             SORT <ChevronDown className="ml-1" width={13} strokeWidth={3} />
           </Button>
+          <Button ref={(el) => { buttonRefs.current['filter'] = el; }}
+ onClick={() => openModal('filter')}
+ variant={'outline'} className=" border-gray-400 rounded-full font-bold text-gray-600">
+            SORT <ChevronDown className="ml-1" width={13} strokeWidth={3} />
+          </Button>
         </div>
     )
 }
