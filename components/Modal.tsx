@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Button } from './ui/button';
-import { Separator } from './ui/separator';
-import { X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
+import { X } from "lucide-react";
 
 type ModalProps = {
   isOpen: boolean;
@@ -9,40 +9,48 @@ type ModalProps = {
   children: React.ReactNode;
   position: { top: number; left: number } | null;
   title: string;
-  stickyTop: number
-}
+  stickyTop: number;
+};
 
-const Modal = ({ isOpen, onClose, children, position, title, stickyTop } : ModalProps) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  children,
+  position,
+  title,
+  stickyTop,
+}: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   // isVisible is for showing the sliding animation
   const [isVisible, setIsVisible] = useState(false);
 
-
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
         onClose();
       }
     };
     let timeoutId: number;
 
     if (isOpen) {
-        setIsVisible(true); // Set visibility to true for animation
-        timeoutId = window.setTimeout(() => {
-          window.addEventListener('click', handleOutsideClick);
-        }, 0);
+      setIsVisible(true); // Set visibility to true for animation
+      timeoutId = window.setTimeout(() => {
+        window.addEventListener("click", handleOutsideClick);
+      }, 0);
+    } else {
+      window.removeEventListener("click", handleOutsideClick);
+      setIsVisible(false);
+    }
 
-      } else {
-        window.removeEventListener('click', handleOutsideClick);
-        setIsVisible(false);
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
-  
-      return () => {
-        window.removeEventListener('click', handleOutsideClick);
-        if (timeoutId) {
-          clearTimeout(timeoutId);
-        }
-      };
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen || !position) return null;
@@ -51,8 +59,8 @@ const Modal = ({ isOpen, onClose, children, position, title, stickyTop } : Modal
     <div
       ref={modalRef}
       // if stickyTop is not 64 (filter div is not sticky) then position should not be fixed
-      className={`${stickyTop === 64 ? 'fixed' : 'absolute'} w-[375px] border flex items-center flex-col gap-8 z-[101] bg-white p-3 rounded-lg shadow-xl transition-transform duration-300 ${
-        isVisible ? 'translate-y-0' : 'translate-y-4'
+      className={`${stickyTop === 64 ? "fixed" : "absolute"} w-[375px] border flex items-center flex-col gap-8 z-[101] bg-white p-3 rounded-lg shadow-xl transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "translate-y-4"
       }`}
       style={{
         // top position depends on whether the filter div is currently sticky or not
@@ -60,9 +68,12 @@ const Modal = ({ isOpen, onClose, children, position, title, stickyTop } : Modal
         left: position.left,
       }}
     >
-      <div className='flex w-full justify-center relative items-center'>
-        <span className='font-bold text-gray-600'>{title}</span>
-        <X onClick={onClose} className='hover:stroke-gray-700 cursor-pointer absolute right-1' />
+      <div className="flex w-full justify-center relative items-center">
+        <span className="font-bold text-gray-600">{title}</span>
+        <X
+          onClick={onClose}
+          className="hover:stroke-gray-700 cursor-pointer absolute right-1"
+        />
       </div>
       {children}
     </div>

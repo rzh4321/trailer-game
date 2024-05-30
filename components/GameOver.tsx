@@ -38,17 +38,26 @@ async function calculateScores(
       movieAudienceScore - guessAudienceScore,
     );
   });
-  console.log('totalcriticdifference is ', totalCriticDifference, ' totalaudiencedifference is ', totalAudienceDifference);
+  console.log(
+    "totalcriticdifference is ",
+    totalCriticDifference,
+    " totalaudiencedifference is ",
+    totalAudienceDifference,
+  );
 
   const avgCriticDifference = totalCriticDifference / movies.length;
   const avgAudienceDifference = totalAudienceDifference / movies.length;
-  console.log('avfcriticdiff is ', avgCriticDifference, ' avfaudiencediff is ', avgAudienceDifference);
+  console.log(
+    "avfcriticdiff is ",
+    avgCriticDifference,
+    " avfaudiencediff is ",
+    avgAudienceDifference,
+  );
 
   const criticScore = Math.round(100 - avgCriticDifference * 1.5);
   const audienceScore = Math.round(100 - avgAudienceDifference * 1.5);
-  console.log('avgcriticdiff is *1.5 = ', avgCriticDifference*1.5);
-  console.log('avgaudiencediff is *1.5 = ', avgAudienceDifference*1.5);
-
+  console.log("avgcriticdiff is *1.5 = ", avgCriticDifference * 1.5);
+  console.log("avgaudiencediff is *1.5 = ", avgAudienceDifference * 1.5);
 
   // scores cant go below 0
   const adjustedCriticScore = Math.max(criticScore, 0);
@@ -120,8 +129,8 @@ export default function GameOver({
       setPhrase(phrase);
     };
     getScores();
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // console.log('audiencescore: ', audienceScore, ' critic score: ', criticScore, ' finalscore: ', finalScore)
   if (
@@ -134,7 +143,9 @@ export default function GameOver({
     <>
       <div className="flex flex-col items-center gap-2">
         <div>
-          <span className="tracking-widest font-poppins text-center">{phrase}</span>
+          <span className="tracking-widest font-poppins text-center">
+            {phrase}
+          </span>
           <Image
             alt="reaction"
             height={20}

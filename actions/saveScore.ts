@@ -22,12 +22,12 @@ export default async function saveScore(
   }
   // find categoryId if category is not 'All'
   else {
-    const {id} = await db.query.categories.findFirst({
+    const { id } = (await db.query.categories.findFirst({
       columns: {
         id: true,
       },
       where: eq(categories.name, tableCategory),
-    }) as {id : number};
+    })) as { id: number };
     categoryId = id;
   }
   return await db.insert(users).values({

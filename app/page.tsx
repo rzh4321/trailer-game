@@ -10,11 +10,11 @@ import { ChevronUp } from "lucide-react";
 import Filters from "@/components/Filters";
 import Modals from "@/components/Modals";
 import type { ModalState } from "@/types";
-
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
   const { cellRef, cellSize } = useCellSize();
-  const [itemsPerPage, setItemsPerPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(2);
   const { y: pageYOffset } = useWindowScroll(); // to see when scroll button should appear
   const [isHalfwayScrolled, setIsHalfwayScrolled] = useState(false);
   const [modals, setModals] = useState<{ [key: string]: ModalState }>({
@@ -25,22 +25,30 @@ export default function Home() {
   const stickyContainerRef = useRef<HTMLDivElement>(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [stickyRefTop, setStickyRefTop] = useState(0);
-  const {filteredCategories : categories} = useFilteredCategories();
+  const { filteredCategories: categories, sortCategories, toggleAudScore } = useFilteredCategories();
+  const searchParams = useSearchParams();
+  
 
   const openModal = (buttonKey: string) => {
     const button = buttonRefs.current[buttonKey];
     if (button) {
       const alreadyOpen = modals[buttonKey].isOpen;
       const rect = button.getBoundingClientRect();
-        const resetState = Object.keys(modals).reduce((acc, key) => {
+      const resetState = Object.keys(modals).reduce(
+        (acc, key) => {
           acc[key] = { isOpen: false, position: null };
           return acc;
-        }, {} as { [key: string]: ModalState });
-    
-        resetState[buttonKey] = { isOpen: !alreadyOpen, position: { top: rect.bottom, left: rect.left } };
-    
-        setModals(resetState);
-      }
+        },
+        {} as { [key: string]: ModalState },
+      );
+
+      resetState[buttonKey] = {
+        isOpen: !alreadyOpen,
+        position: { top: rect.bottom, left: rect.left },
+      };
+
+      setModals(resetState);
+    }
   };
 
   const closeModal = (buttonKey: string) => {
@@ -50,19 +58,23 @@ export default function Home() {
     }));
   };
 
-
   const handleLoadMore = () => {
-    setPageNumber(prev => prev + 1);
+    setPageNumber((prev) => prev + 1);
   };
 
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // for smooth scrolling
+      behavior: "smooth", // for smooth scrolling
     });
   };
 
-  const calculateItemsPerPage = (windowWidth: number, windowHeight: number, cellWidth: number, cellHeight: number) => {
+  const calculateItemsPerPage = (
+    windowWidth: number,
+    windowHeight: number,
+    cellWidth: number,
+    cellHeight: number,
+  ) => {
     const columns = Math.floor(windowWidth / cellWidth);
     const rows = Math.floor(windowHeight / cellHeight) * 2;
     return columns * rows;
@@ -72,10 +84,15 @@ export default function Home() {
 
   useEffect(() => {
     if (cellSize.width && cellSize.height) {
-      const items = calculateItemsPerPage(window.innerWidth, window.innerHeight, cellSize.width, cellSize.height);
+      const items = calculateItemsPerPage(
+        window.innerWidth,
+        window.innerHeight,
+        cellSize.width,
+        cellSize.height,
+      );
       setItemsPerPage(items);
     }
-  }, [cellSize]);
+  }, [cellSize, cellRef]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,92 +107,122 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       if (stickyContainerRef.current) {
-        
         const rect = stickyContainerRef.current.getBoundingClientRect();
-        console.log(rect.top)
         if (rect.top == 64) {
+          // if current top is 64 but previous top wasnt, we went from relative to sticky
           if (stickyRefTop !== 64) {
             Object.keys(modals).forEach((key) => closeModal(key));
           }
-        }
-        else {
+        } else {
+          // if current top is not 64 but previous top was, we went from sticky to relative
           if (stickyRefTop === 64) {
             Object.keys(modals).forEach((key) => closeModal(key));
-
           }
         }
         setStickyRefTop(rect.top);
-        // if (rect.top !== 64) { // Assuming 64px is the sticky top position
-          // Object.keys(modals).forEach((key) => closeModal(key));
-        // }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modals]);
+
+  // apply filters based on search params
+  useEffect(() => {
+    const sortFilter = searchParams.get('sort');
+    const audFresh = searchParams.get('audFresh');
+    const audRotten = searchParams.get('audRotten');
+
+    if (sortFilter) sortCategories(sortFilter);
+    if (audFresh === 'true') toggleAudScore('fresh');
+    if (audRotten === 'true') toggleAudScore('rotten');
+
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
 
   return (
     <>
-     {isHalfwayScrolled && (
+      {isHalfwayScrolled && (
         <Button
-        onClick={handleScrollToTop}
+          onClick={handleScrollToTop}
           className="fixed bottom-1/4 z-[100] right-5 px-2 py-3 bg-gray-900/70 hover:bg-black stroke-slate-300 hover:stroke-white"
         >
-          <ChevronUp width={35} height={55} strokeWidth={3} className='stroke-inherit' />
+          <ChevronUp
+            width={35}
+            height={55}
+            strokeWidth={3}
+            className="stroke-inherit"
+          />
         </Button>
       )}
-      <Modals modals={modals} closeModal={closeModal} stickyTop={stickyRefTop} />
-
-
+      <Modals
+        modals={modals}
+        closeModal={closeModal}
+        stickyTop={stickyRefTop}
+      />
 
       <div className="flex flex-col w-full gap-8">
         <div className="flex justify-between">
-          <h1 className="text-3xl font-semibold tracking-tight font-gothic">Choose Category</h1>
+          <h1 className="text-3xl font-semibold tracking-tight font-gothic">
+            Choose Category
+          </h1>
         </div>
-        <Filters openModal={openModal} buttonRefs={buttonRefs} stickyContainerRef={stickyContainerRef} />
+        <Filters
+          openModal={openModal}
+          buttonRefs={buttonRefs}
+          stickyContainerRef={stickyContainerRef}
+        />
 
         <div className="grid gap-10  -mt-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {categoriesToDisplay === undefined ? 
-          
-          Array.from({ length: 10 }).map((_, i) => 
-            <div
-            key={i}
-            className="bg-red-200 animate-pulse border rounded-lg shadow p-0 aspect-w-1 aspect-h-1
+          {categoriesToDisplay === undefined
+            ? Array.from({ length: 10 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="bg-red-200 animate-pulse border rounded-lg shadow p-0 aspect-w-1 aspect-h-1
             sm:min-h-[200px] min-h-[230px]"
-          >
+                ></div>
+              ))
+            : categoriesToDisplay!.map((category, ind) => (
+                <ContentCard
+                  key={ind}
+                  cellRef={cellRef}
+                  categoryObject={category}
+                />
+              ))}
+        </div>
 
-            
-        </div>)
-            :
-            
-          categoriesToDisplay!.map((category, ind) => (
-            <ContentCard key={ind} cellRef={cellRef} categoryObject={category} />
-          ))
-        }
-        </div>
-        
         <div className="flex flex-col items-center justify-center my-4">
-        {categoriesToDisplay && categories && categoriesToDisplay.length < categories.length ? (
-          <Button
-            onClick={handleLoadMore}
-            className=" bg-blue-600 text-white tracking-tighter font-bold hover:bg-blue-700"
-          >
-            LOAD MORE
-          </Button>) : categoriesToDisplay !== undefined ? (
+          {categoriesToDisplay &&
+          categories &&
+          categoriesToDisplay.length < categories.length ? (
+            <Button
+              onClick={handleLoadMore}
+              className=" bg-blue-600 text-white tracking-tighter font-bold hover:bg-blue-700"
+            >
+              LOAD MORE
+            </Button>
+          ) : categoriesToDisplay !== undefined ? (
             <>
-            <div className='tracking-wider text-gray-500 text-lg'>{"You've reached the end"}</div>
-            <Button variant={'link'} className=" text-xs underline" onClick={handleScrollToTop}>Go Back Up</Button>
-            
+              <div className="tracking-wider text-gray-500 text-lg">
+                {"You've reached the end"}
+              </div>
+              <Button
+                variant={"link"}
+                className=" text-xs underline"
+                onClick={handleScrollToTop}
+              >
+                Go Back Up
+              </Button>
             </>
-          )
-        : ""
-        
-        }
+          ) : (
+            ""
+          )}
         </div>
-      
       </div>
     </>
   );

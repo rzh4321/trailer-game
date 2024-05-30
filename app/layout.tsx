@@ -23,9 +23,7 @@ export default async function RootLayout({
         <div className="bg-inherit w-full">
           <CategoryProvider>
             <NavBar />
-            <div className="p-5 relative">
-              {children}
-            </div>
+            <div className="p-5 relative">{children}</div>
           </CategoryProvider>
         </div>
         {/* <Toaster /> */}

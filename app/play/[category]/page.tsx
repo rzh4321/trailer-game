@@ -60,23 +60,21 @@ export default function Page({
 
   useEffect(() => {
     // to prevent user from being able to scroll horizontally (due to background movie posters)
-    document.body.classList.add('overflow-hidden');
+    document.body.classList.add("overflow-hidden");
 
-    const preventDefault = (e : any) => {
+    const preventDefault = (e: any) => {
       if (e.touches.length > 1) {
         e.preventDefault();
       }
     };
 
-    document.addEventListener('touchmove', preventDefault, { passive: false });
+    document.addEventListener("touchmove", preventDefault, { passive: false });
 
     return () => {
       // remove the class back when the component unmounts
-      document.body.classList.remove('overflow-hidden');
-      document.removeEventListener('touchmove', preventDefault);
+      document.body.classList.remove("overflow-hidden");
+      document.removeEventListener("touchmove", preventDefault);
     };
-
-
   }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({

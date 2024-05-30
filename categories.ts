@@ -58,19 +58,22 @@ const categoryImagesAndUrls = [
     id: 8,
     name: "PG-13",
     url: "/play/pg-13",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 9,
     name: "R",
     url: "/play/r",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 10,
     name: "NC-17",
     url: "/play/nc-17",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 11,
@@ -90,43 +93,50 @@ const categoryImagesAndUrls = [
     id: 13,
     name: "Animation",
     url: "/play/animation",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 14,
     name: "Anime",
     url: "/play/anime",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 15,
     name: "Biography",
     url: "/play/biography",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 16,
     name: "Comedy",
     url: "/play/comedy",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 17,
     name: "Crime",
     url: "/play/crime",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 18,
     name: "Documentary",
     url: "/play/documentary",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
   {
     id: 19,
     name: "Drama",
     url: "/play/drama",
-    image: "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+    image:
+      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
   },
 ];
 

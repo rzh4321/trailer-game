@@ -21,7 +21,7 @@ export type categoryType = {
   name: string;
   criticScore: number | null;
   audienceScore: number | null;
-}
+};
 
 export type categoryWithImageAndUrlType = {
   id: number;
@@ -30,7 +30,7 @@ export type categoryWithImageAndUrlType = {
   audienceScore: number | null;
   url: string;
   image: string;
-}
+};
 
 export type guessType = {
   criticGuess: string;
@@ -50,4 +50,4 @@ export type linkCategoryType = "all" | "action" | "adventure";
 export type ModalState = {
   isOpen: boolean;
   position: { top: number; left: number } | null;
-}
+};

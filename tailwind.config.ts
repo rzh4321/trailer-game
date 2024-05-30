@@ -26,9 +26,9 @@ const config = {
         foreground: "hsl(var(--foreground))",
         "navbar-bg": "hsl(222.2, 84%, 4.9%)",
         "navbar-grey": "hsl(0, 0%, 44%)",
-        "tomatoes": "hsl(10, 96%, 51%)",
-        "search": "hsl(10, 92%, 31%)",
-        
+        tomatoes: "hsl(10, 96%, 51%)",
+        search: "hsl(10, 92%, 31%)",
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -89,7 +89,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('@tailwindcss/aspect-ratio')],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 } satisfies Config;
 
 export default config;
