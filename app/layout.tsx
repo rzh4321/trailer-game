@@ -3,6 +3,7 @@ import "@/app/globals.css";
 // import Provider from "@/components/Provider";
 import NavBar from "@/components/NavBar";
 import { CategoryProvider } from "@/hooks/CategoryContext";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Trailermeter",
@@ -23,7 +24,9 @@ export default async function RootLayout({
         <div className="bg-inherit w-full">
           <CategoryProvider>
             <NavBar />
-            <div className="p-5 relative">{children}</div>
+            <div className="p-5 relative">
+              <Suspense>{children}</Suspense>
+            </div>
           </CategoryProvider>
         </div>
         {/* <Toaster /> */}

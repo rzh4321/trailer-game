@@ -6,12 +6,10 @@ import { useEffect, useRef, useCallback } from "react";
 
 type ContentCardProps = {
   categoryObject: categoryWithImageAndUrlType;
-  cellRef: React.RefObject<HTMLDivElement>;
+  cellRef: (node: HTMLDivElement) => void;
 };
 
-const ContentCard = ({categoryObject, cellRef} : ContentCardProps) => {
-
-  
+const ContentCard = ({ categoryObject, cellRef }: ContentCardProps) => {
   return (
     <div ref={cellRef} className="flex flex-col gap-1">
       <Button

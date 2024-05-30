@@ -7,7 +7,7 @@ type CategoryContextType = {
   filteredCategories: categoryWithImageAndUrlType[] | undefined;
   filterCategories: (searchTerm: string) => void;
   sortCategories: (filter: string) => void;
-  toggleAudScore: (filter: string) => void;
+  toggleAudScore: (filter: "fresh" | "rotten") => void;
 };
 
 // Create the context
@@ -44,7 +44,7 @@ export const CategoryProvider = ({
     categories: categoryWithImageAndUrlType[] | undefined,
   ) => {
     let result = categories ?? [];
-    console.log(audScoreFilter)
+    console.log(audScoreFilter);
 
     // Apply search filter
     if (searchTerm) {
@@ -99,19 +99,18 @@ export const CategoryProvider = ({
     setSortFilter(filter);
   };
 
-  const toggleAudScore = (filter: string) => {
-    console.log(filter);
-    const newObj = {
-      ...audScoreFilter,
-      [filter]: !audScoreFilter[filter as "fresh" | "rotten"],
-    };
-    setAudScoreFilter(newObj);
+  const toggleAudScore = (filter: "fresh" | "rotten") => {
+    setAudScoreFilter((prev) => ({
+      ...prev,
+      [filter]: !prev[filter],
+    }));
   };
 
   useEffect(() => {
     if (originalCategories) {
       applyFiltersAndSorts(originalCategories);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm, sortFilter, originalCategories, audScoreFilter]);
 
   return (

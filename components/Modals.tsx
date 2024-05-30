@@ -42,7 +42,7 @@ const updateUrlParams = (newParams: Record<string, string>) => {
   });
 
   // Use history.pushState or history.replaceState to update the URL without reloading
-  window.history.pushState({}, '', currentUrl.toString());
+  window.history.pushState({}, "", currentUrl.toString());
 
   // Restore the scroll position
   window.scrollTo(scrollX, scrollY);
@@ -61,7 +61,7 @@ const removeUrlParam = (param: string) => {
   currentUrl.searchParams.delete(param);
 
   // Use history.pushState or history.replaceState to update the URL without reloading
-  window.history.pushState({}, '', currentUrl.toString());
+  window.history.pushState({}, "", currentUrl.toString());
 
   // Restore the scroll position
   window.scrollTo(scrollX, scrollY);
@@ -76,14 +76,16 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
   });
 
   useEffect(() => {
-    const sortFilter = searchParams.get('sort');
-    const audFresh = searchParams.get('audFresh');
-    const audRotten = searchParams.get('audRotten');
-    const newAppliedFilters = {...appliedFilters};
+    const sortFilter = searchParams.get("sort");
+    const audFresh = searchParams.get("audFresh");
+    const audRotten = searchParams.get("audRotten");
+    const newAppliedFilters = { ...appliedFilters };
     if (sortFilter) newAppliedFilters.sort = sortFilter;
     if (audFresh) newAppliedFilters.audScore.fresh = true;
     if (audRotten) newAppliedFilters.audScore.rotten = true;
+    setAppliedFilters(newAppliedFilters);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const handleSortFilter = (value: string) => {
@@ -135,7 +137,7 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                         onClick={() => {
                           sortCategories("AToZ");
                           handleSortFilter("AToZ");
-                          updateUrlParams({sort: 'AToZ'})
+                          updateUrlParams({ sort: "AToZ" });
                         }}
                       />
                     </RadioGroup>
@@ -145,7 +147,8 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                 <label htmlFor="highest">
                   <div className="flex justify-between items-center">
                     <div className="flex gap-1 items-center">
-                      TOMATOMETER® <span className="text-[13px]">(HIGHEST)</span>
+                      TOMATOMETER®{" "}
+                      <span className="text-[13px]">(HIGHEST)</span>
                     </div>
                     <RadioGroup>
                       <RadioGroupItem
@@ -156,8 +159,7 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                         onClick={() => {
                           sortCategories("highest");
                           handleSortFilter("highest");
-                          updateUrlParams({sort: 'highest'})
-
+                          updateUrlParams({ sort: "highest" });
                         }}
                       />
                     </RadioGroup>
@@ -167,7 +169,8 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                 <label htmlFor="lowest">
                   <div className="flex justify-between items-center">
                     <div className="flex gap-1 items-center">
-                      TOMATOMETER® <span className="text-[13px]">(LOWEST)</span>
+                      TOMATOMETER®{" "}
+                      <span className="text-[13px]">(LOWEST)</span>
                     </div>
                     <RadioGroup>
                       <RadioGroupItem
@@ -178,8 +181,7 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                         onClick={() => {
                           sortCategories("lowest");
                           handleSortFilter("lowest");
-                          updateUrlParams({sort: 'lowest'})
-
+                          updateUrlParams({ sort: "lowest" });
                         }}
                       />
                     </RadioGroup>
@@ -201,8 +203,7 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                         onClick={() => {
                           sortCategories("audHighest");
                           handleSortFilter("audHighest");
-                          updateUrlParams({sort: 'audHighest'})
-
+                          updateUrlParams({ sort: "audHighest" });
                         }}
                       />
                     </RadioGroup>
@@ -212,7 +213,8 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                 <label htmlFor="audLowest">
                   <div className="flex justify-between items-center">
                     <div className="flex gap-1 items-center">
-                      AUDIENCE SCORE <span className="text-[13px]">(LOWEST)</span>
+                      AUDIENCE SCORE{" "}
+                      <span className="text-[13px]">(LOWEST)</span>
                     </div>
                     <RadioGroup>
                       <RadioGroupItem
@@ -223,8 +225,7 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                         onClick={() => {
                           sortCategories("audLowest");
                           handleSortFilter("audLowest");
-                          updateUrlParams({sort: 'audLowest'})
-
+                          updateUrlParams({ sort: "audLowest" });
                         }}
                       />
                     </RadioGroup>
@@ -248,8 +249,8 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                       <div className="flex flex-col mt-1">
                         <span>FRESH</span>
                         <span className="text-[0.875rem] font-normal">
-                          At least 60% of reviews for a<br></br> movie or TV show
-                          are positive.
+                          At least 60% of reviews for a<br></br> movie or TV
+                          show are positive.
                         </span>
                       </div>
                     </div>
@@ -260,9 +261,9 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                       onClick={() => {
                         toggleAudScore("fresh");
                         handleToggleAudScore("fresh");
-                        if (appliedFilters.audScore.fresh) removeUrlParam('audFresh');
-                        else updateUrlParams({audFresh : 'true'});
-
+                        if (appliedFilters.audScore.fresh)
+                          removeUrlParam("audFresh");
+                        else updateUrlParams({ audFresh: "true" });
                       }}
                     />
                   </div>
@@ -294,9 +295,9 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
                       onClick={() => {
                         toggleAudScore("rotten");
                         handleToggleAudScore("rotten");
-                        if (appliedFilters.audScore.rotten) removeUrlParam('audRotten');
-                        else updateUrlParams({audRotten : 'true'});
-
+                        if (appliedFilters.audScore.rotten)
+                          removeUrlParam("audRotten");
+                        else updateUrlParams({ audRotten: "true" });
                       }}
                     />
                   </div>

@@ -25,9 +25,12 @@ export default function Home() {
   const stickyContainerRef = useRef<HTMLDivElement>(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [stickyRefTop, setStickyRefTop] = useState(0);
-  const { filteredCategories: categories, sortCategories, toggleAudScore } = useFilteredCategories();
+  const {
+    filteredCategories: categories,
+    sortCategories,
+    toggleAudScore,
+  } = useFilteredCategories();
   const searchParams = useSearchParams();
-  
 
   const openModal = (buttonKey: string) => {
     const button = buttonRefs.current[buttonKey];
@@ -127,23 +130,21 @@ export default function Home() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modals]);
 
   // apply filters based on search params
   useEffect(() => {
-    const sortFilter = searchParams.get('sort');
-    const audFresh = searchParams.get('audFresh');
-    const audRotten = searchParams.get('audRotten');
+    const sortFilter = searchParams.get("sort");
+    const audFresh = searchParams.get("audFresh");
+    const audRotten = searchParams.get("audRotten");
 
     if (sortFilter) sortCategories(sortFilter);
-    if (audFresh === 'true') toggleAudScore('fresh');
-    if (audRotten === 'true') toggleAudScore('rotten');
+    if (audFresh === "true") toggleAudScore("fresh");
+    if (audRotten === "true") toggleAudScore("rotten");
 
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
