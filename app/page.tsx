@@ -19,24 +19,25 @@ export default function Home() {
   const [isHalfwayScrolled, setIsHalfwayScrolled] = useState(false);
   const [modals, setModals] = useState<{ [key: string]: ModalState }>({
     sort: { isOpen: false, position: null },
-    filter: { isOpen: false, position: null },
-    // Add more modals as needed
+    audScore: { isOpen: false, position: null },
   });
   const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const stickyContainerRef = useRef<HTMLDivElement>(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [stickyRefTop, setStickyRefTop] = useState(0);
   const {filteredCategories : categories} = useFilteredCategories();
 
   const openModal = (buttonKey: string) => {
     const button = buttonRefs.current[buttonKey];
     if (button) {
+      const alreadyOpen = modals[buttonKey].isOpen;
       const rect = button.getBoundingClientRect();
         const resetState = Object.keys(modals).reduce((acc, key) => {
           acc[key] = { isOpen: false, position: null };
           return acc;
         }, {} as { [key: string]: ModalState });
     
-        resetState[buttonKey] = { isOpen: true, position: { top: rect.bottom, left: rect.left } };
+        resetState[buttonKey] = { isOpen: !alreadyOpen, position: { top: rect.bottom, left: rect.left } };
     
         setModals(resetState);
       }
@@ -89,10 +90,24 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       if (stickyContainerRef.current) {
+        
         const rect = stickyContainerRef.current.getBoundingClientRect();
-        if (rect.top !== 64) { // Assuming 64px is the sticky top position
-          Object.keys(modals).forEach((key) => closeModal(key));
+        console.log(rect.top)
+        if (rect.top == 64) {
+          if (stickyRefTop !== 64) {
+            Object.keys(modals).forEach((key) => closeModal(key));
+          }
         }
+        else {
+          if (stickyRefTop === 64) {
+            Object.keys(modals).forEach((key) => closeModal(key));
+
+          }
+        }
+        setStickyRefTop(rect.top);
+        // if (rect.top !== 64) { // Assuming 64px is the sticky top position
+          // Object.keys(modals).forEach((key) => closeModal(key));
+        // }
       }
     };
 
@@ -112,7 +127,7 @@ export default function Home() {
           <ChevronUp width={35} height={55} strokeWidth={3} className='stroke-inherit' />
         </Button>
       )}
-      <Modals modals={modals} closeModal={closeModal} />
+      <Modals modals={modals} closeModal={closeModal} stickyTop={stickyRefTop} />
 
 
 

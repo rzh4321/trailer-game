@@ -2,10 +2,16 @@ import Modal from "./Modal"
 import { Separator } from "@/components/ui/separator"
 import type { ModalState } from "@/types";
 import { useFilteredCategories } from "@/hooks/CategoryContext";
-import { Button } from "./ui/button";
 import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { MoveRight } from "lucide-react";
+import { Checkbox } from "./ui/checkbox";
+import Image from "next/image";
+
+const keyToTitle : {[key : string] : string} = {
+  'sort': 'SORT',
+  'audScore': 'AUDIENCE SCORE',
+}
 
 
 
@@ -15,25 +21,33 @@ type ModalsProps = {
         [key: string]: ModalState;
     };
     closeModal: (buttonKey: string) => void;
+    stickyTop: number;
 }
 
 type appliedFiltersType = {
-  [key: string] : string | null;
+  sort : string | null;
+  audScore: {rotten: boolean; fresh: boolean;};
 };
 
-export default function Modals({ modals, closeModal} : ModalsProps) {
-    const {sortCategories} = useFilteredCategories();
+export default function Modals({ modals, closeModal, stickyTop} : ModalsProps) {
+    const {sortCategories, toggleAudScore} = useFilteredCategories();
     const [appliedFilters, setAppliedFilters] = useState<appliedFiltersType>({
-      sort: null
+      sort: null,
+      audScore: {rotten: false, fresh: false},
     })
 
-    const handleApplyFilter = (key: string, value: string) => {
+    const handleSortFilter = (value: string) => {
       const newAppliedFilters = {...appliedFilters};
-      newAppliedFilters[key] = value;
+      newAppliedFilters['sort'] = value;
       setAppliedFilters(newAppliedFilters);
     }
 
-    console.log(appliedFilters)
+    const handleToggleAudScore = (filter: 'rotten' | 'fresh') => {
+      const oldAudScoreFilterVal = appliedFilters.audScore[filter]
+      const newAudScoreFilter = {...appliedFilters.audScore, [filter] : !oldAudScoreFilterVal};
+      const newAppliedFilters = {...appliedFilters, audScore: newAudScoreFilter};
+      setAppliedFilters(newAppliedFilters);
+    }
 
     return (
         <>
@@ -43,7 +57,8 @@ export default function Modals({ modals, closeModal} : ModalsProps) {
               isOpen={modals[key].isOpen}
               onClose={() => closeModal(key)}
               position={modals[key].position}
-              title={'SORT'}
+              title={keyToTitle[key]}
+              stickyTop={stickyTop}
             >
               
                 <div className="flex flex-col gap-2 w-full px-3 text-sm font-bold text-gray-600">
@@ -52,48 +67,79 @@ export default function Modals({ modals, closeModal} : ModalsProps) {
                     <div className="flex justify-between items-center">
                         <div className="flex gap-1"><span>A</span><MoveRight className="w-[15px]" /><span>Z</span></div>
                         <RadioGroup>
-                          <RadioGroupItem checked={appliedFilters['sort'] === 'AToZ'} onClickCapture={() => handleApplyFilter('sort', 'AToZ')} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="AToZ" onClick={() => sortCategories('AToZ')} />
+                          <RadioGroupItem checked={appliedFilters['sort'] === 'AToZ'} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="AToZ" onClick={() => {sortCategories('AToZ'); handleSortFilter('AToZ');}} />
                         </RadioGroup>
                     </div>
                     <Separator />
                     <div className="flex justify-between items-center">
                         <div className="flex gap-1 items-center">TOMATOMETER® <span className="text-[13px]">(HIGHEST)</span></div>
                         <RadioGroup>
-                          <RadioGroupItem checked={appliedFilters['sort'] === 'highest'} onClickCapture={() => handleApplyFilter('sort', 'highest')} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="highest" onClick={() => sortCategories('highest')} />
+                          <RadioGroupItem checked={appliedFilters['sort'] === 'highest'} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="highest" onClick={() => {sortCategories('highest'); handleSortFilter('highest');}} />
                         </RadioGroup>
                     </div>
                     <Separator />
                     <div className="flex justify-between items-center">
                     <div className="flex gap-1 items-center">TOMATOMETER® <span className="text-[13px]">(LOWEST)</span></div>
                         <RadioGroup>
-                          <RadioGroupItem checked={appliedFilters['sort'] === 'lowest'} onClickCapture={() => handleApplyFilter('sort', 'lowest')} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="lowest" onClick={() => sortCategories('lowest')} />
+                          <RadioGroupItem checked={appliedFilters['sort'] === 'lowest'} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="lowest" onClick={() => {sortCategories('lowest'); handleSortFilter('lowest');}} />
                         </RadioGroup>
                     </div>
                     <Separator />
                     <div className="flex justify-between items-center">
                         <div className="flex gap-1 items-center">AUDIENCE SCORE <span className="text-[13px]">(HIGHEST)</span></div>
                         <RadioGroup>
-                          <RadioGroupItem checked={appliedFilters['sort'] === 'audHighest'} onClickCapture={() => handleApplyFilter('sort', 'audHighest')} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="audHighest" onClick={() => sortCategories('audHighest')} />
+                          <RadioGroupItem checked={appliedFilters['sort'] === 'audHighest'} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="audHighest" onClick={() => {sortCategories('audHighest'); handleSortFilter('audHighest');}} />
                         </RadioGroup>
                     </div>
                     <Separator />
                     <div className="flex justify-between items-center">
                     <div className="flex gap-1 items-center">AUDIENCE SCORE <span className="text-[13px]">(LOWEST)</span></div>
                         <RadioGroup>
-                          <RadioGroupItem checked={appliedFilters['sort'] === 'audLowest'} onClickCapture={() => handleApplyFilter('sort', 'audLowest')} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="audLowest" onClick={() => sortCategories('audLowest')} />
+                          <RadioGroupItem checked={appliedFilters['sort'] === 'audLowest'} className="h-[26px] w-[26px] fill-blue-400 stroke-blue-400 p-0" value="audLowest" onClick={() => {sortCategories('audLowest'); handleSortFilter('audLowest');}} />
                         </RadioGroup>
                     </div>
                   </>
                   )}
-                  {key === 'filter' && (
-                    <div className="flex flex-col gap-3">
-                      <button className="text-gray-700 hover:text-gray-900">Category 1</button>
-                      <button className="text-gray-700 hover:text-gray-900">Category 2</button>
-                      <button className="text-gray-700 hover:text-gray-900">Category 3</button>
+                {key === 'audScore' && (
+                  <>
+                    <div className="flex justify-between items-center">
+                        <div className="flex gap-4 items-start">
+                          <Image
+                            alt="audience"
+                            height={30}
+                            width={30}
+                            src={
+                              "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-fresh.6c24d79faaf.svg"
+                            }
+                          />
+                          <div className="flex flex-col mt-1">
+                            <span>FRESH</span>
+                            <span className="text-[0.875rem] font-normal">At least 60% of reviews for a<br></br> movie or TV show are positive.</span>
+                          </div>
+                        </div>
+                        <Checkbox checked={appliedFilters['audScore']?.fresh} className="h-[26px] w-[26px] border-[0.5px]" onClick={() => {toggleAudScore('fresh'); handleToggleAudScore('fresh')}} />
                     </div>
-                  )
-                
-                }
+                    <Separator />
+                    <div className="flex justify-between items-center">
+                    <div className="flex gap-4 items-start">
+                          <Image
+                            alt="audience"
+                            height={30}
+                            width={30}
+                            src={
+                              "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-rotten.f419e4046b7.svg"
+                            }
+                          />
+                          <div className="flex flex-col mt-1">
+                            <span>ROTTEN</span>
+                            <span className="text-[0.875rem] font-normal">Less than 60% of reviews for a <br></br> movie or TV show are positive.</span>
+                          </div>
+                        </div>
+                        <Checkbox checked={appliedFilters['audScore']?.rotten} className="h-[26px] w-[26px] border-[0.5px]" onClick={() => {toggleAudScore('rotten'); handleToggleAudScore('rotten')}} />
+                    </div>
+                    
+                  </>
+                  )}
                 </div>
 
 

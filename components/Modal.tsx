@@ -9,10 +9,12 @@ type ModalProps = {
   children: React.ReactNode;
   position: { top: number; left: number } | null;
   title: string;
+  stickyTop: number
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, position, title }) => {
+const Modal = ({ isOpen, onClose, children, position, title, stickyTop } : ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  // isVisible is for showing the sliding animation
   const [isVisible, setIsVisible] = useState(false);
 
 
@@ -29,10 +31,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, position, titl
         timeoutId = window.setTimeout(() => {
           window.addEventListener('click', handleOutsideClick);
         }, 0);
+
       } else {
         window.removeEventListener('click', handleOutsideClick);
-        setIsVisible(false); // Set visibility to false to hide the modal
-
+        setIsVisible(false);
       }
   
       return () => {
@@ -48,21 +50,20 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, position, titl
   return (
     <div
       ref={modalRef}
-      className={`fixed w-[375px] border flex items-center flex-col gap-8 z-[101] bg-white p-3 rounded-lg shadow-xl transition-transform duration-300 transform ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}
+      // if stickyTop is not 64 (filter div is not sticky) then position should not be fixed
+      className={`${stickyTop === 64 ? 'fixed' : 'absolute'} w-[375px] border flex items-center flex-col gap-8 z-[101] bg-white p-3 rounded-lg shadow-xl transition-transform duration-300 ${
+        isVisible ? 'translate-y-0' : 'translate-y-4'
+      }`}
       style={{
-        top: position.top + 15,
+        // top position depends on whether the filter div is currently sticky or not
+        top: position.top + (stickyTop === 64 ? 15 : -49),
         left: position.left,
       }}
     >
-        <div className='flex w-full justify-center relative items-center'>
-            <span className='font-bold text-gray-600'>{title}</span>
-            {/* <Button
-                className="bg-transparent px-2 hover:bg-transparent hover:text-gray-700 py-0 absolute right-0 text-gray-900 border-none"
-                onClick={onClose}
-            > */}
-                <X className='hover:stroke-gray-700 cursor-pointer absolute right-1' />
-            {/* </Button> */}
-        </div>
+      <div className='flex w-full justify-center relative items-center'>
+        <span className='font-bold text-gray-600'>{title}</span>
+        <X onClick={onClose} className='hover:stroke-gray-700 cursor-pointer absolute right-1' />
+      </div>
       {children}
     </div>
   );

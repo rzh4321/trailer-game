@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { useWindowScroll } from "react-use";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { useFilteredCategories } from "@/hooks/CategoryContext";
@@ -12,6 +11,7 @@ import { usePathname } from "next/navigation";
 
 export default function NavBar() {
   const {filterCategories} = useFilteredCategories();
+  // this search state is for UI purposes only. The real search filter is the context
   const [search, setSearch] = useState("");
   const pathname = usePathname();
 

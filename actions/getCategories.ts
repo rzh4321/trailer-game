@@ -11,6 +11,6 @@ export default async function getCategoriesAndAverages() {
   dbRes = await db.query.categories.findMany();
   let dbCategories = Array.from(dbRes) as categoryType[];
   const arr = await db.select({ avgCritic: avg(categories.criticScore), avgAudience: avg(categories.audienceScore)}).from(categories);
-  const {avgCritic, avgAudience} = arr[0]
-  return {dbCategories, avgCritic, avgAudience};
+  const {avgCritic, avgAudience} = arr[0] as {avgCritic: string; avgAudience: string};
+  return {dbCategories, avgCritic : Math.round(+avgCritic), avgAudience : Math.round(+avgAudience)};
 }
