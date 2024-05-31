@@ -1,6 +1,6 @@
 import Modal from "./Modal";
 import { Separator } from "@/components/ui/separator";
-import type { ModalState } from "@/types";
+import type { ModalState, appliedFiltersType } from "@/types";
 import { useFilteredCategories } from "@/hooks/CategoryContext";
 import { useState, useEffect } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -8,6 +8,7 @@ import { MoveRight } from "lucide-react";
 import { Checkbox } from "./ui/checkbox";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import { updateUrlParams, removeUrlParam } from "@/lib/searchParams";
 
 const keyToTitle: { [key: string]: string } = {
   sort: "SORT",
@@ -20,61 +21,25 @@ type ModalsProps = {
   };
   closeModal: (buttonKey: string) => void;
   stickyTop: number;
+  appliedFilters: appliedFiltersType;
+  setAppliedFilters: React.Dispatch<React.SetStateAction<appliedFiltersType>>;
 };
 
-type appliedFiltersType = {
-  sort: string | null;
-  audScore: { rotten: boolean; fresh: boolean };
-};
-
-const updateUrlParams = (newParams: Record<string, string>) => {
-  // Get current scroll position
-  const scrollX = window.scrollX;
-  const scrollY = window.scrollY;
-
-  // Get the current URL
-  const location = window.location;
-  const currentUrl = new URL(location.href);
-
-  // Update the URL with new query parameters
-  Object.keys(newParams).forEach((key) => {
-    currentUrl.searchParams.set(key, newParams[key]);
-  });
-
-  // Use history.pushState or history.replaceState to update the URL without reloading
-  window.history.pushState({}, "", currentUrl.toString());
-
-  // Restore the scroll position
-  window.scrollTo(scrollX, scrollY);
-};
-
-const removeUrlParam = (param: string) => {
-  // Get the current scroll position
-  const scrollX = window.scrollX;
-  const scrollY = window.scrollY;
-
-  // Get the current URL
-  const location = window.location;
-  const currentUrl = new URL(location.href);
-
-  // Remove the specified query parameter
-  currentUrl.searchParams.delete(param);
-
-  // Use history.pushState or history.replaceState to update the URL without reloading
-  window.history.pushState({}, "", currentUrl.toString());
-
-  // Restore the scroll position
-  window.scrollTo(scrollX, scrollY);
-};
-
-export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
+export default function Modals({
+  modals,
+  closeModal,
+  stickyTop,
+  appliedFilters,
+  setAppliedFilters,
+}: ModalsProps) {
   const searchParams = useSearchParams();
   const { sortCategories, toggleAudScore } = useFilteredCategories();
-  const [appliedFilters, setAppliedFilters] = useState<appliedFiltersType>({
-    sort: null,
-    audScore: { rotten: false, fresh: false },
-  });
+  // const [appliedFilters, setAppliedFilters] = useState<appliedFiltersType>({
+  //   sort: null,
+  //   audScore: { rotten: false, fresh: false },
+  // });
 
+  // update the UI based on search params
   useEffect(() => {
     const sortFilter = searchParams.get("sort");
     const audFresh = searchParams.get("audFresh");
@@ -118,7 +83,7 @@ export default function Modals({ modals, closeModal, stickyTop }: ModalsProps) {
           title={keyToTitle[key]}
           stickyTop={stickyTop}
         >
-          <div className="flex flex-col gap-2 w-full px-3 text-sm font-bold text-gray-600">
+          <div className="flex flex-col gap-2 tracking-tight w-full px-3 text-sm font-bold text-gray-600">
             {key === "sort" && (
               <>
                 <label htmlFor="AToZ">

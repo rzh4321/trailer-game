@@ -51,3 +51,8 @@ export type ModalState = {
   isOpen: boolean;
   position: { top: number; left: number } | null;
 };
+
+export type appliedFiltersType = {
+  sort: string | null;
+  audScore: { rotten: boolean; fresh: boolean };
+};

@@ -9,7 +9,7 @@ import { useWindowScroll } from "react-use";
 import { ChevronUp } from "lucide-react";
 import Filters from "@/components/Filters";
 import Modals from "@/components/Modals";
-import type { ModalState } from "@/types";
+import type { ModalState, appliedFiltersType } from "@/types";
 import { useSearchParams } from "next/navigation";
 
 export default function Home() {
@@ -22,13 +22,20 @@ export default function Home() {
     audScore: { isOpen: false, position: null },
   });
   const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
-  const stickyContainerRef = useRef<HTMLDivElement>(null);
   const [pageNumber, setPageNumber] = useState(1);
+  // state and ref for determining how modals are displayed
+  const stickyContainerRef = useRef<HTMLDivElement>(null);
   const [stickyRefTop, setStickyRefTop] = useState(0);
+  // state for applied filters
+  const [appliedFilters, setAppliedFilters] = useState<appliedFiltersType>({
+    sort: null,
+    audScore: { rotten: false, fresh: false },
+  });
   const {
     filteredCategories: categories,
     sortCategories,
     toggleAudScore,
+    filterCategories,
   } = useFilteredCategories();
   const searchParams = useSearchParams();
 
@@ -138,8 +145,10 @@ export default function Home() {
     const sortFilter = searchParams.get("sort");
     const audFresh = searchParams.get("audFresh");
     const audRotten = searchParams.get("audRotten");
+    const search = searchParams.get("search");
 
     if (sortFilter) sortCategories(sortFilter);
+    if (search) filterCategories(search);
     if (audFresh === "true") toggleAudScore("fresh");
     if (audRotten === "true") toggleAudScore("rotten");
 
@@ -165,6 +174,8 @@ export default function Home() {
         modals={modals}
         closeModal={closeModal}
         stickyTop={stickyRefTop}
+        appliedFilters={appliedFilters}
+        setAppliedFilters={setAppliedFilters}
       />
 
       <div className="flex flex-col w-full gap-8">
@@ -177,6 +188,7 @@ export default function Home() {
           openModal={openModal}
           buttonRefs={buttonRefs}
           stickyContainerRef={stickyContainerRef}
+          appliedFilters={appliedFilters}
         />
 
         <div className="grid gap-10  -mt-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">

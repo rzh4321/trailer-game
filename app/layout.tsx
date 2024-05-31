@@ -23,10 +23,10 @@ export default async function RootLayout({
       <body className="font-primary flex flex-col h-screen justify-between items-center">
         <div className="bg-inherit w-full">
           <CategoryProvider>
-            <NavBar />
-            <div className="p-5 relative">
-              <Suspense>{children}</Suspense>
-            </div>
+            <Suspense>
+              <NavBar />
+              <div className="p-5 relative">{children}</div>
+            </Suspense>
           </CategoryProvider>
         </div>
         {/* <Toaster /> */}

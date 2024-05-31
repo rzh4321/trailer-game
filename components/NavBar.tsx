@@ -7,18 +7,29 @@ import { useFilteredCategories } from "@/hooks/CategoryContext";
 import { Input } from "./ui/input";
 import { Search } from "lucide-react";
 import { Label } from "./ui/label";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { updateUrlParams, removeUrlParam } from "@/lib/searchParams";
 
 export default function NavBar() {
   const { filterCategories } = useFilteredCategories();
-  // this search state is for UI purposes only. The real search filter is the context
+  // this search state is for UI purposes only. The real search filter is in the context
   const [search, setSearch] = useState("");
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     filterCategories(e.target.value);
+    updateUrlParams({ search: e.target.value });
   };
+
+  // update the UI search bar based on search params
+  useEffect(() => {
+    const search = searchParams.get("search");
+    if (search) setSearch(search);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   return (
     <div
