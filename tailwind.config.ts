@@ -76,11 +76,16 @@ const config = {
           from: { transform: "translateX(0)" },
           to: { transform: `translateX(-${15 * 524}px)` },
         },
+        'slideUp': {
+          '0%': { transform: 'translateY(100px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         slideToLeft: "slideToLeft 100s linear infinite",
+        'slideUp': "slideUp 1s ease-out",
       },
       fontFamily: {
         poppins: ["Poppins"],
