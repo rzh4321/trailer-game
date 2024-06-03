@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import { updateUrlParams, removeUrlParam } from "@/lib/searchParams";
 import { Separator } from "./ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -24,6 +24,7 @@ type FilterDrawerProps = {
   appliedFilters: appliedFiltersType;
   type: "sort" | "audience" | "tomatometer";
   setAppliedFilters: React.Dispatch<React.SetStateAction<appliedFiltersType>>;
+  stickyContainerRef: React.RefObject<HTMLDivElement>;
 };
 
 export default function FilterDrawer({
@@ -31,14 +32,53 @@ export default function FilterDrawer({
   appliedFilters,
   type,
   setAppliedFilters,
+  stickyContainerRef,
 }: FilterDrawerProps) {
+  const [clickCount, setClickCount] = useState(0);
+
   const { sortCategories, toggleAudScore, toggleTomatometer } =
     useFilteredCategories();
+
+  // register window click listener to trigger effect for darkening sticky
+  // container when drawer is open
+  useEffect(() => {
+    const handleClick = () => {
+      setClickCount((prevCount) => prevCount + 1);
+    };
+
+    window.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  }, []);
+
+  // darken sticky container when drawer is visible
+  useEffect(() => {
+    const drawerDiv = document.querySelector("div[role='dialog']");
+    if (drawerDiv && stickyContainerRef.current) {
+      stickyContainerRef.current.classList.remove("overflow-x-auto");
+      stickyContainerRef.current.classList.add("opacity-20");
+      setTimeout(() => {
+        const drawerDiv = document.querySelector("div[role='dialog']");
+        if (!drawerDiv && stickyContainerRef.current) {
+          stickyContainerRef.current.classList.add("overflow-x-auto");
+          stickyContainerRef.current.classList.remove("opacity-20");
+        }
+      }, 250);
+    }
+  }, [clickCount, stickyContainerRef]);
 
   const handleSortFilter = (value: string) => {
     const newAppliedFilters = { ...appliedFilters };
     newAppliedFilters["sort"] = value;
     setAppliedFilters(newAppliedFilters);
+  };
+
+  const handleOpenDrawer = () => {
+    if (stickyContainerRef.current) {
+      stickyContainerRef.current.classList;
+    }
   };
 
   const handleToggleAudScore = (filter: "rotten" | "fresh") => {
@@ -75,7 +115,7 @@ export default function FilterDrawer({
           {type === "sort" ? (
             <Button
               variant={"outline"}
-              className={`${appliedFilters.sort ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
+              className={` filter-btn ${appliedFilters.sort ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
             >
               <div>
                 SORT
@@ -114,7 +154,7 @@ export default function FilterDrawer({
           ) : type === "audience" ? (
             <Button
               variant={"outline"}
-              className={`${appliedFilters.audScore.fresh || appliedFilters.audScore.rotten ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
+              className={`${appliedFilters.audScore.fresh || appliedFilters.audScore.rotten ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} filter-btn rounded-full font-bold text-gray-600 flex items-center gap-1`}
             >
               AUDIENCE SCORE{" "}
               {appliedFilters.audScore.fresh &&
@@ -135,7 +175,7 @@ export default function FilterDrawer({
           ) : (
             <Button
               variant={"outline"}
-              className={`${appliedFilters.tomatometer.certified || appliedFilters.tomatometer.fresh || appliedFilters.tomatometer.rotten ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
+              className={`${appliedFilters.tomatometer.certified || appliedFilters.tomatometer.fresh || appliedFilters.tomatometer.rotten ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} filter-btn rounded-full font-bold text-gray-600 flex items-center gap-1`}
             >
               TOMATOMETER®{" "}
               {appliedFilters.tomatometer.certified &&
@@ -170,7 +210,7 @@ export default function FilterDrawer({
               <DrawerTitle className="text-center">{title}</DrawerTitle>
             </DrawerHeader>
 
-            {type === "sort" && (
+            {type === "sort" ? (
               <div className="flex flex-col gap-[10px] tracking-tight w-full text-sm font-bold text-gray-600">
                 <label htmlFor="AToZ">
                   <div className="flex justify-between items-center">
@@ -283,9 +323,7 @@ export default function FilterDrawer({
                   </div>
                 </label>
               </div>
-            )}
-
-            {type === "audience" && (
+            ) : type === "audience" ? (
               <div className="flex flex-col gap-[10px] tracking-tight w-full text-sm font-bold text-gray-600">
                 <label htmlFor="audFresh">
                   <div className="flex justify-between items-center">
@@ -355,8 +393,7 @@ export default function FilterDrawer({
                   </div>
                 </label>
               </div>
-            )}
-            {type === "tomatometer" && (
+            ) : type === "tomatometer" ? (
               <div className="flex flex-col gap-[10px] tracking-tight w-full text-sm font-bold text-gray-600">
                 <label htmlFor="certified">
                   <div className="flex justify-between items-center">
@@ -461,6 +498,8 @@ export default function FilterDrawer({
                   </div>
                 </label>
               </div>
+            ) : (
+              <></>
             )}
           </div>
         </DrawerContent>

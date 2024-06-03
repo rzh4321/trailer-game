@@ -141,18 +141,21 @@ export default function Filters({
             appliedFilters={appliedFilters}
             setAppliedFilters={setAppliedFilters}
             type="sort"
+            stickyContainerRef={stickyContainerRef}
           />
           <FilterDrawer
             title="AUDIENCE SCORE"
             appliedFilters={appliedFilters}
             setAppliedFilters={setAppliedFilters}
             type="audience"
+            stickyContainerRef={stickyContainerRef}
           />
           <FilterDrawer
             title="TOMATOMETER"
             appliedFilters={appliedFilters}
             setAppliedFilters={setAppliedFilters}
             type="tomatometer"
+            stickyContainerRef={stickyContainerRef}
           />
         </>
       )}
@@ -168,7 +171,7 @@ export default function Filters({
           else updateUrlParams({ "certified-fresh": "true" });
         }}
         variant={"outline"}
-        className={`flex-shrink-0 ${appliedFilters.certifiedFresh ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
+        className={`filter-btn flex-shrink-0 ${appliedFilters.certifiedFresh ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
       >
         <Image
           alt="certified-fresh"
