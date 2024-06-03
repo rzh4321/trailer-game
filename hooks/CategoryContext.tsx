@@ -52,7 +52,6 @@ export const CategoryProvider = ({
     categories: categoryWithImageAndUrlType[] | undefined,
   ) => {
     let result = categories ?? [];
-    console.log(audScoreFilter);
 
     // Apply search filter
     if (searchTerm) {
