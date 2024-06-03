@@ -65,7 +65,7 @@ export default function FilterDrawer({
           stickyContainerRef.current.classList.add("overflow-x-auto");
           stickyContainerRef.current.classList.remove("opacity-20");
         }
-      }, 250);
+      }, 700);
     }
   }, [clickCount, stickyContainerRef]);
 
