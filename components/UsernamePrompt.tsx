@@ -36,7 +36,7 @@ export default function UsernamePrompt({
       <DialogTrigger asChild>
         <Button
           type="button"
-          className="sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600"
+          className="sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600 hover:bg-green-600 "
         >
           Get Scores
         </Button>

@@ -129,7 +129,7 @@ export default function UserInputs({
         ) : (
           <Button
             type="submit"
-            className="sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600"
+            className="sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600 hover:bg-white hover:text-black"
           >
             {isLastTrailer ? "Get Scores" : <LucideArrowRight />}
           </Button>

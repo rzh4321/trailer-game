@@ -73,7 +73,7 @@ export default function TopScoresTable({
   return (
     <div className="flex flex-col mb-2 rounded-lg border bg-card text-card-foreground shadow-sm">
       <div className="relative flex items-center justify-center">
-        <TableCaption className="text-2xl font-semibold leading-none tracking-tight text-white">
+        <TableCaption className="text-2xl font-semibold leading-none tracking-tight text-black">
           <BarChart className="inline mr-1" />
           {`Top Scores for ${numTrailers} Trailer${numTrailers > 1 ? "s" : ""}`}
         </TableCaption>

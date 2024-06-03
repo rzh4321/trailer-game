@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        spotify: "bg-green-600/90 hover:bg-green-700",
+        spotify: "bg-green-600/90 hover:bg-green-700 text-white",
         blue: "bg-blue-800 hover:bg-blue-800/90",
         red: "sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600",
       },

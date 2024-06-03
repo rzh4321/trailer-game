@@ -143,7 +143,7 @@ export default function GameOver({
     <>
       <div className="flex flex-col items-center gap-2">
         <div>
-          <span className="tracking-widest font-poppins text-center">
+          <span className="tracking-widest font-poppins text-center font-semibold">
             {phrase}
           </span>
           <Image
@@ -176,12 +176,12 @@ export default function GameOver({
               }
             />
             <span
-              className={
+              className={`font-semibold ${
                 criticScore >= 90
-                  ? "text-green-600"
-                  : criticScore >= 60
-                    ? "text-yellow-300"
-                    : "text-red-600"
+                  ? "text-green-500"
+                  : criticScore >= 80
+                    ? "text-yellow-600/90"
+                    : "text-red-700"}`
               }
             >
               {criticScore}%.
@@ -200,12 +200,12 @@ export default function GameOver({
               }
             />
             <span
-              className={
+              className={`font-semibold ${
                 audienceScore >= 90
-                  ? "text-green-600"
-                  : audienceScore >= 60
-                    ? "text-yellow-300"
-                    : "text-red-600"
+                  ? "text-green-500"
+                  : audienceScore >= 80
+                    ? "text-yellow-600/90"
+                    : "text-red-700"}`
               }
             >
               {audienceScore}%.
@@ -225,12 +225,12 @@ export default function GameOver({
             }
           />
           <span
-            className={
+            className={`font-semibold ${
               finalScore >= 90
-                ? "text-green-600"
-                : finalScore >= 60
-                  ? "text-yellow-300"
-                  : "text-red-600"
+                ? "text-green-500"
+                : finalScore >= 80
+                  ? "text-yellow-600/90"
+                  : "text-red-700"}`
             }
           >
             {finalScore}%.
@@ -282,12 +282,12 @@ export default function GameOver({
               }
             />
             <span
-              className={
+              className={`font-semibold ${
                 +movies[movieInd].critic_score >= 90
-                  ? "text-green-600"
-                  : +movies[movieInd].critic_score >= 60
-                    ? "text-yellow-300"
-                    : "text-red-600"
+                  ? "text-green-500"
+                  : +movies[movieInd].critic_score >= 80
+                    ? "text-yellow-600/90"
+                    : "text-red-700"}`
               }
             >
               {movies[movieInd].critic_score}%.
@@ -309,12 +309,12 @@ export default function GameOver({
               }
             />
             <span
-              className={
+              className={`font-semibold ${
                 +guesses[movieInd].criticGuess >= 90
-                  ? "text-green-600"
-                  : +guesses[movieInd].criticGuess >= 60
-                    ? "text-yellow-300"
-                    : "text-red-600"
+                  ? "text-green-500"
+                  : +guesses[movieInd].criticGuess >= 80
+                    ? "text-yellow-600/90"
+                    : "text-red-700"}`
               }
             >
               {guesses[movieInd].criticGuess}%.
@@ -335,12 +335,12 @@ export default function GameOver({
               }
             />
             <span
-              className={
+              className={`font-semibold ${
                 +movies[movieInd].audience_score >= 90
-                  ? "text-green-600"
+                  ? "text-green-500"
                   : +movies[movieInd].audience_score >= 60
-                    ? "text-yellow-300"
-                    : "text-red-600"
+                    ? "text-yellow-600/90"
+                    : "text-red-700"}`
               }
             >
               {movies[movieInd].audience_score}%.
@@ -360,12 +360,12 @@ export default function GameOver({
               }
             />
             <span
-              className={
+              className={`font-semibold ${
                 +guesses[movieInd].criticGuess >= 90
-                  ? "text-green-600"
+                  ? "text-green-500"
                   : +guesses[movieInd].criticGuess >= 60
-                    ? "text-yellow-300"
-                    : "text-red-600"
+                    ? "text-yellow-600/90"
+                    : "text-red-700"}`
               }
             >
               {guesses[movieInd].audienceGuess}%.
@@ -374,10 +374,11 @@ export default function GameOver({
         </div>
 
         <div className="flex gap-5">
-          <Button asChild>
+          <Button className="hover:bg-tomatoes/80 bg-tomatoes" asChild>
             <Link href={"/"}>Back to Menu</Link>
           </Button>
           <Button
+            variant={'spotify'}
             onClick={() => {
               location.reload();
             }}
