@@ -13,7 +13,7 @@ import { updateUrlParams, removeUrlParam } from "@/lib/searchParams";
 const keyToTitle: { [key: string]: string } = {
   sort: "SORT",
   audScore: "AUDIENCE SCORE",
-  tomatometer: "TOMATOMETER®"
+  tomatometer: "TOMATOMETER®",
 };
 
 type ModalsProps = {
@@ -34,7 +34,8 @@ export default function Modals({
   setAppliedFilters,
 }: ModalsProps) {
   const searchParams = useSearchParams();
-  const { sortCategories, toggleAudScore, toggleTomatometer } = useFilteredCategories();
+  const { sortCategories, toggleAudScore, toggleTomatometer } =
+    useFilteredCategories();
 
   // update the UI based on search params
   useEffect(() => {
@@ -44,6 +45,8 @@ export default function Modals({
     const tomatometerCertified = searchParams.get("tomatometer-certified");
     const tomatometerFresh = searchParams.get("tomatometer-fresh");
     const tomatometerRotten = searchParams.get("tomatometer-rotten");
+    const certifiedFresh = searchParams.get("certified-fresh");
+
     const newAppliedFilters = { ...appliedFilters };
     if (sortFilter) newAppliedFilters.sort = sortFilter;
     if (audFresh) newAppliedFilters.audScore.fresh = true;
@@ -51,7 +54,7 @@ export default function Modals({
     if (tomatometerCertified) newAppliedFilters.tomatometer.certified = true;
     if (tomatometerFresh) newAppliedFilters.tomatometer.fresh = true;
     if (tomatometerRotten) newAppliedFilters.tomatometer.rotten = true;
-
+    if (certifiedFresh) newAppliedFilters.certifiedFresh = true;
 
     setAppliedFilters(newAppliedFilters);
 
@@ -77,7 +80,9 @@ export default function Modals({
     setAppliedFilters(newAppliedFilters);
   };
 
-  const handleToggleTomatometer = (filter: "rotten" | "fresh" | "certified") => {
+  const handleToggleTomatometer = (
+    filter: "rotten" | "fresh" | "certified",
+  ) => {
     const oldTomatometerFilterVal = appliedFilters.tomatometer[filter];
     const newTomatometerFilter = {
       ...appliedFilters.tomatometer,
@@ -303,7 +308,8 @@ export default function Modals({
                       <div className="flex flex-col mt-1">
                         <span>CERTIFIED FRESH</span>
                         <span className="text-[0.875rem] font-normal">
-                        A special distinction awarded to <br></br> the best reviewed movies.
+                          A special distinction awarded to <br></br> the best
+                          reviewed movies.
                         </span>
                       </div>
                     </div>
@@ -316,7 +322,8 @@ export default function Modals({
                         handleToggleTomatometer("certified");
                         if (appliedFilters.tomatometer.certified)
                           removeUrlParam("tomatometer-certified");
-                        else updateUrlParams({ "tomatometer-certified": "true" });
+                        else
+                          updateUrlParams({ "tomatometer-certified": "true" });
                       }}
                     />
                   </div>
@@ -336,7 +343,8 @@ export default function Modals({
                       <div className="flex flex-col mt-1">
                         <span>FRESH</span>
                         <span className="text-[0.875rem] font-normal">
-                        At least 60% of reviews for a <br></br>movie are positive.
+                          At least 60% of reviews for a <br></br>movie are
+                          positive.
                         </span>
                       </div>
                     </div>
@@ -369,8 +377,8 @@ export default function Modals({
                       <div className="flex flex-col mt-1">
                         <span>ROTTEN</span>
                         <span className="text-[0.875rem] font-normal">
-                          Less than 60% of reviews for a <br></br> movie
-                          are positive.
+                          Less than 60% of reviews for a <br></br> movie are
+                          positive.
                         </span>
                       </div>
                     </div>

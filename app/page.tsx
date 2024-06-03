@@ -21,7 +21,6 @@ export default function Home() {
     sort: { isOpen: false, position: null },
     audScore: { isOpen: false, position: null },
     tomatometer: { isOpen: false, position: null },
-
   });
   const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const [pageNumber, setPageNumber] = useState(1);
@@ -33,7 +32,7 @@ export default function Home() {
     sort: null,
     audScore: { rotten: false, fresh: false },
     tomatometer: { certified: false, rotten: false, fresh: false },
-
+    certifiedFresh: false,
   });
   const {
     filteredCategories: categories,
@@ -41,6 +40,7 @@ export default function Home() {
     toggleAudScore,
     toggleTomatometer,
     filterCategories,
+    toggleCertifiedFresh,
   } = useFilteredCategories();
   const searchParams = useSearchParams();
 
@@ -153,6 +153,7 @@ export default function Home() {
     const tomatometerCertified = searchParams.get("tomatometer-certified");
     const tomatometerFresh = searchParams.get("tomatometer-fresh");
     const tomatometerRotten = searchParams.get("tomatometer-rotten");
+    const certifiedFresh = searchParams.get("certified-fresh");
 
     const search = searchParams.get("search");
 
@@ -163,7 +164,7 @@ export default function Home() {
     if (tomatometerCertified === "true") toggleTomatometer("certified");
     if (tomatometerFresh === "true") toggleTomatometer("fresh");
     if (tomatometerRotten === "true") toggleTomatometer("rotten");
-
+    if (certifiedFresh === "true") toggleCertifiedFresh();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -202,6 +203,7 @@ export default function Home() {
           buttonRefs={buttonRefs}
           stickyContainerRef={stickyContainerRef}
           appliedFilters={appliedFilters}
+          setAppliedFilters={setAppliedFilters}
         />
 
         <div className="grid gap-10  -mt-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">

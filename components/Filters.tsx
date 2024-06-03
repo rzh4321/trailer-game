@@ -2,6 +2,9 @@ import { Button } from "./ui/button";
 import { ChevronDown } from "lucide-react";
 import type { appliedFiltersType } from "@/types";
 import { MoveRight } from "lucide-react";
+import Image from "next/image";
+import { useFilteredCategories } from "@/hooks/CategoryContext";
+import { removeUrlParam, updateUrlParams } from "@/lib/searchParams";
 
 type FiltersProps = {
   openModal: (buttonKey: string) => void;
@@ -10,6 +13,7 @@ type FiltersProps = {
   }>;
   stickyContainerRef: React.RefObject<HTMLDivElement>;
   appliedFilters: appliedFiltersType;
+  setAppliedFilters: React.Dispatch<React.SetStateAction<appliedFiltersType>>;
 };
 
 export default function Filters({
@@ -17,7 +21,9 @@ export default function Filters({
   buttonRefs,
   stickyContainerRef,
   appliedFilters,
+  setAppliedFilters,
 }: FiltersProps) {
+  const { toggleCertifiedFresh } = useFilteredCategories();
   return (
     <div
       ref={stickyContainerRef}
@@ -96,13 +102,20 @@ export default function Filters({
         className={`${appliedFilters.tomatometer.certified || appliedFilters.tomatometer.fresh || appliedFilters.tomatometer.rotten ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
       >
         TOMATOMETER®{" "}
-        {appliedFilters.tomatometer.certified && appliedFilters.tomatometer.fresh && appliedFilters.tomatometer.rotten ? (
+        {appliedFilters.tomatometer.certified &&
+        appliedFilters.tomatometer.fresh &&
+        appliedFilters.tomatometer.rotten ? (
           <span className=" rounded-md bg-black text-white px-1">3</span>
-        ) : 
-        (appliedFilters.tomatometer.certified && appliedFilters.tomatometer.fresh) || (appliedFilters.tomatometer.certified && appliedFilters.tomatometer.rotten) ||  (appliedFilters.tomatometer.fresh && appliedFilters.tomatometer.rotten)? (
+        ) : (appliedFilters.tomatometer.certified &&
+            appliedFilters.tomatometer.fresh) ||
+          (appliedFilters.tomatometer.certified &&
+            appliedFilters.tomatometer.rotten) ||
+          (appliedFilters.tomatometer.fresh &&
+            appliedFilters.tomatometer.rotten) ? (
           <span className=" rounded-md bg-black text-white px-1">2</span>
-        ) :
-        appliedFilters.tomatometer.certified || appliedFilters.tomatometer.fresh || appliedFilters.tomatometer.rotten ? (
+        ) : appliedFilters.tomatometer.certified ||
+          appliedFilters.tomatometer.fresh ||
+          appliedFilters.tomatometer.rotten ? (
           <span className=" rounded-md bg-black text-white px-1">1</span>
         ) : (
           ""
@@ -112,6 +125,29 @@ export default function Filters({
           width={13}
           strokeWidth={3}
         />
+      </Button>
+      <Button
+        onClick={() => {
+          setAppliedFilters((prev) => ({
+            ...prev,
+            certifiedFresh: !prev.certifiedFresh,
+          }));
+          toggleCertifiedFresh();
+          if (appliedFilters.certifiedFresh) removeUrlParam("certified-fresh");
+          else updateUrlParams({ "certified-fresh": "true" });
+        }}
+        variant={"outline"}
+        className={`${appliedFilters.certifiedFresh ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
+      >
+        <Image
+          alt="certified-fresh"
+          height={20}
+          width={20}
+          src={
+            "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"
+          }
+        />
+        CERTIFIED FRESH
       </Button>
     </div>
   );

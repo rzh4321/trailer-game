@@ -52,9 +52,8 @@ const Modal = ({
     };
   }, [isOpen, onClose]);
 
-    // Additional effect to log changes to animate state
-    useEffect(() => {
-    }, [animate]);
+  // Additional effect to log changes to animate state
+  useEffect(() => {}, [animate]);
 
   if (!isOpen || !position) return null;
 
@@ -63,9 +62,7 @@ const Modal = ({
       ref={modalRef}
       // if stickyTop is not 64 (filter div is not sticky) then position should not be fixed
       className={`${stickyTop === 64 ? "fixed" : "absolute"} w-[375px] border flex items-center flex-col gap-8 z-[101] bg-white p-3 rounded-lg shadow-xl transition-transform duration-300 
-      ${
-        animate ? 'animate-slideUp' : ''
-      }`}
+      ${animate ? "animate-slideUp" : ""}`}
       style={{
         // top position depends on whether the filter div is currently sticky or not
         top: position.top + (stickyTop === 64 ? 15 : -49), // Start a few pixels below

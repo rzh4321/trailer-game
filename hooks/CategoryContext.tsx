@@ -9,7 +9,7 @@ type CategoryContextType = {
   sortCategories: (filter: string) => void;
   toggleAudScore: (filter: "fresh" | "rotten") => void;
   toggleTomatometer: (filter: "fresh" | "rotten" | "certified") => void;
-
+  toggleCertifiedFresh: () => void;
 };
 
 // Create the context
@@ -41,6 +41,7 @@ export const CategoryProvider = ({
     fresh: false,
     rotten: false,
   });
+  const [certifiedFresh, setCertifiedFresh] = useState(false);
 
   useEffect(() => {
     setOriginalCategories(finalCategories);
@@ -96,28 +97,49 @@ export const CategoryProvider = ({
     }
 
     // Apply tomatometer filter
-    if (tomatometerFilter.fresh && tomatometerFilter.rotten && tomatometerFilter.certified) {
+    if (
+      tomatometerFilter.fresh &&
+      tomatometerFilter.rotten &&
+      tomatometerFilter.certified
+    ) {
     } else if (tomatometerFilter.certified && tomatometerFilter.fresh) {
       result = result.filter((category) => category.criticScore ?? 0 >= 60);
     } else if (tomatometerFilter.certified && tomatometerFilter.rotten) {
-      result = result.filter((category) => (category.criticScore ?? 0 >= 90) || (category.criticScore ?? 0 < 60));
+      result = result.filter(
+        (category) =>
+          (category.criticScore ?? 0 >= 90) || (category.criticScore ?? 0 < 60),
+      );
     } else if (tomatometerFilter.fresh && tomatometerFilter.rotten) {
       result = result.filter((category) => category.criticScore ?? 0 < 90);
-    }
-    else if (tomatometerFilter.certified) {
-      result = result.filter((category) => category.criticScore !== null &&
-      category.criticScore !== undefined && category.criticScore >= 90);
-      // console.log(result[0].criticScore >= 90)
-    }
-    else if (tomatometerFilter.fresh) {
-      result = result.filter((category) => category.criticScore !== null &&
-      category.criticScore !== undefined && category.criticScore >= 60);    
+    } else if (tomatometerFilter.certified) {
+      result = result.filter(
+        (category) =>
+          category.criticScore !== null &&
+          category.criticScore !== undefined &&
+          category.criticScore >= 90,
+      );
+    } else if (tomatometerFilter.fresh) {
+      result = result.filter(
+        (category) =>
+          category.criticScore !== null &&
+          category.criticScore !== undefined &&
+          category.criticScore >= 60,
+      );
     } else if (tomatometerFilter.rotten) {
       result = result.filter(
         (category) =>
           category.criticScore !== null &&
           category.criticScore !== undefined &&
           category.criticScore < 60,
+      );
+    }
+
+    if (certifiedFresh) {
+      result = result.filter(
+        (category) =>
+          category.criticScore !== null &&
+          category.criticScore !== undefined &&
+          category.criticScore >= 90,
       );
     }
 
@@ -146,12 +168,23 @@ export const CategoryProvider = ({
     }));
   };
 
+  const toggleCertifiedFresh = () => {
+    setCertifiedFresh((prev) => !prev);
+  };
+
   useEffect(() => {
     if (originalCategories) {
       applyFiltersAndSorts(originalCategories);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm, sortFilter, originalCategories, audScoreFilter, tomatometerFilter]);
+  }, [
+    searchTerm,
+    sortFilter,
+    originalCategories,
+    audScoreFilter,
+    tomatometerFilter,
+    certifiedFresh,
+  ]);
 
   return (
     <CategoryContext.Provider
@@ -161,6 +194,7 @@ export const CategoryProvider = ({
         sortCategories,
         toggleAudScore,
         toggleTomatometer,
+        toggleCertifiedFresh,
       }}
     >
       {children}
