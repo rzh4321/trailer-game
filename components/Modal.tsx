@@ -34,17 +34,12 @@ const Modal = ({
     };
     let timeoutId: number;
 
-    console.log('isOpen:', isOpen);
     if (isOpen) {
-      console.log('Setting animate to true');
-
       setAnimate(true); // Set visibility to true for animation
       timeoutId = window.setTimeout(() => {
         window.addEventListener("click", handleOutsideClick);
       }, 0);
     } else {
-      console.log('Setting animate to false');
-
       window.removeEventListener("click", handleOutsideClick);
       setAnimate(false);
     }
@@ -59,7 +54,6 @@ const Modal = ({
 
     // Additional effect to log changes to animate state
     useEffect(() => {
-      console.log('animate state changed:', animate);
     }, [animate]);
 
   if (!isOpen || !position) return null;

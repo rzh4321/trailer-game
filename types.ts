@@ -55,4 +55,6 @@ export type ModalState = {
 export type appliedFiltersType = {
   sort: string | null;
   audScore: { rotten: boolean; fresh: boolean };
+  tomatometer: { certified: boolean; rotten: boolean; fresh: boolean };
+
 };

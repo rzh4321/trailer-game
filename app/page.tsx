@@ -20,6 +20,8 @@ export default function Home() {
   const [modals, setModals] = useState<{ [key: string]: ModalState }>({
     sort: { isOpen: false, position: null },
     audScore: { isOpen: false, position: null },
+    tomatometer: { isOpen: false, position: null },
+
   });
   const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const [pageNumber, setPageNumber] = useState(1);
@@ -30,11 +32,14 @@ export default function Home() {
   const [appliedFilters, setAppliedFilters] = useState<appliedFiltersType>({
     sort: null,
     audScore: { rotten: false, fresh: false },
+    tomatometer: { certified: false, rotten: false, fresh: false },
+
   });
   const {
     filteredCategories: categories,
     sortCategories,
     toggleAudScore,
+    toggleTomatometer,
     filterCategories,
   } = useFilteredCategories();
   const searchParams = useSearchParams();
@@ -145,12 +150,20 @@ export default function Home() {
     const sortFilter = searchParams.get("sort");
     const audFresh = searchParams.get("audFresh");
     const audRotten = searchParams.get("audRotten");
+    const tomatometerCertified = searchParams.get("tomatometer-certified");
+    const tomatometerFresh = searchParams.get("tomatometer-fresh");
+    const tomatometerRotten = searchParams.get("tomatometer-rotten");
+
     const search = searchParams.get("search");
 
     if (sortFilter) sortCategories(sortFilter);
     if (search) filterCategories(search);
     if (audFresh === "true") toggleAudScore("fresh");
     if (audRotten === "true") toggleAudScore("rotten");
+    if (tomatometerCertified === "true") toggleTomatometer("certified");
+    if (tomatometerFresh === "true") toggleTomatometer("fresh");
+    if (tomatometerRotten === "true") toggleTomatometer("rotten");
+
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

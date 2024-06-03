@@ -87,6 +87,32 @@ export default function Filters({
           strokeWidth={3}
         />
       </Button>
+      <Button
+        ref={(el) => {
+          buttonRefs.current["tomatometer"] = el;
+        }}
+        onClick={() => openModal("tomatometer")}
+        variant={"outline"}
+        className={`${appliedFilters.tomatometer.certified || appliedFilters.tomatometer.fresh || appliedFilters.tomatometer.rotten ? "border-none bg-gray-200/95 hover:bg-gray-200/95 hover:text-gray-600" : "border-gray-400 hover:bg-transparent hover:text-gray-600 hover:border-black"} rounded-full font-bold text-gray-600 flex items-center gap-1`}
+      >
+        TOMATOMETER®{" "}
+        {appliedFilters.tomatometer.certified && appliedFilters.tomatometer.fresh && appliedFilters.tomatometer.rotten ? (
+          <span className=" rounded-md bg-black text-white px-1">3</span>
+        ) : 
+        (appliedFilters.tomatometer.certified && appliedFilters.tomatometer.fresh) || (appliedFilters.tomatometer.certified && appliedFilters.tomatometer.rotten) ||  (appliedFilters.tomatometer.fresh && appliedFilters.tomatometer.rotten)? (
+          <span className=" rounded-md bg-black text-white px-1">2</span>
+        ) :
+        appliedFilters.tomatometer.certified || appliedFilters.tomatometer.fresh || appliedFilters.tomatometer.rotten ? (
+          <span className=" rounded-md bg-black text-white px-1">1</span>
+        ) : (
+          ""
+        )}
+        <ChevronDown
+          className={`${appliedFilters.tomatometer.certified || appliedFilters.tomatometer.fresh || appliedFilters.tomatometer.rotten ? "ml-0" : "ml-1"}`}
+          width={13}
+          strokeWidth={3}
+        />
+      </Button>
     </div>
   );
 }

@@ -8,6 +8,8 @@ type CategoryContextType = {
   filterCategories: (searchTerm: string) => void;
   sortCategories: (filter: string) => void;
   toggleAudScore: (filter: "fresh" | "rotten") => void;
+  toggleTomatometer: (filter: "fresh" | "rotten" | "certified") => void;
+
 };
 
 // Create the context
@@ -30,6 +32,11 @@ export const CategoryProvider = ({
   >(finalCategories);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortFilter, setSortFilter] = useState("");
+  const [tomatometerFilter, setTomatometerFilter] = useState({
+    fresh: false,
+    rotten: false,
+    certified: false,
+  });
   const [audScoreFilter, setAudScoreFilter] = useState({
     fresh: false,
     rotten: false,
@@ -88,6 +95,32 @@ export const CategoryProvider = ({
       );
     }
 
+    // Apply tomatometer filter
+    if (tomatometerFilter.fresh && tomatometerFilter.rotten && tomatometerFilter.certified) {
+    } else if (tomatometerFilter.certified && tomatometerFilter.fresh) {
+      result = result.filter((category) => category.criticScore ?? 0 >= 60);
+    } else if (tomatometerFilter.certified && tomatometerFilter.rotten) {
+      result = result.filter((category) => (category.criticScore ?? 0 >= 90) || (category.criticScore ?? 0 < 60));
+    } else if (tomatometerFilter.fresh && tomatometerFilter.rotten) {
+      result = result.filter((category) => category.criticScore ?? 0 < 90);
+    }
+    else if (tomatometerFilter.certified) {
+      result = result.filter((category) => category.criticScore !== null &&
+      category.criticScore !== undefined && category.criticScore >= 90);
+      // console.log(result[0].criticScore >= 90)
+    }
+    else if (tomatometerFilter.fresh) {
+      result = result.filter((category) => category.criticScore !== null &&
+      category.criticScore !== undefined && category.criticScore >= 60);    
+    } else if (tomatometerFilter.rotten) {
+      result = result.filter(
+        (category) =>
+          category.criticScore !== null &&
+          category.criticScore !== undefined &&
+          category.criticScore < 60,
+      );
+    }
+
     setFilteredCategories(result);
   };
 
@@ -106,12 +139,19 @@ export const CategoryProvider = ({
     }));
   };
 
+  const toggleTomatometer = (filter: "fresh" | "rotten" | "certified") => {
+    setTomatometerFilter((prev) => ({
+      ...prev,
+      [filter]: !prev[filter],
+    }));
+  };
+
   useEffect(() => {
     if (originalCategories) {
       applyFiltersAndSorts(originalCategories);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm, sortFilter, originalCategories, audScoreFilter]);
+  }, [searchTerm, sortFilter, originalCategories, audScoreFilter, tomatometerFilter]);
 
   return (
     <CategoryContext.Provider
@@ -120,6 +160,7 @@ export const CategoryProvider = ({
         filterCategories,
         sortCategories,
         toggleAudScore,
+        toggleTomatometer,
       }}
     >
       {children}

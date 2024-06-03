@@ -39,9 +39,11 @@ const ContentCard = ({ categoryObject, cellRef }: ContentCardProps) => {
               height={20}
               width={20}
               src={
-                categoryObject.criticScore ?? 0 >= 90
+                categoryObject.criticScore !== null &&
+      categoryObject.criticScore !== undefined && categoryObject.criticScore >= 90
                   ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"
-                  : categoryObject.criticScore ?? 0 >= 60
+                  : categoryObject.criticScore !== null &&
+                  categoryObject.criticScore !== undefined && categoryObject.criticScore >= 60
                     ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-fresh.149b5e8adc3.svg"
                     : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-rotten.f1ef4f02ce3.svg"
               }
@@ -56,7 +58,8 @@ const ContentCard = ({ categoryObject, cellRef }: ContentCardProps) => {
               height={20}
               width={20}
               src={
-                categoryObject.audienceScore ?? 0 >= 60
+                categoryObject.audienceScore !== null &&
+      categoryObject.audienceScore !== undefined && categoryObject.audienceScore >= 60
                   ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-fresh.6c24d79faaf.svg"
                   : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-rotten.f419e4046b7.svg"
               }

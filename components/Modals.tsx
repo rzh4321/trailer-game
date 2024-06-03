@@ -13,6 +13,7 @@ import { updateUrlParams, removeUrlParam } from "@/lib/searchParams";
 const keyToTitle: { [key: string]: string } = {
   sort: "SORT",
   audScore: "AUDIENCE SCORE",
+  tomatometer: "TOMATOMETER®"
 };
 
 type ModalsProps = {
@@ -33,21 +34,25 @@ export default function Modals({
   setAppliedFilters,
 }: ModalsProps) {
   const searchParams = useSearchParams();
-  const { sortCategories, toggleAudScore } = useFilteredCategories();
-  // const [appliedFilters, setAppliedFilters] = useState<appliedFiltersType>({
-  //   sort: null,
-  //   audScore: { rotten: false, fresh: false },
-  // });
+  const { sortCategories, toggleAudScore, toggleTomatometer } = useFilteredCategories();
 
   // update the UI based on search params
   useEffect(() => {
     const sortFilter = searchParams.get("sort");
     const audFresh = searchParams.get("audFresh");
     const audRotten = searchParams.get("audRotten");
+    const tomatometerCertified = searchParams.get("tomatometer-certified");
+    const tomatometerFresh = searchParams.get("tomatometer-fresh");
+    const tomatometerRotten = searchParams.get("tomatometer-rotten");
     const newAppliedFilters = { ...appliedFilters };
     if (sortFilter) newAppliedFilters.sort = sortFilter;
     if (audFresh) newAppliedFilters.audScore.fresh = true;
     if (audRotten) newAppliedFilters.audScore.rotten = true;
+    if (tomatometerCertified) newAppliedFilters.tomatometer.certified = true;
+    if (tomatometerFresh) newAppliedFilters.tomatometer.fresh = true;
+    if (tomatometerRotten) newAppliedFilters.tomatometer.rotten = true;
+
+
     setAppliedFilters(newAppliedFilters);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -68,6 +73,19 @@ export default function Modals({
     const newAppliedFilters = {
       ...appliedFilters,
       audScore: newAudScoreFilter,
+    };
+    setAppliedFilters(newAppliedFilters);
+  };
+
+  const handleToggleTomatometer = (filter: "rotten" | "fresh" | "certified") => {
+    const oldTomatometerFilterVal = appliedFilters.tomatometer[filter];
+    const newTomatometerFilter = {
+      ...appliedFilters.tomatometer,
+      [filter]: !oldTomatometerFilterVal,
+    };
+    const newAppliedFilters = {
+      ...appliedFilters,
+      tomatometer: newTomatometerFilter,
     };
     setAppliedFilters(newAppliedFilters);
   };
@@ -263,6 +281,109 @@ export default function Modals({
                         if (appliedFilters.audScore.rotten)
                           removeUrlParam("audRotten");
                         else updateUrlParams({ audRotten: "true" });
+                      }}
+                    />
+                  </div>
+                </label>
+              </>
+            )}
+            {key === "tomatometer" && (
+              <>
+                <label htmlFor="certified">
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-4 items-start">
+                      <Image
+                        alt="certified"
+                        height={30}
+                        width={30}
+                        src={
+                          "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"
+                        }
+                      />
+                      <div className="flex flex-col mt-1">
+                        <span>CERTIFIED FRESH</span>
+                        <span className="text-[0.875rem] font-normal">
+                        A special distinction awarded to <br></br> the best reviewed movies.
+                        </span>
+                      </div>
+                    </div>
+                    <Checkbox
+                      id="certified"
+                      checked={appliedFilters["tomatometer"]?.certified}
+                      className="h-[26px] w-[26px] border-[0.5px]"
+                      onClick={() => {
+                        toggleTomatometer("certified");
+                        handleToggleTomatometer("certified");
+                        if (appliedFilters.tomatometer.certified)
+                          removeUrlParam("tomatometer-certified");
+                        else updateUrlParams({ "tomatometer-certified": "true" });
+                      }}
+                    />
+                  </div>
+                </label>
+                <Separator />
+                <label htmlFor="tomatometer-fresh">
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-4 items-start">
+                      <Image
+                        alt="tomatometer-fresh"
+                        height={30}
+                        width={30}
+                        src={
+                          "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-fresh.149b5e8adc3.svg"
+                        }
+                      />
+                      <div className="flex flex-col mt-1">
+                        <span>FRESH</span>
+                        <span className="text-[0.875rem] font-normal">
+                        At least 60% of reviews for a <br></br>movie are positive.
+                        </span>
+                      </div>
+                    </div>
+                    <Checkbox
+                      id="tomatometer-fresh"
+                      checked={appliedFilters["tomatometer"]?.fresh}
+                      className="h-[26px] w-[26px] border-[0.5px]"
+                      onClick={() => {
+                        toggleTomatometer("fresh");
+                        handleToggleTomatometer("fresh");
+                        if (appliedFilters.tomatometer.fresh)
+                          removeUrlParam("tomatometer-fresh");
+                        else updateUrlParams({ "tomatometer-fresh": "true" });
+                      }}
+                    />
+                  </div>
+                </label>
+                <Separator />
+                <label htmlFor="tomatometer-rotten">
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-4 items-start">
+                      <Image
+                        alt="tomatometer-rotten"
+                        height={30}
+                        width={30}
+                        src={
+                          "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-rotten.f1ef4f02ce3.svg"
+                        }
+                      />
+                      <div className="flex flex-col mt-1">
+                        <span>ROTTEN</span>
+                        <span className="text-[0.875rem] font-normal">
+                          Less than 60% of reviews for a <br></br> movie
+                          are positive.
+                        </span>
+                      </div>
+                    </div>
+                    <Checkbox
+                      id="tomatometer-rotten"
+                      checked={appliedFilters["tomatometer"]?.rotten}
+                      className="h-[26px] w-[26px] border-[0.5px]"
+                      onClick={() => {
+                        toggleTomatometer("rotten");
+                        handleToggleTomatometer("rotten");
+                        if (appliedFilters.tomatometer.rotten)
+                          removeUrlParam("tomatometer-rotten");
+                        else updateUrlParams({ "tomatometer-rotten": "true" });
                       }}
                     />
                   </div>
