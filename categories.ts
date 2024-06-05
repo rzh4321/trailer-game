@@ -10,28 +10,28 @@ const categoryImagesAndUrls = [
     name: "Highest Critic",
     url: "/play/highest-critic",
     image:
-      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+      "https://i.ytimg.com/vi/T7l3gyu9ofs/maxresdefault.jpg",
   },
   {
     id: 2,
     name: "Lowest Critic",
     url: "/play/lowest-critic",
     image:
-      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+      "https://static1.srcdn.com/wordpress/wp-content/uploads/2022/07/The-10-Lowest-Rated-Movies-On-IMDb-Featured-Image.jpg",
   },
   {
     id: 3,
     name: "Highest Audience",
     url: "/play/highest-audience",
     image:
-      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+      "https://media.istockphoto.com/id/1478374885/photo/joyful-family-watching-movie-in-cinema.jpg?s=612x612&w=0&k=20&c=U0Qp-c2vCTUPG51ZOD2H7KcrByyBKow3r9wSR2QMFZU=",
   },
   {
     id: 4,
     name: "Lowest Audience",
     url: "/play/lowest-audience",
     image:
-      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+      "https://www.shutterstock.com/image-photo/group-boring-people-watching-movie-600nw-129623003.jpg",
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const categoryImagesAndUrls = [
     name: "G",
     url: "/play/g",
     image:
-      "https://www.rd.com/wp-content/uploads/2021/11/family-movies-opener-F.jpg?fit=700%2C467",
+      "https://live.screendollars.com/wp-content/uploads/2021/10/G-Rated-Movies-.jpeg",
   },
   {
     id: 7,

@@ -45,7 +45,7 @@ export type userPlayType = {
   time: Date;
 };
 
-export type linkCategoryType = "all" | "action" | "adventure";
+export type linkCategoryType = "all" | "action" | "adventure" | "highest-critic" | "lowest-critic" | "highest-audience" | "lowest-audience" | "g";
 
 export type ModalState = {
   isOpen: boolean;

@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import * as background from "@/background";
 import { v4 as uuidv4 } from "uuid";
 
+
 import {
   Select,
   SelectContent,
@@ -45,6 +46,11 @@ const categoryToBackgroundArr: { [key in linkCategoryType]: string[] } = {
   all: background.allPosters,
   action: background.actionPosters,
   adventure: background.adventurePosters,
+  "highest-critic": background.highestCriticPosters,
+  "lowest-critic": background.lowestCriticPosters,
+  "highest-audience": background.highestAudiencePosters,
+  "lowest-audience": background.lowestAudiencePosters,
+  g: background.GPosters,
 };
 
 const formSchema = z.object({
@@ -111,7 +117,6 @@ export default function Page({
           />
         ))}
       </div>
-
       <div className="relative z-10 flex flex-col items-center justify-center gap-10">
         <TopScoresTable category={params.category} numTrailers={numTrailers} />
         <Form {...form}>

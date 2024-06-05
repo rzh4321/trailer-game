@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 import { userPlayType } from "@/types";
 import Image from "next/image";
 import type { linkCategoryType } from "@/types";
+import { usePathname } from "next/navigation";
+import categoryImagesAndUrls from "@/categories";
 
 import {
   Table,
@@ -51,6 +53,9 @@ export default function TopScoresTable({
 }: TopScoresTableProps) {
   const [topScores, setTopScores] = useState<userPlayType[]>([]);
   const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
+  const name = categoryImagesAndUrls.find(obj => obj.url === pathname)?.name;
+
 
   useEffect(() => {
     async function getScores() {
@@ -73,9 +78,10 @@ export default function TopScoresTable({
   return (
     <div className="flex flex-col mb-2 rounded-lg border bg-card text-card-foreground shadow-sm">
       <div className="relative flex items-center justify-center">
-        <TableCaption className="text-2xl font-semibold leading-none tracking-tight text-black">
+        <TableCaption className="text-2xl font-semibold leading-none text-black">
           <BarChart className="inline mr-1" />
-          {`Top Scores for ${numTrailers} Trailer${numTrailers > 1 ? "s" : ""}`}
+          <span>{`Top Scores for ${name}`}</span>
+          <br></br><span className="text-xl tracking-normal">{`(${numTrailers} Trailer${numTrailers > 1 ? "s" : ""})`}</span>
         </TableCaption>
       </div>
       <Table>

@@ -50,3 +50,94 @@ export const adventurePosters = [
   "https://i.ebayimg.com/images/g/6FoAAOSwLEhiT4~O/s-l1600.jpg", // willy wonka
   "https://i.etsystatic.com/24044411/r/il/20bc33/2827055463/il_570xN.2827055463_js57.jpg", // lion king
 ];
+
+export const highestCriticPosters = [
+  "https://m.media-amazon.com/images/I/81MJv+WKb9L._AC_UF894,1000_QL80_.jpg", // fury road
+  "https://i.ebayimg.com/images/g/6-gAAOSw58tjH2Ib/s-l1600.jpg", // get out
+  "https://m.media-amazon.com/images/I/91KArYP03YL._AC_SL1500_.jpg", // parasite
+  "https://i.etsystatic.com/18242346/r/il/7fb6f1/3898744406/il_fullxfull.3898744406_6wp7.jpg", // EEAAO
+  "https://m.media-amazon.com/images/I/71PfZFFz9yL._AC_UF894,1000_QL80_.jpg", // matrix
+  "https://m.media-amazon.com/images/I/51cDXGXoGqL._AC_UF894,1000_QL80_.jpg", // mulholland dr
+  "https://cdn.europosters.eu/image/1300/art-photo/the-dark-knight-trilogy-a-fire-will-rise-i184446.jpg", // dark knight
+  "https://i.etsystatic.com/18242346/r/il/473f15/2868167454/il_fullxfull.2868167454_7k8e.jpg", // portrait of a lady
+  "https://filmartgallery.com/cdn/shop/files/In-the-Mood-For-Love-Vintage-Movie-Poster-Original-Japanese-1-Panel-20x29-8178_5000x.jpg?v=1699995745", // in the mood for love
+  "https://m.media-amazon.com/images/I/61ON14PVzoL._AC_UF894,1000_QL80_.jpg", // spirited away
+  "https://i.ebayimg.com/images/g/sZ4AAOSwhOdXppa2/s-l1200.jpg", // pans labyrinth
+  "https://i.ebayimg.com/images/g/uXgAAOSw0eZiglWs/s-l1600.jpg", // the social network
+  "https://m.media-amazon.com/images/I/51vMJ9L3ivL._AC_UF894,1000_QL80_.jpg", // no country for old men
+  "https://m.media-amazon.com/images/I/61DCM7E06HL._AC_UF894,1000_QL80_.jpg", // there will be blood
+  "https://m.media-amazon.com/images/I/81iZyjuq7pL.jpg", // moonlight
+];
+
+
+export const lowestCriticPosters = [
+  "https://m.media-amazon.com/images/I/51rkiccJOOL._AC_UF894,1000_QL80_.jpg", //ballistic
+  "https://m.media-amazon.com/images/I/41ZfyCR-6VL._AC_UF894,1000_QL80_.jpg", //one missed call
+  "https://lh6.googleusercontent.com/proxy/mOOQn5DLCCAdyiyHAw1flKJBBNvn0tDhGF3UOtrHYnIAzY-TVxCZNKWdaDqn9npePtAI-989ovedGUB5DAdTIBNeQVrA4QoW", // left behind
+  "https://m.media-amazon.com/images/I/51eppqdqOtL._AC_UF894,1000_QL80_.jpg", // a thousand words
+  "https://i.ebayimg.com/images/g/9PYAAOSwF5NgWwNV/s-l1200.webp", // gotti
+  "https://i.ebayimg.com/images/g/wB0AAOSwhilaa3Bw/s-l1600.jpg", // pinocchio
+  "https://m.media-amazon.com/images/I/51DjGK5D8gL._AC_UF894,1000_QL80_.jpg", // superbabies
+  "https://m.media-amazon.com/images/M/MV5BMTc4NjAwNDY2M15BMl5BanBnXkFtZTcwOTQ5NzYyMQ@@._V1_FMjpg_UX1000_.jpg", // gold diggers
+  "https://m.media-amazon.com/images/M/MV5BOTAzMjhiOWQtZDkzMy00NmNiLWE1ZTEtYTJmNDIzMzhmZGQyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg", // the last days
+  "https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_.jpg", // jaws 2
+  "https://m.media-amazon.com/images/M/MV5BMTY4NzMxMjUwOF5BMl5BanBnXkFtZTgwMDk1ODMxNzE@._V1_.jpg", // the ridiculous
+  "https://m.media-amazon.com/images/M/MV5BMTgyODU5NTYzMF5BMl5BanBnXkFtZTgwMjA2OTcyNTM@._V1_FMjpg_UX1000_.jpg", // dark crimes
+  "https://m.media-amazon.com/images/M/MV5BYzk4MzRkMmUtZjIzYi00YzBhLWIyMjctMWM4ZWMwMWE0OTk4XkEyXkFqcGdeQXVyMzQwMTY2Nzk@._V1_.jpg", // stratton
+  "https://image.tmdb.org/t/p/original/adeAhSDAs1tR27NNSLhZ1JNbhHB.jpg", // london fields
+  "https://m.media-amazon.com/images/M/MV5BYjE4OTE3MTItYWI4Yy00NzdjLThhYzgtYTNlNzQ1YTQ2MjYyXkEyXkFqcGdeQXVyNDgyODgxNjE@._V1_FMjpg_UX1000_.jpg", // the nutcracker
+];
+
+export const highestAudiencePosters = [
+  "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg", // LOTR
+  "https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_.jpg", // lion king
+  "https://m.media-amazon.com/images/I/514ZIU8EnGL.jpg", // forrest gump
+  "https://www.originalfilmart.com/cdn/shop/products/titanic_1997_original_film_art_713cc08c-5fe2-49d1-bd32-51a1d5890d43_5000x.jpg?v=1675533926", // titanic
+  "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg", // black panther
+  "https://m.media-amazon.com/images/M/MV5BMTY5OTU0OTc2NV5BMl5BanBnXkFtZTcwMzU4MDcyMQ@@._V1_.jpg", // incredibles
+  "https://i.ebayimg.com/images/g/z88AAOSw-ONkxVQL/s-l1200.jpg", // avengers
+  "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg", // schindlers list
+  "https://m.media-amazon.com/images/I/51EWsIJiF4L._AC_UF894,1000_QL80_.jpg", // finding nemo
+  "https://i.ebayimg.com/images/g/m4YAAOSwDv9lOFN3/s-l1200.webp", // star wars
+  "https://i.ebayimg.com/images/g/seYAAOSwF99gVgJS/s-l400.jpg", // the princess bride
+  "https://m.media-amazon.com/images/I/51iRQwvzHSL._AC_UF894,1000_QL80_.jpg", // monsters inc
+  "https://m.media-amazon.com/images/M/MV5BMjE0YjUzNDUtMjc5OS00MTU3LTgxMmUtODhkOThkMzdjNWI4XkEyXkFqcGdeQXVyMTA3MzQ4MTc0._V1_.jpg", // harry potter
+  "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg", // terminator 2
+  "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_.jpg", // frozen
+];
+
+export const lowestAudiencePosters = [
+  "https://m.media-amazon.com/images/M/MV5BNzk5NzM3MDM3OF5BMl5BanBnXkFtZTgwODczNjkxODE@._V1_.jpg", // 400 days
+  "https://m.media-amazon.com/images/I/51dLRMevOqL._AC_UF894,1000_QL80_.jpg", // 5 card
+  "https://m.media-amazon.com/images/M/MV5BMTIyODAwOTI3NV5BMl5BanBnXkFtZTcwOTAzMDgyMQ@@._V1_FMjpg_UX1000_.jpg", // artworks
+  "https://i.etsystatic.com/6430592/r/il/689117/725366053/il_1080xN.725366053_3nfl.jpg", // corporate affairs
+  "https://m.media-amazon.com/images/M/MV5BMTQ0Mjc5OTc4OV5BMl5BanBnXkFtZTcwMDQ1NTUyMQ@@._V1_FMjpg_UX1000_.jpg", // hitters
+  "https://m.media-amazon.com/images/M/MV5BMTU5NzQyMzM4Nl5BMl5BanBnXkFtZTcwNDg0NTA1MQ@@._V1_.jpg", // if i didnt care
+  "https://lh6.googleusercontent.com/proxy/mOOQn5DLCCAdyiyHAw1flKJBBNvn0tDhGF3UOtrHYnIAzY-TVxCZNKWdaDqn9npePtAI-989ovedGUB5DAdTIBNeQVrA4QoW", // left behind
+  "https://media.themoviedb.org/t/p/w500/kyg8ZjOf2gerMHZQYZhEiKmHmbp.jpg", // lured innocence
+  "https://m.media-amazon.com/images/M/MV5BMzU0NjExODc0OV5BMl5BanBnXkFtZTYwNjA2NTU3._V1_.jpg", // moscow heat
+  "https://m.media-amazon.com/images/M/MV5BMzUzNTA0ODk5N15BMl5BanBnXkFtZTgwMTg1NzAwNzE@._V1_.jpg", // mummy maniac
+  "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p4784_v_v8_aa.jpg", // night creature
+  "https://m.media-amazon.com/images/I/81wSf3dXRwL._AC_UF894,1000_QL80_.jpg", // once upon
+  "https://m.media-amazon.com/images/I/91L97Xyz52L._AC_UF894,1000_QL80_.jpg", // out in fifty
+  "https://m.media-amazon.com/images/M/MV5BMTgyNDk4NTI3M15BMl5BanBnXkFtZTYwOTk2OTA5._V1_.jpg", // papertrail
+  "https://m.media-amazon.com/images/I/510r05R8RaL._AC_UF894,1000_QL80_.jpg", // peace love
+];
+
+export const GPosters = [
+  "https://i.ebayimg.com/images/g/RkkAAOSwsrBcYrX7/s-l1600.jpg", // wizard of oz
+  "https://i.ebayimg.com/images/g/IogAAOSwd49i-5n8/s-l1200.jpg", // lion king
+  "https://i.ebayimg.com/images/g/3-8AAOSw499kXAR5/s-l1200.jpg", // cars
+  "https://i.ebayimg.com/images/g/qQsAAOSw--1bOR8h/s-l1600.jpg", // ratatouille
+  "https://m.media-amazon.com/images/I/5141rBj+dlL._AC_.jpg", // finding nemo
+  "https://m.media-amazon.com/images/I/81tIvsc9LFL._AC_UF894,1000_QL80_.jpg", // willy wonka
+  "https://m.media-amazon.com/images/I/71iSIVGZQUL._AC_UF1000,1000_QL80_.jpg", // toy story
+  "https://m.media-amazon.com/images/I/51iRQwvzHSL._AC_UF894,1000_QL80_.jpg", // monsters inc
+  "https://i.ebayimg.com/images/g/mgAAAOSw4JBjX69E/s-l1200.webp", // walle
+  "https://i.ebayimg.com/images/g/RuwAAMXQrhdTWox-/s-l1200.jpg", // aladdin
+  "https://filmartgallery.com/cdn/shop/products/A-Bugs-Life-Vintage-Movie-Poster-Original-1-Sheet-27x41_5000x.jpg?v=1643835716", // bugs life
+  "https://m.media-amazon.com/images/I/71uai8DaElL.jpg", // beauty and the beast
+  "https://m.media-amazon.com/images/I/71RjPbLG9VL._AC_UF894,1000_QL80_.jpg", // little mermaid
+  "https://filmartgallery.com/cdn/shop/products/Ponyo-Vintage-Movie-Poster-Original-1-Sheet-27x41_1305x.jpg?v=1666921864", // ponyo
+  "https://m.media-amazon.com/images/I/51eaSz4WoFL._AC_UF1000,1000_QL80_.jpg", // charlottes web
+];

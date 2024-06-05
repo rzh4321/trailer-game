@@ -8,8 +8,6 @@ import type {
 } from "@/types";
 import categoryImagesAndUrls from "@/categories";
 
-import { categories } from "@/schema";
-
 export default function useCategories() {
   const [dbCategories, setDbCategories] = useState<categoryType[]>([]);
   const [averages, setAverages] = useState({});
