@@ -23,7 +23,7 @@ export default async function RootLayout({
     <html lang="en">
       {/* <Provider> */}
       <body className="font-primary flex flex-col h-screen justify-between items-center">
-        <div className="bg-inherit w-full">
+        <div className="bg-inherit w-full h-full overflow-x-hidden">
           <CategoryProvider>
             <Suspense>
               <NavBar />
