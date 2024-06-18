@@ -141,3 +141,21 @@ export const GPosters = [
   "https://filmartgallery.com/cdn/shop/products/Ponyo-Vintage-Movie-Poster-Original-1-Sheet-27x41_1305x.jpg?v=1666921864", // ponyo
   "https://m.media-amazon.com/images/I/51eaSz4WoFL._AC_UF1000,1000_QL80_.jpg", // charlottes web
 ];
+
+export const controversialPosters = [
+  "https://i.redd.it/xzlz0ryntjq91.jpg", // skinamarink
+  "https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2024/01/Teaser-Poster-IN-A-VIOLENT-NATURE.jpeg?resize=691%2C1024&ssl=1", // in a violent nature
+  "https://www.movieposters.com/cdn/shop/files/the-zone-of-interest_eaavozy0_600x.jpg?v=1699472458", // zone if interest
+  "https://m.media-amazon.com/images/I/51L2L4MqHLL._UF894,1000_QL80_.jpg", // malignant
+  "https://m.media-amazon.com/images/I/71l6fadsRMS._AC_UF894,1000_QL80_.jpg", // arrival
+  "https://m.media-amazon.com/images/I/71oHtaIExML._AC_UF894,1000_QL80_.jpg", // justice league
+  "https://m.media-amazon.com/images/I/81g8l9hN46L.jpg", // suicide squad
+  "https://m.media-amazon.com/images/I/71TUj3olRXL._AC_UF894,1000_QL80_.jpg", // clockwork orange
+  "https://encyclopediavirginia.org/wp-content/uploads/2020/11/578hpr_af8a556efff9267.jpg", // the birth of a nation
+  "https://i.ebayimg.com/images/g/9IAAAOSwVH1fDvTt/s-l1200.webp", // the exorcist
+  "https://m.media-amazon.com/images/I/71zKDDYG-ZL._AC_UY1000_.jpg", // the passion of the christ
+  "https://m.media-amazon.com/images/I/61lT5yobPbL._AC_UF894,1000_QL80_.jpg", // natural born killers
+  "https://m.media-amazon.com/images/I/81R2FrgnfZL._AC_UF894,1000_QL80_.jpg", // the interview
+  "https://m.media-amazon.com/images/I/61ciRvnBEML._AC_UF894,1000_QL80_.jpg", // texas chainsaw
+  "https://cdn.kobo.com/book-images/58490ff5-338b-4f2f-93d9-9eeedf21f8f1/353/569/90/False/alien-covenant-the-official-movie-novelization.jpg", // alient covenant
+];

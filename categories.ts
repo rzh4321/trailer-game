@@ -38,7 +38,7 @@ const categoryImagesAndUrls = [
     name: "Controversial",
     url: "/play/controversial",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://smartcdn.gprod.postmedia.digital/nationalpost/wp-content/uploads/2023/08/Barbie-brawl-1-2.jpg",
   },
   {
     id: 6,
