@@ -181,8 +181,8 @@ export default function GameOver({
                   ? "text-green-500"
                   : criticScore >= 80
                     ? "text-yellow-600/90"
-                    : "text-red-700"}`
-              }
+                    : "text-red-700"
+              }`}
             >
               {criticScore}%.
             </span>
@@ -205,8 +205,8 @@ export default function GameOver({
                   ? "text-green-500"
                   : audienceScore >= 80
                     ? "text-yellow-600/90"
-                    : "text-red-700"}`
-              }
+                    : "text-red-700"
+              }`}
             >
               {audienceScore}%.
             </span>
@@ -230,8 +230,8 @@ export default function GameOver({
                 ? "text-green-500"
                 : finalScore >= 80
                   ? "text-yellow-600/90"
-                  : "text-red-700"}`
-            }
+                  : "text-red-700"
+            }`}
           >
             {finalScore}%.
           </span>
@@ -287,8 +287,8 @@ export default function GameOver({
                   ? "text-green-500"
                   : +movies[movieInd].critic_score >= 80
                     ? "text-yellow-600/90"
-                    : "text-red-700"}`
-              }
+                    : "text-red-700"
+              }`}
             >
               {movies[movieInd].critic_score}%.
             </span>
@@ -314,8 +314,8 @@ export default function GameOver({
                   ? "text-green-500"
                   : +guesses[movieInd].criticGuess >= 80
                     ? "text-yellow-600/90"
-                    : "text-red-700"}`
-              }
+                    : "text-red-700"
+              }`}
             >
               {guesses[movieInd].criticGuess}%.
             </span>
@@ -340,8 +340,8 @@ export default function GameOver({
                   ? "text-green-500"
                   : +movies[movieInd].audience_score >= 60
                     ? "text-yellow-600/90"
-                    : "text-red-700"}`
-              }
+                    : "text-red-700"
+              }`}
             >
               {movies[movieInd].audience_score}%.
             </span>
@@ -365,8 +365,8 @@ export default function GameOver({
                   ? "text-green-500"
                   : +guesses[movieInd].criticGuess >= 60
                     ? "text-yellow-600/90"
-                    : "text-red-700"}`
-              }
+                    : "text-red-700"
+              }`}
             >
               {guesses[movieInd].audienceGuess}%.
             </span>
@@ -378,7 +378,7 @@ export default function GameOver({
             <Link href={"/"}>Back to Menu</Link>
           </Button>
           <Button
-            variant={'spotify'}
+            variant={"spotify"}
             onClick={() => {
               location.reload();
             }}

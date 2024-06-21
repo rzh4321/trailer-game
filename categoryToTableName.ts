@@ -1,5 +1,7 @@
+import type { CategoryToTableName } from "./types";
+
 // category was part of the link
-const categoryToTableName = {
+const categoryToTableName: CategoryToTableName = {
   all: "All",
   "highest-critic": "Highest_critic",
   "lowest-critic": "Lowest_critic",

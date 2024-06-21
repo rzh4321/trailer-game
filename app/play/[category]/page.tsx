@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 import * as background from "@/background";
 import { v4 as uuidv4 } from "uuid";
 
-
 import {
   Select,
   SelectContent,
@@ -52,6 +51,7 @@ const categoryToBackgroundArr: { [key in linkCategoryType]: string[] } = {
   "lowest-audience": background.lowestAudiencePosters,
   g: background.GPosters,
   controversial: background.controversialPosters,
+  pg: background.PGPosters,
 };
 
 const formSchema = z.object({

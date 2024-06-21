@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { categoryWithImageAndUrlType } from "@/types";
-import { useEffect, useRef, useCallback } from "react";
 
 type ContentCardProps = {
   categoryObject: categoryWithImageAndUrlType;

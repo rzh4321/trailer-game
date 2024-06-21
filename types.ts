@@ -45,7 +45,17 @@ export type userPlayType = {
   time: Date;
 };
 
-export type linkCategoryType = "all" | "action" | "adventure" | "highest-critic" | "lowest-critic" | "highest-audience" | "lowest-audience" | "g" | "controversial";
+export type linkCategoryType =
+  | "all"
+  | "action"
+  | "adventure"
+  | "highest-critic"
+  | "lowest-critic"
+  | "highest-audience"
+  | "lowest-audience"
+  | "g"
+  | "controversial"
+  | "pg";
 
 export type ModalState = {
   isOpen: boolean;
@@ -57,4 +67,27 @@ export type appliedFiltersType = {
   audScore: { rotten: boolean; fresh: boolean };
   tomatometer: { certified: boolean; rotten: boolean; fresh: boolean };
   certifiedFresh: boolean;
+};
+
+export type CategoryToTableName = {
+  all: string;
+  "highest-critic": string;
+  "lowest-critic": string;
+  "highest-audience": string;
+  "lowest-audience": string;
+  controversial: string;
+  g: string;
+  pg: string;
+  "pg-13": string;
+  r: string;
+  "nc-17": string;
+  action: string;
+  adventure: string;
+  animation: string;
+  anime: string;
+  biography: string;
+  comedy: string;
+  crime: string;
+  documentary: string;
+  drama: string;
 };

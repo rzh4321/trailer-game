@@ -69,7 +69,6 @@ export const highestCriticPosters = [
   "https://m.media-amazon.com/images/I/81iZyjuq7pL.jpg", // moonlight
 ];
 
-
 export const lowestCriticPosters = [
   "https://m.media-amazon.com/images/I/51rkiccJOOL._AC_UF894,1000_QL80_.jpg", //ballistic
   "https://m.media-amazon.com/images/I/41ZfyCR-6VL._AC_UF894,1000_QL80_.jpg", //one missed call
@@ -158,4 +157,22 @@ export const controversialPosters = [
   "https://m.media-amazon.com/images/I/81R2FrgnfZL._AC_UF894,1000_QL80_.jpg", // the interview
   "https://m.media-amazon.com/images/I/61ciRvnBEML._AC_UF894,1000_QL80_.jpg", // texas chainsaw
   "https://cdn.kobo.com/book-images/58490ff5-338b-4f2f-93d9-9eeedf21f8f1/353/569/90/False/alien-covenant-the-official-movie-novelization.jpg", // alient covenant
+];
+
+export const PGPosters = [
+  "https://m.media-amazon.com/images/I/51HO47A1vhL._AC_UF894,1000_QL80_.jpg", // home alone 3
+  "https://m.media-amazon.com/images/M/MV5BZTk2ZmUwYmEtNTcwZS00YmMyLWFkYjMtNTRmZDA3YWExMjc2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg", // jumanji
+  "https://i.ebayimg.com/images/g/hMUAAOSw7EFfZYTu/s-l1200.jpg", // harry potter
+  "https://m.media-amazon.com/images/I/71zCHfqE4IL._AC_UF894,1000_QL80_.jpg", // night at the museum
+  "https://m.media-amazon.com/images/I/51-8W-sXYYL._AC_UF894,1000_QL80_.jpg", // peter pan
+  "https://i.ebayimg.com/images/g/n1EAAOSw~1xg1RHt/s-l1200.webp", // spy kids
+  "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpgg", // spirited away
+  "https://m.media-amazon.com/images/I/51S092xuYYS._AC_UF894,1000_QL80_.jpg", // shrek 2
+  "https://i.ebayimg.com/images/g/ZOMAAOSw9N1Vi7Sd/s-l1600.jpg", // the incredibles
+  "https://m.media-amazon.com/images/I/71MRrvu3zPL._AC_UF894,1000_QL80_.jpg", // up
+  "https://m.media-amazon.com/images/I/51INCw8N2yL.jpg", // how the grinch
+  "https://m.media-amazon.com/images/I/81UOBSDQh0L._AC_UF894,1000_QL80_.jpg", // raiders of the lost ark
+  "https://m.media-amazon.com/images/I/51tSGxrscEL._AC_UF894,1000_QL80_.jpg", // enchanted
+  "https://m.media-amazon.com/images/I/6150z9keG7L._AC_UF894,1000_QL80_.jpg", // bolt
+  "https://m.media-amazon.com/images/I/51wYoXzxezL._AC_UF894,1000_QL80_.jpg", // alice in wonderland
 ];

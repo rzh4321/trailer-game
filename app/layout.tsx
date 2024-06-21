@@ -4,8 +4,7 @@ import "@/app/globals.css";
 import NavBar from "@/components/NavBar";
 import { CategoryProvider } from "@/hooks/CategoryContext";
 import { Suspense } from "react";
-import { Analytics } from '@vercel/analytics/react';
-
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Trailermeter",
@@ -29,7 +28,6 @@ export default async function RootLayout({
               <NavBar />
               <div className="p-5 relative">{children}</div>
               <Analytics />
-
             </Suspense>
           </CategoryProvider>
         </div>

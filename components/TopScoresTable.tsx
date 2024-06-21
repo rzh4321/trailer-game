@@ -4,9 +4,10 @@ import { BarChart, Loader } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { userPlayType } from "@/types";
 import Image from "next/image";
-import type { linkCategoryType } from "@/types";
+import type { linkCategoryType, CategoryToTableName } from "@/types";
 import { usePathname } from "next/navigation";
 import categoryImagesAndUrls from "@/categories";
+import getAverageScore from "@/actions/getAverageScore";
 
 import {
   Table,
@@ -54,11 +55,18 @@ export default function TopScoresTable({
   const [topScores, setTopScores] = useState<userPlayType[]>([]);
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
-  const name = categoryImagesAndUrls.find(obj => obj.url === pathname)?.name;
-
+  const name = categoryImagesAndUrls.find((obj) => obj.url === pathname)?.name;
+  const [avgScores, setAvgScores] = useState<{
+    avgCritic: number | null;
+    avgAudience: number | null;
+  }>({ avgCritic: null, avgAudience: null });
 
   useEffect(() => {
     async function getScores() {
+      const { avgAudience, avgCritic } = await getAverageScore(
+        pathname.replace("/play/", "") as keyof CategoryToTableName,
+      );
+      setAvgScores({ avgCritic, avgAudience });
       const data = await getTopScores(category, numTrailers);
       if (data) {
         setTopScores(data);
@@ -66,7 +74,7 @@ export default function TopScoresTable({
       setLoading(false);
     }
     getScores();
-  }, [category, numTrailers]);
+  }, [category, numTrailers, pathname]);
 
   if (loading)
     return (
@@ -78,10 +86,49 @@ export default function TopScoresTable({
   return (
     <div className="flex flex-col mb-2 rounded-lg border bg-card text-card-foreground shadow-sm">
       <div className="relative flex items-center justify-center">
-        <TableCaption className="text-2xl font-semibold leading-none text-black">
-          <BarChart className="inline mr-1" />
-          <span>{`Top Scores for ${name}`}</span>
-          <br></br><span className="text-xl tracking-normal">{`(${numTrailers} Trailer${numTrailers > 1 ? "s" : ""})`}</span>
+        <TableCaption className="text-2xl font-semibold flex flex-col gap-2 items-center leading-none text-black">
+          <span>
+            <BarChart className="inline mr-1" />
+            <span>{`Top Scores for ${name}`}</span>
+          </span>
+          <div className="flex gap-5 text-sm">
+            <div className="flex items-center">
+              <Image
+                className="inline mr-1"
+                alt="critic"
+                height={15}
+                width={15}
+                src={
+                  avgScores.avgCritic !== null &&
+                  avgScores.avgCritic !== undefined &&
+                  avgScores.avgCritic >= 90
+                    ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"
+                    : avgScores.avgCritic !== null &&
+                        avgScores.avgCritic !== undefined &&
+                        avgScores.avgCritic >= 60
+                      ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-fresh.149b5e8adc3.svg"
+                      : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-rotten.f1ef4f02ce3.svg"
+                }
+              />
+              <span>{`${avgScores.avgCritic}%`}</span>
+            </div>
+            <div className="flex items-center">
+              <Image
+                className="inline mr-1"
+                alt="critic"
+                height={15}
+                width={15}
+                src={
+                  avgScores.avgCritic !== null &&
+                  avgScores.avgCritic !== undefined &&
+                  avgScores.avgCritic >= 60
+                    ? "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-fresh.6c24d79faaf.svg"
+                    : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-rotten.f419e4046b7.svg"
+                }
+              />
+              <span>{`${avgScores.avgAudience}%`}</span>
+            </div>
+          </div>
         </TableCaption>
       </div>
       <Table>
@@ -99,17 +146,17 @@ export default function TopScoresTable({
           {topScores.length > 0 ? (
             topScores.map((entry, ind) => (
               <TableRow key={uuidv4()}>
-                <TableCell className="text-xs">{ind + 1}</TableCell>
-                <TableCell className="text-xs">{entry.username}</TableCell>
-                <TableCell className="text-xs">
+                <TableCell className="text-sm">{ind + 1}</TableCell>
+                <TableCell className="text-sm">{entry.username}</TableCell>
+                <TableCell className="text-sm">
                   {entry.audienceScore}%
                 </TableCell>
-                <TableCell className="text-xs">{entry.criticScore}%</TableCell>
-                <TableCell className="text-xs">
+                <TableCell className="text-sm">{entry.criticScore}%</TableCell>
+                <TableCell className="text-sm">
                   <Image
                     alt="final"
-                    height={20}
-                    width={20}
+                    height={15}
+                    width={15}
                     className="relative bottom-[2px] mr-1 hidden sm:inline"
                     src={
                       entry.criticScore >= 90
@@ -121,14 +168,14 @@ export default function TopScoresTable({
                   />
                   {entry.finalScore}%
                 </TableCell>
-                <TableCell className="text-xs">
+                <TableCell className="text-sm">
                   {formatDateString(entry.time.toDateString())}
                 </TableCell>
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell className="text-xs" colSpan={4}>
+              <TableCell className="text-sm" colSpan={4}>
                 Be the first to play this mode!
               </TableCell>
             </TableRow>

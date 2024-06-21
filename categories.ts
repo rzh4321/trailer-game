@@ -9,8 +9,7 @@ const categoryImagesAndUrls = [
     id: 1,
     name: "Highest Critic",
     url: "/play/highest-critic",
-    image:
-      "https://i.ytimg.com/vi/T7l3gyu9ofs/maxresdefault.jpg",
+    image: "https://i.ytimg.com/vi/T7l3gyu9ofs/maxresdefault.jpg",
   },
   {
     id: 2,
@@ -52,7 +51,7 @@ const categoryImagesAndUrls = [
     name: "PG",
     url: "/play/pg",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://www.hollywoodreporter.com/wp-content/uploads/2017/03/pg_rating_comp.jpg?w=1296",
   },
   {
     id: 8,
