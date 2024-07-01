@@ -42,7 +42,7 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
     runs-on: ubuntu-latest
-    # needs: build
+    needs: build
     steps:
       - uses: actions/checkout@v3
       - name: Cache dependencies
