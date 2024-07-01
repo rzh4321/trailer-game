@@ -5,8 +5,8 @@ import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import { useFilteredCategories } from "@/hooks/CategoryContext";
 import { removeUrlParam, updateUrlParams } from "@/lib/searchParams";
-import { useWindowSize } from "@uidotdev/usehooks";
 import FilterDrawer from "./FilterDrawer";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 type FiltersProps = {
   openModal: (buttonKey: string) => void;
@@ -26,7 +26,7 @@ export default function Filters({
   setAppliedFilters,
 }: FiltersProps) {
   const { toggleCertifiedFresh } = useFilteredCategories();
-  const { width, height } = useWindowSize();
+  const width = useWindowWidth();
 
   return (
     <div

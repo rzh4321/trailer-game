@@ -97,6 +97,7 @@ export default function Home() {
 
   const categoriesToDisplay = categories?.slice(0, pageNumber * itemsPerPage);
 
+  // calculate how many categories to render on initial load
   useEffect(() => {
     if (cellSize.width && cellSize.height) {
       const items = calculateItemsPerPage(
@@ -109,6 +110,7 @@ export default function Home() {
     }
   }, [cellSize, cellRef]);
 
+  // determine when the scroll back up button should appear based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       const threshold = document.documentElement.scrollHeight / 3;
@@ -147,15 +149,15 @@ export default function Home() {
 
   // apply filters based on search params
   useEffect(() => {
-    const sortFilter = searchParams.get("sort");
-    const audFresh = searchParams.get("audFresh");
-    const audRotten = searchParams.get("audRotten");
-    const tomatometerCertified = searchParams.get("tomatometer-certified");
-    const tomatometerFresh = searchParams.get("tomatometer-fresh");
-    const tomatometerRotten = searchParams.get("tomatometer-rotten");
-    const certifiedFresh = searchParams.get("certified-fresh");
+    const sortFilter = searchParams?.get("sort");
+    const audFresh = searchParams?.get("audFresh");
+    const audRotten = searchParams?.get("audRotten");
+    const tomatometerCertified = searchParams?.get("tomatometer-certified");
+    const tomatometerFresh = searchParams?.get("tomatometer-fresh");
+    const tomatometerRotten = searchParams?.get("tomatometer-rotten");
+    const certifiedFresh = searchParams?.get("certified-fresh");
 
-    const search = searchParams.get("search");
+    const search = searchParams?.get("search");
 
     if (sortFilter) sortCategories(sortFilter);
     if (search) filterCategories(search);

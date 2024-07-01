@@ -39,13 +39,13 @@ export default function Modals({
 
   // update the UI based on search params
   useEffect(() => {
-    const sortFilter = searchParams.get("sort");
-    const audFresh = searchParams.get("audFresh");
-    const audRotten = searchParams.get("audRotten");
-    const tomatometerCertified = searchParams.get("tomatometer-certified");
-    const tomatometerFresh = searchParams.get("tomatometer-fresh");
-    const tomatometerRotten = searchParams.get("tomatometer-rotten");
-    const certifiedFresh = searchParams.get("certified-fresh");
+    const sortFilter = searchParams?.get("sort");
+    const audFresh = searchParams?.get("audFresh");
+    const audRotten = searchParams?.get("audRotten");
+    const tomatometerCertified = searchParams?.get("tomatometer-certified");
+    const tomatometerFresh = searchParams?.get("tomatometer-fresh");
+    const tomatometerRotten = searchParams?.get("tomatometer-rotten");
+    const certifiedFresh = searchParams?.get("certified-fresh");
 
     const newAppliedFilters = { ...appliedFilters };
     if (sortFilter) newAppliedFilters.sort = sortFilter;

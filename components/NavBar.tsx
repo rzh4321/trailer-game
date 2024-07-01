@@ -25,7 +25,7 @@ export default function NavBar() {
 
   // update the UI search bar based on search params
   useEffect(() => {
-    const search = searchParams.get("search");
+    const search = searchParams?.get("search");
     if (search) setSearch(search);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

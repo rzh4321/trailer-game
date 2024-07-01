@@ -68,6 +68,9 @@ export default function Page({
   useEffect(() => {
     // to prevent user from being able to scroll horizontally (due to background movie posters)
     document.body.classList.add("overflow-hidden");
+    document
+      .getElementById("container")
+      ?.classList.add("h-full", "overflow-x-hidden");
 
     const preventDefault = (e: any) => {
       if (e.touches.length > 1) {
@@ -80,6 +83,10 @@ export default function Page({
     return () => {
       // remove the class back when the component unmounts
       document.body.classList.remove("overflow-hidden");
+      document
+        .getElementById("container")
+        ?.classList.remove("h-full", "overflow-x-hidden");
+
       document.removeEventListener("touchmove", preventDefault);
     };
   }, []);
