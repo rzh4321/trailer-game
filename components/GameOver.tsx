@@ -10,6 +10,7 @@ import { ArrowLeftSquare, ArrowRightSquare } from "lucide-react";
 import Image from "next/image";
 import { Loader } from "lucide-react";
 import saveScore from "@/actions/saveScore";
+import { usePathname } from "next/navigation";
 
 type GameOverProps = {
   guesses: guessType[];
@@ -118,6 +119,8 @@ export default function GameOver({
   const [criticScore, setCriticScore] = useState<number | undefined>();
   const [finalScore, setFinalScore] = useState<number | undefined>();
   const [phrase, setPhrase] = useState<string | undefined>();
+  const pathname = usePathname();
+  const menuPath = pathname.slice(0, -2);
 
   useEffect(() => {
     const getScores = async () => {
@@ -375,7 +378,7 @@ export default function GameOver({
 
         <div className="flex gap-5">
           <Button className="hover:bg-tomatoes/80 bg-tomatoes" asChild>
-            <Link href={"/"}>Back to Menu</Link>
+            <Link href={menuPath}>Back to Menu</Link>
           </Button>
           <Button
             variant={"spotify"}

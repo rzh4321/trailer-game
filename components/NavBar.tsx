@@ -8,7 +8,7 @@ import { Input } from "./ui/input";
 import { Search } from "lucide-react";
 import { Label } from "./ui/label";
 import { usePathname, useSearchParams } from "next/navigation";
-import { updateUrlParams, removeUrlParam } from "@/lib/searchParams";
+import { updateUrlParams } from "@/lib/searchParams";
 
 export default function NavBar() {
   const { filterCategories } = useFilteredCategories();

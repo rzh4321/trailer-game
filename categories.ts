@@ -9,7 +9,8 @@ const categoryImagesAndUrls = [
     id: 1,
     name: "Highest Critic",
     url: "/play/highest-critic",
-    image: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/04/the-best-movie-critics-of-all-time-ranked.jpg",
+    image:
+      "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/04/the-best-movie-critics-of-all-time-ranked.jpg",
   },
   {
     id: 2,
