@@ -176,3 +176,21 @@ export const PGPosters = [
   "https://m.media-amazon.com/images/I/6150z9keG7L._AC_UF894,1000_QL80_.jpg", // bolt
   "https://m.media-amazon.com/images/I/51wYoXzxezL._AC_UF894,1000_QL80_.jpg", // alice in wonderland
 ];
+
+export const PG13Posters = [
+  "https://cdn.europosters.eu/image/1300/art-photo/the-dark-knight-trilogy-a-fire-will-rise-i184446.jpg", // dark knight
+  "https://cdn11.bigcommerce.com/s-yzgoj/images/stencil/1280x1280/products/2919271/5944675/MOVEB46211__19379.1679590452.jpg?c=2", // inception
+  "https://m.media-amazon.com/images/I/51hW76rNH6L._AC_.jpg", // lotr
+  "https://i.pinimg.com/736x/8e/0d/ab/8e0dab8699be85720ce55845065bf6dc.jpg", // interstellar
+  "https://i5.walmartimages.com/seo/La-La-Land-Movie-Poster-Poster-Print-24-x-36_20f02811-01b4-4aea-9bb2-a79942bd2642_1.856c035d66f8fd216f6d933259bc3dfb.jpeg", // lala land
+  "https://www.westalexfilms.com/wp-content/uploads/2016/10/WestalexFilms-The-Prestige-Movie-Poster-Are-You-Watching-Closely.jpg", // the prestige
+  "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg", // batman begins
+  "https://m.media-amazon.com/images/I/71l6fadsRMS._AC_UF894,1000_QL80_.jpg", // arrival
+  "https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_.jpg", // the martian
+  "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/jaws-1975-poster.jpg?q=50&fit=crop&w=750&dpr=1.5",
+  "https://i.ebayimg.com/images/g/OUoAAOSwH3haDPtj/s-l1200.jpg", // casino royale
+  "https://m.media-amazon.com/images/I/61fExTEY7dL._AC_UF894,1000_QL80_.jpg", // jurassic park
+  "https://m.media-amazon.com/images/I/51fcwyusn2L._AC_UF894,1000_QL80_.jpg", // rise of the planet
+  "https://i.ebayimg.com/images/g/Yl0AAOSwZ8ZW9AuW/s-l1600.jpg", // catch me if you can
+  "https://m.media-amazon.com/images/I/818xQZGm-JL.jpg", // captain america winter soldier
+];

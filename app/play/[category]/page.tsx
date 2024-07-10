@@ -52,6 +52,7 @@ const categoryToBackgroundArr: { [key in linkCategoryType]: string[] } = {
   g: background.GPosters,
   controversial: background.controversialPosters,
   pg: background.PGPosters,
+  "pg-13": background.PG13Posters,
 };
 
 const formSchema = z.object({

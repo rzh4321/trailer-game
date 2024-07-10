@@ -55,7 +55,8 @@ export type linkCategoryType =
   | "lowest-audience"
   | "g"
   | "controversial"
-  | "pg";
+  | "pg"
+  | "pg-13";
 
 export type ModalState = {
   isOpen: boolean;

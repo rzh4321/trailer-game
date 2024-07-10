@@ -9,7 +9,7 @@ const categoryImagesAndUrls = [
     id: 1,
     name: "Highest Critic",
     url: "/play/highest-critic",
-    image: "https://i.ytimg.com/vi/T7l3gyu9ofs/maxresdefault.jpg",
+    image: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/04/the-best-movie-critics-of-all-time-ranked.jpg",
   },
   {
     id: 2,
@@ -58,7 +58,7 @@ const categoryImagesAndUrls = [
     name: "PG-13",
     url: "/play/pg-13",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://lh6.googleusercontent.com/proxy/-RMQuTPuZSBtlEwxD46Ox9Gc7JnjDOk8LjzxyrFi1jRC9jF-BLEh-2uSJxqfyk8zAfY5IhlVcj2p3EdiBmFwmmYqpgReWrlfxaq-hX8MuwdqJNTlZY8fYoo",
   },
   {
     id: 9,
