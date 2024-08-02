@@ -194,3 +194,21 @@ export const PG13Posters = [
   "https://i.ebayimg.com/images/g/Yl0AAOSwZ8ZW9AuW/s-l1600.jpg", // catch me if you can
   "https://m.media-amazon.com/images/I/818xQZGm-JL.jpg", // captain america winter soldier
 ];
+
+export const RPosters = [
+  "https://filmartgallery.com/cdn/shop/files/Joker-Vintage-Movie-Poster-Original-1-Sheet-27x41_81d54f24-01ad-4c9f-8db3-e7656cb757bf.jpg?v=1689282440", // joker
+  "https://m.media-amazon.com/images/M/MV5BMTQ0NTk2MTYtMWZlYS00ZTliLThmZTEtNDVkODgxNmQ2ZGM2XkEyXkFqcGdeQXVyNTc4MjczMTM@._V1_.jpg", // deadpool 2
+  "https://i.ebayimg.com/images/g/dhkAAOSwJVFhPYr6/s-l1600.jpg", // matrix reloaded
+  "https://m.media-amazon.com/images/I/61TyIq+0VhL.jpg", // IT
+  "https://m.media-amazon.com/images/I/71HCwLMPJVL.jpg", // logan
+  "https://m.media-amazon.com/images/M/MV5BMTM2MTM4MzY2OV5BMl5BanBnXkFtZTcwNjQ3NzI4NA@@._V1_.jpg", // hangover part 2
+  "https://i.etsystatic.com/50131885/r/il/432014/5739166244/il_570xN.5739166244_4016.jpg", // ted
+  "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg", // terminator 2
+  "https://m.media-amazon.com/images/I/61OK2PdNjKL._AC_UF894,1000_QL80_.jpg", // saving private
+  "https://m.media-amazon.com/images/I/61FlZy7HEOL._AC_UF894,1000_QL80_.jpg", // troy
+  "https://m.media-amazon.com/images/I/61O9+6+NxYL._AC_UF894,1000_QL80_.jpg", // gladiator
+  "https://m.media-amazon.com/images/I/61tF7jKagWL._AC_UF894,1000_QL80_.jpg", // the exorcist
+  "https://m.media-amazon.com/images/I/51R-TU6VaTL._AC_UF894,1000_QL80_.jpg", // a star is born
+  "https://m.media-amazon.com/images/I/912vL7muRwL._AC_UF894,1000_QL80_.jpg", // django
+  "https://m.media-amazon.com/images/I/81MJv+WKb9L._AC_UF894,1000_QL80_.jpg", // fury road
+];

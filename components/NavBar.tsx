@@ -37,10 +37,10 @@ export default function NavBar() {
     >
       <Link
         href="/"
-        className="cursor-pointer flex-shrink-0 flex gap-1 items-end tracking-wider text-xl"
+        className="cursor-pointer flex-shrink-0 flex gap-2 items-end tracking-wider text-xl"
       >
         <Image alt="logo" src={"/icon.ico"} width={30} height={0} />
-        <span className="hidden sm:block font-poppins tracking-tight text-white font-semibold">
+        <span className="font-poppins tracking-tight text-white font-semibold">
           TRAILERMETER
         </span>
       </Link>

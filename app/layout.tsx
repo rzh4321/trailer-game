@@ -22,11 +22,11 @@ export default async function RootLayout({
     <html lang="en">
       {/* <Provider> */}
       <body className="font-primary flex flex-col h-screen justify-between items-center">
-        <div id="container" className="bg-inherit w-full">
+        <div id="container" className="bg-inherit w-full flex flex-col">
           <CategoryProvider>
             <Suspense>
               <NavBar />
-              <div className="p-5 relative">{children}</div>
+              <div className="p-5 relative flex-1">{children}</div>
               <Analytics />
             </Suspense>
           </CategoryProvider>

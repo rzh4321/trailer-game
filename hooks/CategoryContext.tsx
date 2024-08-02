@@ -85,12 +85,15 @@ export const CategoryProvider = ({
     // Apply aud score filter
     if (audScoreFilter.fresh && audScoreFilter.rotten) {
     } else if (audScoreFilter.fresh) {
-      console.log('HI2')
-      result = result.filter((category) => category.audienceScore !== null &&
-      category.audienceScore !== undefined &&
-      category.audienceScore >= 60,);
+      console.log("HI2");
+      result = result.filter(
+        (category) =>
+          category.audienceScore !== null &&
+          category.audienceScore !== undefined &&
+          category.audienceScore >= 60,
+      );
     } else if (audScoreFilter.rotten) {
-      console.log('HI')
+      console.log("HI");
       result = result.filter(
         (category) =>
           category.audienceScore !== null &&

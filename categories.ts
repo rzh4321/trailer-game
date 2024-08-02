@@ -66,7 +66,7 @@ const categoryImagesAndUrls = [
     name: "R",
     url: "/play/r",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://d.newsweek.com/en/full/929938/highest-grossing-r-rated-slideshow.jpg",
   },
   {
     id: 10,

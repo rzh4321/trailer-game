@@ -84,12 +84,12 @@ export default function TopScoresTable({
     );
 
   return (
-    <div className="flex flex-col mb-2 rounded-lg border bg-card text-card-foreground shadow-sm">
+    <div className="flex flex-col mb-2 m-1 p-3 rounded-lg bg-green-500 border-0 border-b-2 border-l-2 border-green-300 text-card-foreground shadow-sm">
       <div className="relative flex items-center justify-center">
         <TableCaption className="text-2xl font-semibold flex flex-col gap-2 items-center leading-none text-black">
           <span>
-            <BarChart className="inline mr-1" />
-            <span>{`Top Scores for ${name}`}</span>
+            <BarChart className="inline mr-1 stroke-slate-100" />
+            <span className=" text-slate-100">{`Top Scores for ${name}`}</span>
           </span>
           <div className="flex gap-5 text-sm">
             <div className="flex items-center">
@@ -110,7 +110,7 @@ export default function TopScoresTable({
                       : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-rotten.f1ef4f02ce3.svg"
                 }
               />
-              <span>{`${avgScores.avgCritic}%`}</span>
+              <span className="text-slate-800">{`${avgScores.avgCritic}%`}</span>
             </div>
             <div className="flex items-center">
               <Image
@@ -126,7 +126,7 @@ export default function TopScoresTable({
                     : "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-rotten.f419e4046b7.svg"
                 }
               />
-              <span>{`${avgScores.avgAudience}%`}</span>
+              <span className="text-slate-800">{`${avgScores.avgAudience}%`}</span>
             </div>
           </div>
         </TableCaption>

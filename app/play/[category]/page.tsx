@@ -8,6 +8,7 @@ import type { linkCategoryType } from "@/types";
 import { useState, useEffect } from "react";
 import * as background from "@/background";
 import { v4 as uuidv4 } from "uuid";
+import { Undo2 } from "lucide-react";
 
 import {
   Select,
@@ -53,6 +54,7 @@ const categoryToBackgroundArr: { [key in linkCategoryType]: string[] } = {
   controversial: background.controversialPosters,
   pg: background.PGPosters,
   "pg-13": background.PG13Posters,
+  r: background.RPosters,
 };
 
 const formSchema = z.object({
@@ -113,12 +115,12 @@ export default function Page({
 
   return (
     <>
-      <div className="absolute sm:fixed inset-0 h-screen flex animate-slideToLeft">
+      <div className="absolute sm:fixed inset-0 flex animate-slideToLeft">
         {duplicatedPosters.map((poster, index) => (
           <Image
             key={uuidv4()}
             priority={true}
-            className="w-auto h-auto"
+            className="w-auto h-full object-fit"
             src={poster}
             alt="bg"
             width={524}
@@ -127,12 +129,23 @@ export default function Page({
         ))}
       </div>
       <div className="relative z-10 flex flex-col items-center justify-center gap-10">
+        <div className="-mb-4 self-start cursor-pointer bg-tomatoes hover:bg-red-500 rounded-lg p-1 flex gap-1 shadow-xl">
+          <Undo2 className="stroke-white" />
+          <span
+            className="font-semibold text-white"
+            onClick={() => router.back()}
+          >
+            Go Back
+          </span>
+        </div>
         <TopScoresTable category={params.category} numTrailers={numTrailers} />
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <Card className="w-[350px]">
               <CardHeader>
-                <CardTitle>Select Number of Trailers</CardTitle>
+                <CardTitle className="text-slate-100">
+                  Select Number of Trailers
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <FormField
