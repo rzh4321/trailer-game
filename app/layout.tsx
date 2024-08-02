@@ -26,16 +26,12 @@ export default async function RootLayout({
           <CategoryProvider>
             <Suspense>
               <NavBar />
-              <div className="p-5 relative flex-1">{children}</div>
+              <div className="p-5 relative flex-1 z-0">{children}</div>
               <Analytics />
             </Suspense>
           </CategoryProvider>
         </div>
-        {/* <Toaster /> */}
-        {/*
-              <Footer /> */}
       </body>
-      {/* </Provider> */}
     </html>
   );
 }

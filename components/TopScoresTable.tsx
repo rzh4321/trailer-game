@@ -84,7 +84,7 @@ export default function TopScoresTable({
     );
 
   return (
-    <div className="flex flex-col mb-2 m-1 p-3 rounded-lg bg-green-500 border-0 border-b-2 border-l-2 border-green-300 text-card-foreground shadow-sm">
+    <div className="flex max-h-[400px] sm:max-h-[500px] flex-col mb-2 m-1 p-3 rounded-lg bg-green-500 border-0 border-b-2 border-l-2 border-green-300 text-card-foreground shadow-sm">
       <div className="relative flex items-center justify-center">
         <TableCaption className="text-2xl font-semibold flex flex-col gap-2 items-center leading-none text-black">
           <span>

@@ -6,6 +6,8 @@ import type { guessType } from "@/types";
 import { useRouter } from "next/navigation";
 import GameOver from "@/components/GameOver";
 import type { linkCategoryType } from "@/types";
+import Background from "@/components/Background";
+import "@/app/background.scss";
 
 export default function Play({
   params,
@@ -52,6 +54,7 @@ export default function Play({
 
   return (
     <>
+      <Background />
       <Game
         onGuess={onGuess}
         videoId={movies[movieInd].video_id}
