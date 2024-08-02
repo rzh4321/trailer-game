@@ -129,7 +129,7 @@ export default function Page({
         ))}
       </div>
       <div className="relative z-10 flex flex-col items-center justify-center gap-10">
-        <div className="-mb-4 self-start cursor-pointer bg-tomatoes hover:bg-red-500 rounded-lg p-1 flex gap-1 shadow-xl">
+        <div className="-mb-4 self-start cursor-pointer bg-tomatoes hover:bg-red-500 rounded-lg p-2 flex gap-1 shadow-xl">
           <Undo2 className="stroke-white" />
           <span
             className="font-semibold text-white"

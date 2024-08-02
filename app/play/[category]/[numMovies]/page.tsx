@@ -37,6 +37,7 @@ export default function Play({
       <div className="text-3xl font-sans tracking-wide text-center">
         Loading Trailers
         <span className="dots overflow-hidden align-baseline"></span>
+        <Background />
       </div>
     );
   }
