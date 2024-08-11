@@ -212,3 +212,39 @@ export const RPosters = [
   "https://m.media-amazon.com/images/I/912vL7muRwL._AC_UF894,1000_QL80_.jpg", // django
   "https://m.media-amazon.com/images/I/81MJv+WKb9L._AC_UF894,1000_QL80_.jpg", // fury road
 ];
+
+export const NC17Posters = [
+  "https://m.media-amazon.com/images/I/51iGX8l0weL._AC_UF894,1000_QL80_.jpg", // requiem
+  "https://i.ebayimg.com/images/g/ktsAAOSw34FVHtoC/s-l1600.jpg", // a serbian film
+  "https://cdn.posteritati.com/posters/000/000/037/523/blue-is-the-warmest-color-md-web.jpg", // blue is the warmest
+  "https://m.media-amazon.com/images/I/81YR6FEhKHL._AC_UF894,1000_QL80_.jpg", // kids
+  "https://m.media-amazon.com/images/I/61lT5yobPbL.jpg", // natural born killers
+  "https://cdn11.bigcommerce.com/s-b72t4x/images/stencil/1280x1280/products/74447/81235/Evil_Dead_Poster__11178.1488937589.jpg?c=2", // the evil dead
+  "https://i5.walmartimages.com/seo/Blonde-Movie-Poster-Quality-Glossy-Print-Photo-Art-Ana-de-Armas-Marilyn-Monroe-Sizes-Available-8x10-11x17-16x20-22x28-24x36-27x40-1-22x28_ecb61dfb-6d83-4f4a-bd36-0e5f0ea67ef5.1cdf4a085d69084face0e5116d5a9871.jpeg", // blonde
+  "https://m.media-amazon.com/images/I/51fnOHx46lL.jpg", // clerks
+  "https://static.displate.com/857x1200/displate/2020-12-23/e80fcd226b012f05ce2283c42e08aaa2_935c2d6308a5186ca234a8d36db245dd.jpg", // pink flamingo
+  "https://m.media-amazon.com/images/M/MV5BM2FlNzE0ZmUtMmVkZS00MWQ3LWE4OWQtYjQwZjdhNzRmNWE2XkEyXkFqcGdeQXVyMTAwMzUyOTc@._V1_.jpg", // happiness
+  "https://m.media-amazon.com/images/I/51YVy50+jCL._AC_UF894,1000_QL80_.jpg", // bad lieutenant
+  "https://m.media-amazon.com/images/M/MV5BOGY2NTZkMjYtY2I1Ni00MTU2LTgxMTYtYTVkMjc1Yzk5NWI4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg", // chained
+  "https://m.media-amazon.com/images/M/MV5BMzI4OGU2MDQtYzc5My00MTIwLTllZWMtOTFkOTBmZmFiZmRiXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg", // killer joe
+  "https://m.media-amazon.com/images/I/51oqXnsioQL._AC_UF894,1000_QL80_.jpg", // hard target
+  "https://m.media-amazon.com/images/I/712aLdeuDdL._AC_UF894,1000_QL80_.jpg", // arabian nights
+];
+
+export const animationPosters = [
+  "https://i.ebayimg.com/images/g/wtUAAOSwtqtk4Ytr/s-l1200.jpg", // inside out
+  "https://m.media-amazon.com/images/I/71M8-CdtLYL._AC_UF894,1000_QL80_.jpg", // despicable me
+  "https://m.media-amazon.com/images/I/8105Oc1+FPL.jpg", // spiderverse
+  "https://i.ebayimg.com/images/g/mgAAAOSw4JBjX69E/s-l1200.webp", // walle
+  "https://m.media-amazon.com/images/I/51qboNmFw3L._AC_UF894,1000_QL80_.jpg", // kung fu panda
+  "https://m.media-amazon.com/images/I/81rjqvHFtkL.jpg", // moana
+  "https://i.ebayimg.com/images/g/IWkAAOSwUTphZOzG/s-l1200.jpg", // lion king
+  "https://m.media-amazon.com/images/I/91zqGNzwk5L.jpg", // super mario bros
+  "https://m.media-amazon.com/images/I/71MRrvu3zPL._AC_UF894,1000_QL80_.jpg", // up
+  "https://m.media-amazon.com/images/I/61qCXSsRFtL.jpg", // ratatatouille
+  "https://m.media-amazon.com/images/I/71u4lXw8PBL._AC_UF894,1000_QL80_.jpg", // finding nemo
+  "https://m.media-amazon.com/images/I/81JPKdfJjdL._AC_UF894,1000_QL80_.jpg", // coraline
+  "https://m.media-amazon.com/images/I/71Q73XE+mwL._AC_UF894,1000_QL80_.jpg", // puss in boots
+  "https://m.media-amazon.com/images/I/71iSIVGZQUL._AC_UF1000,1000_QL80_.jpg", // toy story
+  "https://i.ebayimg.com/images/g/qD8AAOSwTOtapSLx/s-l1600.jpg", // coco
+];

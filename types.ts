@@ -57,7 +57,9 @@ export type linkCategoryType =
   | "controversial"
   | "pg"
   | "pg-13"
-  | "r";
+  | "r"
+  | "nc-17"
+  | "animation";
 
 export type ModalState = {
   isOpen: boolean;

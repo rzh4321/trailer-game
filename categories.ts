@@ -73,7 +73,7 @@ const categoryImagesAndUrls = [
     name: "NC-17",
     url: "/play/nc-17",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://imgix.ranker.com/list_img_v2/5047/3245047/original/3245047-u1?fit=crop&fm=pjpg&q=80&dpr=2&w=1200&h=720",
   },
   {
     id: 11,
@@ -94,7 +94,7 @@ const categoryImagesAndUrls = [
     name: "Animation",
     url: "/play/animation",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://www.splashlearn.com/blog/wp-content/uploads/2023/04/best-animated-movies-for-kids-to-learn-and-create-new-memories.jpeg",
   },
   {
     id: 14,
