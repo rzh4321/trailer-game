@@ -16,7 +16,18 @@ export default function useCategories() {
 
   useEffect(() => {
     const fetchCategoriesAndAverages = async () => {
-      const { dbCategories, avgAudience, avgCritic } = await getCategories();
+      const res = await fetch("/api/categories", { cache: "no-store" });
+      const {
+        dbCategories,
+        avgCritic,
+        avgAudience,
+      }: {
+        dbCategories: categoryType[];
+        avgCritic: number;
+        avgAudience: number;
+      } = await res.json();
+      // const { dbCategories, avgAudience, avgCritic } = await getCategories();
+
       setDbCategories(dbCategories);
       setAverages({ avgAudience, avgCritic });
     };
@@ -25,7 +36,7 @@ export default function useCategories() {
 
   useEffect(() => {
     if (
-      dbCategories?.length === 19 &&
+      dbCategories?.length > 0 &&
       "avgCritic" in averages &&
       "avgAudience" in averages
     ) {
