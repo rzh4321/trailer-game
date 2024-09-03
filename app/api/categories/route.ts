@@ -2,9 +2,9 @@ import type { categoryType, linkCategoryType } from "@/types";
 import { db } from "@/db";
 import { sql, eq, avg } from "drizzle-orm";
 import { categories } from "@/schema";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   let dbRes: any[] = [];
   dbRes = await db.query.categories.findMany();
   let dbCategories = Array.from(dbRes) as categoryType[];
