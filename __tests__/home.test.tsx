@@ -200,7 +200,7 @@ describe("Home Page", () => {
 
       // Wait for the DOM to update
       await waitFor(() => {
-        console.log("Full document HTML:", prettyDOM(document.body, 100000));
+        // console.log("Full document HTML:", prettyDOM(document.body, 100000));
 
         const divs = screen.queryAllByText("Lowest Critic");
         expect(divs.length).toBe(2);
