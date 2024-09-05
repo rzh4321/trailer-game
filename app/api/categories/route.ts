@@ -1,6 +1,6 @@
-import type { categoryType, linkCategoryType } from "@/types";
+import type { categoryType } from "@/types";
 import { db } from "@/db";
-import { sql, eq, avg } from "drizzle-orm";
+import { avg } from "drizzle-orm";
 import { categories } from "@/schema";
 import { NextResponse, NextRequest } from "next/server";
 
