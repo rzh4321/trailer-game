@@ -75,12 +75,6 @@ export default function FilterDrawer({
     setAppliedFilters(newAppliedFilters);
   };
 
-  const handleOpenDrawer = () => {
-    if (stickyContainerRef.current) {
-      stickyContainerRef.current.classList;
-    }
-  };
-
   const handleToggleAudScore = (filter: "rotten" | "fresh") => {
     const oldAudScoreFilterVal = appliedFilters.audScore[filter];
     const newAudScoreFilter = {

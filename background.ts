@@ -248,3 +248,21 @@ export const animationPosters = [
   "https://m.media-amazon.com/images/I/71iSIVGZQUL._AC_UF1000,1000_QL80_.jpg", // toy story
   "https://i.ebayimg.com/images/g/qD8AAOSwTOtapSLx/s-l1600.jpg", // coco
 ];
+
+export const dramaPosters = [
+  "https://m.media-amazon.com/images/I/514ZIU8EnGL.jpg", // forrest gump
+  "https://m.media-amazon.com/images/I/71715eBi1sL._AC_UF894,1000_QL80_.jpg", // shawshank
+  "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/s1kAAOSw9KFiaB2t/$_57.JPG?set_id=880000500F", // godfather
+  "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg", // schindlers
+  "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg", // batman begins
+  "https://m.media-amazon.com/images/I/51Ro3i+HDIL._AC_UF894,1000_QL80_.jpg", // goodfellas
+  "https://m.media-amazon.com/images/I/51vMJ9L3ivL._AC_UF894,1000_QL80_.jpg", // no country for old men
+  "https://m.media-amazon.com/images/I/61K+MZ-LhzL._AC_UF894,1000_QL80_.jpg", // truman
+  "https://i.ebayimg.com/images/g/lPEAAOSwRTtbR3jU/s-l400.jpg", // taxi driver
+  "https://m.media-amazon.com/images/I/61-UNGpgYLL._AC_UF894,1000_QL80_.jpg", // casablanca
+  "https://m.media-amazon.com/images/I/61jWFb1KJ5L._AC_UF894,1000_QL80_.jpg", // scarface
+  "https://m.media-amazon.com/images/I/71JBbULtGSL._AC_UF894,1000_QL80_.jpg", // good will
+  "https://m.media-amazon.com/images/I/5122m2MY0gL._AC_UF894,1000_QL80_.jpg", // groundhog
+  "https://m.media-amazon.com/images/I/51k6mqQPh2L._AC_UF894,1000_QL80_.jpg", // there will be
+  "https://storage.googleapis.com/pod_public/1300/144102.jpg", // 12 angry men
+];

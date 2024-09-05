@@ -16,6 +16,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import type { guessType } from "@/types";
 import UsernamePrompt from "./UsernamePrompt";
+import { useRef } from "react";
+import { KeyboardEvent } from "react";
 
 type UserInputsProps = {
   onGuess: (guessesObj: guessType) => void;
@@ -55,6 +57,8 @@ export default function UserInputs({
   username,
   setUsername,
 }: UserInputsProps) {
+  const buttonRef = useRef(null);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -69,9 +73,17 @@ export default function UserInputs({
     form.setValue("criticGuess", "");
     form.setValue("audienceGuess", "");
   }
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>): void => {
+    if (buttonRef.current && event.key === "Enter") {
+      (buttonRef.current as any).click();
+    }
+  };
+
   return (
     <Form {...form}>
       <form
+        onKeyDown={handleKeyDown}
         onSubmit={form.handleSubmit(onSubmit)}
         className=" sidebar w-72 flex-shrink-0 flex self-center lg:flex-col sm:gap-10 gap-5"
       >
@@ -121,6 +133,7 @@ export default function UserInputs({
         form.getValues("criticGuess") !== undefined &&
         form.getValues("audienceGuess") !== undefined ? (
           <UsernamePrompt
+            buttonRef={buttonRef}
             onGuess={onGuess}
             values={form.getValues()}
             username={username}
@@ -131,7 +144,7 @@ export default function UserInputs({
             type="submit"
             className="sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600 hover:bg-white hover:text-black"
           >
-            {isLastTrailer ? "Get Scores" : <LucideArrowRight />}
+            <LucideArrowRight />
           </Button>
         )}
       </form>

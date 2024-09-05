@@ -57,6 +57,7 @@ const categoryToBackgroundArr: { [key in linkCategoryType]: string[] } = {
   r: background.RPosters,
   "nc-17": background.NC17Posters,
   animation: background.animationPosters,
+  drama: background.dramaPosters,
 };
 
 const formSchema = z.object({
@@ -135,7 +136,10 @@ export default function Page({
           <Undo2 className="stroke-white" />
           <span
             className="font-semibold text-white"
-            onClick={() => router.back()}
+            onClick={() => {
+              const homePageUrl = localStorage.getItem("home url") || "/";
+              router.replace(homePageUrl);
+            }}
           >
             Go Back
           </span>

@@ -136,7 +136,7 @@ const categoryImagesAndUrls = [
     name: "Drama",
     url: "/play/drama",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://hips.hearstapps.com/hmg-prod/images/best-dramas-index-1651510350.jpg?crop=0.8888888888888888xw:1xh;center,top",
   },
 ];
 

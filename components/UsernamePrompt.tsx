@@ -18,6 +18,7 @@ type UsernamePromptProps = {
   setUsername: React.Dispatch<React.SetStateAction<string>>;
   onGuess: (guessesObj: guessType) => void;
   values: { criticGuess: string; audienceGuess: string };
+  buttonRef: React.MutableRefObject<null>;
 };
 
 export default function UsernamePrompt({
@@ -25,16 +26,24 @@ export default function UsernamePrompt({
   setUsername,
   onGuess,
   values,
+  buttonRef,
 }: UsernamePromptProps) {
   // register the last guesses to transition to results screen
   const handleSubmit = () => {
     onGuess(values);
   };
 
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ): void => {
+    handleSubmit();
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button
+          ref={buttonRef}
           type="button"
           className="sm:w-[6.5rem] w-[5rem] self-end lg:self-start bg-red-600 hover:bg-green-600 "
         >
@@ -54,11 +63,12 @@ export default function UsernamePrompt({
         </DialogHeader>
         <div>
           <Input
+            onKeyDown={handleKeyDown}
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
         </div>
-        <Button onClick={handleSubmit} variant={"spotify"}>
+        <Button type="button" onClick={handleSubmit} variant={"spotify"}>
           Continue
         </Button>
       </DialogContent>

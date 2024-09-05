@@ -14,6 +14,7 @@ export const updateUrlParams = (newParams: Record<string, string>) => {
 
   // Use history.pushState or history.replaceState to update the URL without reloading
   window.history.pushState({}, "", currentUrl.toString());
+  localStorage.setItem("home url", currentUrl.toString());
 
   // Restore the scroll position
   window.scrollTo(scrollX, scrollY);
@@ -33,6 +34,7 @@ export const removeUrlParam = (param: string) => {
 
   // Use history.pushState or history.replaceState to update the URL without reloading
   window.history.pushState({}, "", currentUrl.toString());
+  localStorage.setItem("home url", currentUrl.toString());
 
   // Restore the scroll position
   window.scrollTo(scrollX, scrollY);

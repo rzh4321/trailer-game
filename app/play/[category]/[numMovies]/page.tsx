@@ -30,6 +30,7 @@ export default function Play({
     copy.push(guessesObj);
     setGuesses(copy);
     setMovieInd((prev) => prev + 1);
+    console.log("onguess");
   };
 
   if (loading) {
