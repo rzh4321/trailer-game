@@ -68,6 +68,7 @@ export default function UserInputs({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values)
     onGuess(values);
     form.reset();
     form.setValue("criticGuess", "");
@@ -131,7 +132,8 @@ export default function UserInputs({
         />
         {isLastTrailer &&
         form.getValues("criticGuess") !== undefined &&
-        form.getValues("audienceGuess") !== undefined ? (
+        form.getValues("audienceGuess") !== undefined && 
+        form.getValues("criticGuess") !== '' && form.getValues("audienceGuess") !== '' ? (
           <UsernamePrompt
             buttonRef={buttonRef}
             onGuess={onGuess}

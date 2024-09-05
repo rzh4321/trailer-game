@@ -12,6 +12,10 @@ import { Loader } from "lucide-react";
 import saveScore from "@/actions/saveScore";
 import { usePathname } from "next/navigation";
 
+function removeLeadingZeros(str : string) {
+  return str.replace(/^0+/, '');
+}
+
 type GameOverProps = {
   guesses: guessType[];
   movies: movieWithVideoIdAndImageType[];
@@ -320,7 +324,7 @@ export default function GameOver({
                     : "text-red-700"
               }`}
             >
-              {guesses[movieInd].criticGuess}%.
+              {removeLeadingZeros(guesses[movieInd].criticGuess)}%.
             </span>
           </span>
         </div>
@@ -371,7 +375,7 @@ export default function GameOver({
                     : "text-red-700"
               }`}
             >
-              {guesses[movieInd].audienceGuess}%.
+              {removeLeadingZeros(guesses[movieInd].audienceGuess)}%.
             </span>
           </span>
         </div>
