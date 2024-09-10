@@ -58,6 +58,7 @@ const categoryToBackgroundArr: { [key in linkCategoryType]: string[] } = {
   "nc-17": background.NC17Posters,
   animation: background.animationPosters,
   drama: background.dramaPosters,
+  horror: background.horrorPosters, // need to do this
 };
 
 const formSchema = z.object({

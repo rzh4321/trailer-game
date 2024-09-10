@@ -1,6 +1,6 @@
 import type { CategoryToTableName } from "./types";
 
-// category was part of the link
+// key is URL route, value is the table name
 const categoryToTableName: CategoryToTableName = {
   all: "All",
   "highest-critic": "Highest_critic",
@@ -22,6 +22,7 @@ const categoryToTableName: CategoryToTableName = {
   crime: "Crime",
   documentary: "Documentary",
   drama: "Drama",
+  horror: "Horror",
 };
 
 export default categoryToTableName;

@@ -60,7 +60,8 @@ export type linkCategoryType =
   | "r"
   | "nc-17"
   | "animation"
-  | "drama";
+  | "drama"
+  | "horror";
 
 export type ModalState = {
   isOpen: boolean;
@@ -95,4 +96,5 @@ export type CategoryToTableName = {
   crime: string;
   documentary: string;
   drama: string;
+  horror: string;
 };

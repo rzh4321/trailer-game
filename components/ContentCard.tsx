@@ -10,7 +10,7 @@ type ContentCardProps = {
 
 const ContentCard = ({ categoryObject, cellRef }: ContentCardProps) => {
   return (
-    <div ref={cellRef} className="flex flex-col gap-1">
+    <div ref={cellRef} className="flex flex-col gap-1 overflow-hidden">
       <Button
         className="relative border rounded-full hover:rounded-full border-gray-300
         sm:min-h-[200px] min-h-[230px] p-0 aspect-w-1 aspect-h-1
@@ -26,7 +26,9 @@ const ContentCard = ({ categoryObject, cellRef }: ContentCardProps) => {
           <div
             className={`absolute shadow-lg m-auto inset-x-0 text-center top-[45%] xl:text-3xl lg:text-2xl md:text-xl font-semibold`}
           >
-            {categoryObject.name}
+            <span className="shine-effect relative inline-block">
+              <span className="relative z-10">{categoryObject.name}</span>
+            </span>{" "}
           </div>
         </Link>
       </Button>

@@ -12,8 +12,8 @@ import { Loader } from "lucide-react";
 import saveScore from "@/actions/saveScore";
 import { usePathname } from "next/navigation";
 
-function removeLeadingZeros(str : string) {
-  return str.replace(/^0+/, '');
+function removeLeadingZeros(str: string) {
+  return str.replace(/^0+/, "");
 }
 
 type GameOverProps = {

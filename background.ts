@@ -266,3 +266,21 @@ export const dramaPosters = [
   "https://m.media-amazon.com/images/I/51k6mqQPh2L._AC_UF894,1000_QL80_.jpg", // there will be
   "https://storage.googleapis.com/pod_public/1300/144102.jpg", // 12 angry men
 ];
+
+export const horrorPosters = [
+  "https://resizing.flixster.com/j7X5i2_r24PjGCbkF3_SjNw9qpg=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p23640184_v_v13_aa.jpg", // skinamarink
+  "https://i.ebayimg.com/images/g/ItgAAOSwfWhhZOzF/s-l1200.jpg", // alien
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLE5paFdWxXIMCoB164EC9k8KUpZiu9ijPNw&s", // the exorcist
+  "https://m.media-amazon.com/images/M/MV5BM2M1MzI1MWYtYmM2ZC00OWY3LTk0ZGMtNmRkNzU1NzEzMWE5XkEyXkFqcGdeQXVyODUwOTkwODk@._V1_FMjpg_UX1000_.jpg", // saw
+  "https://m.media-amazon.com/images/M/MV5BNDA2NTg2NjE4Ml5BMl5BanBnXkFtZTYwMjYxMDg5._V1_.jpg", // the ring
+  "https://m.media-amazon.com/images/I/51wujUHTljL.jpg", // texas chainsaw
+  "https://i.ebayimg.com/00/s/MTYwMFgxMDI5/z/2FMAAOSw-jhUDTpF/$_57.JPG?set_id=880000500F", // the evil dead
+  "https://in.originalfilmart.com/cdn/shop/files/the_shining_1980_original_film_art_5000x.webp?v=1685732868", // the shining
+  "https://m.media-amazon.com/images/M/MV5BNGViZWZmM2EtNGYzZi00ZDAyLTk3ODMtNzIyZTBjN2Y1NmM1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // the thing
+  "https://miro.medium.com/v2/resize:fit:500/1*I9zDkUL5PfD7aT0O2Zk8mg.jpeg", // insidious
+  "https://m.media-amazon.com/images/I/51HKtV4sOcL.jpg", // paranormal activity
+  "https://lh4.googleusercontent.com/proxy/uX576iQrEswDN8Loc2v4EJ9g6Pudb8HvchSY5kQR1-u0LiqY0Gpb4tU3ctiNARsd5xk7MoXpcycAChimKfd8NKLk6ayVmfiyE6EyYhI", // dont breathe
+  "https://m.media-amazon.com/images/I/41SWoMknY2L._AC_UY1000_.jpg", // blair witch project
+  "https://image.tmdb.org/t/p/original/67Myda9zANAnlS54rRjQF4dHNNG.jpg", // smile
+  "https://i.ebayimg.com/images/g/6-gAAOSw58tjH2Ib/s-l1600.jpg", // get out
+];

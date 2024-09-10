@@ -138,6 +138,13 @@ const categoryImagesAndUrls = [
     image:
       "https://hips.hearstapps.com/hmg-prod/images/best-dramas-index-1651510350.jpg?crop=0.8888888888888888xw:1xh;center,top",
   },
+  {
+    id: 20,
+    name: "Horror",
+    url: "/play/horror",
+    image:
+      "https://images.squarespace-cdn.com/content/v1/5fe76a518d20536a3fbd7246/1677485539915-LFIMTERP6D0O8QMEY9ZU/Image+3+%287%29.jpg",
+  },
 ];
 
 export default categoryImagesAndUrls;

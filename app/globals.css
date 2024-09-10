@@ -208,3 +208,40 @@
 .shade5 {
   opacity: 0.9;
 }
+
+@keyframes shine {
+  0% {
+    mask-position: 150%;
+  }
+  100% {
+    mask-position: -50%;
+  }
+}
+
+.shine-effect {
+  position: relative;
+}
+
+.shine-effect::before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: -50%;
+  right: -50%;
+  bottom: -90%;
+  background: linear-gradient(
+    45deg,
+    rgba(240, 77, 77, 0) 0%,
+    rgba(247, 54, 54, 0.8) 50%,
+    rgba(244, 0, 0, 0) 100%
+  );
+  z-index: 1;
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-size: 400%;
+  mask-repeat: no-repeat;
+}

@@ -68,7 +68,7 @@ export default function UserInputs({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    console.log(values);
     onGuess(values);
     form.reset();
     form.setValue("criticGuess", "");
@@ -105,7 +105,7 @@ export default function UserInputs({
               <FormControl>
                 <Input type="number" className="sm:w-[6.5rem]" {...field} />
               </FormControl>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
@@ -126,14 +126,15 @@ export default function UserInputs({
               <FormControl>
                 <Input type="number" className="sm:w-[6.5rem]" {...field} />
               </FormControl>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
         {isLastTrailer &&
         form.getValues("criticGuess") !== undefined &&
-        form.getValues("audienceGuess") !== undefined && 
-        form.getValues("criticGuess") !== '' && form.getValues("audienceGuess") !== '' ? (
+        form.getValues("audienceGuess") !== undefined &&
+        form.getValues("criticGuess") !== "" &&
+        form.getValues("audienceGuess") !== "" ? (
           <UsernamePrompt
             buttonRef={buttonRef}
             onGuess={onGuess}
