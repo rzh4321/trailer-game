@@ -284,3 +284,40 @@ export const horrorPosters = [
   "https://image.tmdb.org/t/p/original/67Myda9zANAnlS54rRjQF4dHNNG.jpg", // smile
   "https://i.ebayimg.com/images/g/6-gAAOSw58tjH2Ib/s-l1600.jpg", // get out
 ];
+
+export const comedyPosters = [
+  "https://m.media-amazon.com/images/I/718e+Q78j8L._AC_UF894,1000_QL80_.jpg", // monty python
+  "https://m.media-amazon.com/images/M/MV5BZjA3YjdhMWEtYjc2Ni00YzVlLWI0MTUtMGZmNTJjNmU0Yzk2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg", // airplane
+  "https://m.media-amazon.com/images/M/MV5BZDg1OGQ4YzgtM2Y2NS00NjA3LWFjYTctMDRlMDI3NWE1OTUyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg", // annie hall
+  "https://m.media-amazon.com/images/I/51Z07DwVJmL._AC_UF894,1000_QL80_.jpg", // dumb and dumber
+  "https://m.media-amazon.com/images/M/MV5BMjM1MzczMDgwOV5BMl5BanBnXkFtZTcwMDM4NjM2OQ@@._V1_.jpg", // the internship
+  "https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_.jpg", // what we do in
+  "https://m.media-amazon.com/images/I/51NsKSYKTyL._AC_UF894,1000_QL80_.jpg", // Anchorman
+  "https://m.media-amazon.com/images/I/51aHfqvu3-L._AC_.jpg", // Superbad
+  "https://m.media-amazon.com/images/I/51CPJ4feiZL._AC_UF894,1000_QL80_.jpg", // Step Brothers
+  "https://m.media-amazon.com/images/I/714aUKa8fbL._AC_UF894,1000_QL80_.jpg", // 21 Jump Street
+  "https://m.media-amazon.com/images/I/5122m2MY0gL._AC_UF894,1000_QL80_.jpg", // groundhog
+  "https://m.media-amazon.com/images/I/71Gc5TU6KsL._AC_UF894,1000_QL80_.jpg", // Clueless
+  "https://m.media-amazon.com/images/I/51HO47A1vhL._AC_UF894,1000_QL80_.jpg", // home alone 3
+  "https://m.media-amazon.com/images/I/51CSOTO+itL._AC_UF894,1000_QL80_.jpg", // Mean Girls
+  "https://i5.walmartimages.com/seo/La-La-Land-Movie-Poster-Poster-Print-24-x-36_20f02811-01b4-4aea-9bb2-a79942bd2642_1.856c035d66f8fd216f6d933259bc3dfb.jpeg", // lala land
+];
+
+export const biographyPosters = [
+  "https://i.ebayimg.com/images/g/0vwAAOSwkE9fqof2/s-l400.jpg", // gandhi
+  // FINISH THIS
+  "https://m.media-amazon.com/images/M/MV5BZjA3YjdhMWEtYjc2Ni00YzVlLWI0MTUtMGZmNTJjNmU0Yzk2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg", // airplane
+  "https://m.media-amazon.com/images/M/MV5BZDg1OGQ4YzgtM2Y2NS00NjA3LWFjYTctMDRlMDI3NWE1OTUyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg", // annie hall
+  "https://m.media-amazon.com/images/I/51Z07DwVJmL._AC_UF894,1000_QL80_.jpg", // dumb and dumber
+  "https://m.media-amazon.com/images/M/MV5BMjM1MzczMDgwOV5BMl5BanBnXkFtZTcwMDM4NjM2OQ@@._V1_.jpg", // the internship
+  "https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_.jpg", // what we do in
+  "https://m.media-amazon.com/images/I/51NsKSYKTyL._AC_UF894,1000_QL80_.jpg", // Anchorman
+  "https://m.media-amazon.com/images/I/51aHfqvu3-L._AC_.jpg", // Superbad
+  "https://m.media-amazon.com/images/I/51CPJ4feiZL._AC_UF894,1000_QL80_.jpg", // Step Brothers
+  "https://m.media-amazon.com/images/I/714aUKa8fbL._AC_UF894,1000_QL80_.jpg", // 21 Jump Street
+  "https://m.media-amazon.com/images/I/5122m2MY0gL._AC_UF894,1000_QL80_.jpg", // groundhog
+  "https://m.media-amazon.com/images/I/71Gc5TU6KsL._AC_UF894,1000_QL80_.jpg", // Clueless
+  "https://m.media-amazon.com/images/I/51HO47A1vhL._AC_UF894,1000_QL80_.jpg", // home alone 3
+  "https://m.media-amazon.com/images/I/51CSOTO+itL._AC_UF894,1000_QL80_.jpg", // Mean Girls
+  "https://i5.walmartimages.com/seo/La-La-Land-Movie-Poster-Poster-Print-24-x-36_20f02811-01b4-4aea-9bb2-a79942bd2642_1.856c035d66f8fd216f6d933259bc3dfb.jpeg", // lala land
+];

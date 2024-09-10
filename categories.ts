@@ -108,14 +108,14 @@ const categoryImagesAndUrls = [
     name: "Biography",
     url: "/play/biography",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqXYGpQ7fLmCsusa4Z_yV_KiZq8O99lMbk2g&s",
   },
   {
     id: 16,
     name: "Comedy",
     url: "/play/comedy",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://www.shutterstock.com/image-photo/image-laughing-friends-sitting-cinema-600nw-693099475.jpg",
   },
   {
     id: 17,
