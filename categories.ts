@@ -101,7 +101,7 @@ const categoryImagesAndUrls = [
     name: "Anime",
     url: "/play/anime",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/04/25-best-anime-movies-of-all-time-ranked.jpg",
   },
   {
     id: 15,
@@ -122,7 +122,7 @@ const categoryImagesAndUrls = [
     name: "Crime",
     url: "/play/crime",
     image:
-      "https://m.media-amazon.com/images/I/61yM93L5qQS._AC_UF894,1000_QL80_.jpg",
+      "https://s.studiobinder.com/wp-content/uploads/2019/11/73-Best-Crime-Movies-Featured-StudioBinder-min.jpg",
   },
   {
     id: 18,

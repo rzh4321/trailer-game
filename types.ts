@@ -63,7 +63,9 @@ export type linkCategoryType =
   | "drama"
   | "horror"
   | "comedy"
-  | "biography";
+  | "biography"
+  | "anime"
+  | "crime";
 
 export type ModalState = {
   isOpen: boolean;

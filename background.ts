@@ -320,3 +320,39 @@ export const biographyPosters = [
   "https://m.media-amazon.com/images/M/MV5BMTQzNzczMDUyNV5BMl5BanBnXkFtZTcwNjM2ODEzOA@@._V1_.jpg", // lincoln
   "https://m.media-amazon.com/images/I/51Ro3i+HDIL._AC_UF894,1000_QL80_.jpg", // goodfellas
 ];
+
+export const animePosters = [
+  "https://m.media-amazon.com/images/I/61ON14PVzoL._AC_UF894,1000_QL80_.jpg", // spirited away
+  "https://m.media-amazon.com/images/I/913iYTmWPwL.jpg", // akira
+  "https://filmartgallery.com/cdn/shop/files/Princess-Mononoke-Vintage-Movie-Poster-Original-Japanese-1-panel-20x29-8302.jpg?v=1712977330", // princess mono
+  "https://m.media-amazon.com/images/I/7188XBkmTmL._AC_UF894,1000_QL80_.jpg", // your name
+  "https://m.media-amazon.com/images/I/71IGV0fhTpL._AC_UF894,1000_QL80_.jpg", // ghost in the shell
+  "https://filmartgallery.com/cdn/shop/files/My-Neighbor-Totoro-Vintage-Movie-Poster-Original-1-Sheet-27x41-8302_8b6a788d-1f89-48a3-9f91-5020becf961e.jpg?v=1716433342", // my neighbor totoro
+  "https://i5.walmartimages.com/seo/Grave-of-the-Fireflies-Movie-Poster-11-x-17_e22aa03d-afdf-4210-928d-6b8bfe0a7e96.2f54b90034d6811373b280d9180bb6f5.jpeg", // grave of the fireflies
+  "https://m.media-amazon.com/images/I/51GgzN-EglL._AC_UF894,1000_QL80_.jpg", // perfect blue
+  "https://filmartgallery.com/cdn/shop/products/Howls-Moving-Castle-Vintage-Movie-Poster-Original-Japanese-B1-28x40-7059_1667b890-f78d-4ce9-b3a5-66e82553ecc5.jpg?v=1628737495", // howls moving
+  "https://m.media-amazon.com/images/I/51XFaesw92L._AC_UF894,1000_QL80_.jpg", // neon genesis
+  "https://filmartgallery.com/cdn/shop/products/Nausicaa-of-the-Valley-of-the-Winds-Vintage-Movie-Poster-Original-Japanese-1-Panel-20x29_571fc27b-da8b-4843-a511-3974775f2385.jpg?v=1663223454", // nausicaa of
+  "https://m.media-amazon.com/images/M/MV5BNjhiN2FjMWUtMDAyMi00ODJkLWE3MDgtODJlYTA1NDk5M2MyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg", // the girl who leapt
+  "https://m.media-amazon.com/images/I/61FWkVF9aNL._AC_UF894,1000_QL80_.jpg", // paprika
+  "https://static.wikia.nocookie.net/wolf-children-series/images/7/73/Wolf_Children_-_2012_-_tt2140203_-_Poster.jpg/revision/latest?cb=20161128042953", // wolf children
+  "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/rJMAAOSwMZ9kktCB/$_57.JPG?set_id=8800005007", // a silent voice
+];
+
+export const crimePosters = [
+  "https://m.media-amazon.com/images/I/71715eBi1sL._AC_UF894,1000_QL80_.jpg", // shawshank
+  "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/s1kAAOSw9KFiaB2t/$_57.JPG?set_id=880000500F", // godfather
+  "https://www.originalfilmart.com/cdn/shop/products/departed_2006_original_film_art_921946c9-5eaa-43a5-9425-2e13cb2de4ac_5000x.jpg?v=1679940744", // the departed
+  "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/the-silence-of-the-lambs-1991-poster.jpg", // silence
+  "https://i.ebayimg.com/images/g/qAUAAOSw9idZ78Lb/s-l1200.jpg", // heat
+  "https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg", // se7en
+  "https://i.ebayimg.com/images/g/lFYAAOSwHQ9WVLFI/s-l1200.jpg", // reservoir dogs
+  "https://m.media-amazon.com/images/I/51ANy73yJuL._AC_.jpg", // the usual suspects
+  "https://filmartgallery.com/cdn/shop/products/Fargo-Vintage-Movie-Poster-Original-1-Sheet-27x41-7182.jpg?v=1650949481", // fargo
+  "https://m.media-amazon.com/images/I/81+ebrESqBL.jpgg", // chinatown
+  "https://i.ebayimg.com/00/s/MTQyNlgxMDAw/z/qYEAAOSw9E5dcMrB/$_57.JPG?set_id=8800005007", // la confidential
+  "https://m.media-amazon.com/images/I/41cjV4n8rJL._AC_UF894,1000_QL80_.jpg", // casino
+  "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/scarface-1983-poster.jpg?q=50&fit=crop&w=750&dpr=1.5", // scarface
+  "https://m.media-amazon.com/images/I/51vMJ9L3ivL._AC_UF894,1000_QL80_.jpg", // no country for old men
+  "https://m.media-amazon.com/images/I/51Ro3i+HDIL._AC_UF894,1000_QL80_.jpg", // goodfellas
+];
