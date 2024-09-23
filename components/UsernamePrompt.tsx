@@ -36,7 +36,10 @@ export default function UsernamePrompt({
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLInputElement>,
   ): void => {
-    handleSubmit();
+    if (event.key === "Enter") {
+      console.log("u just pressed enter for username prompt");
+      handleSubmit();
+    }
   };
 
   return (

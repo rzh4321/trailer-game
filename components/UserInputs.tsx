@@ -77,6 +77,7 @@ export default function UserInputs({
 
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>): void => {
     if (buttonRef.current && event.key === "Enter") {
+      console.log("buttonref.current is ", buttonRef.current);
       (buttonRef.current as any).click();
     }
   };
